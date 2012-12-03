@@ -17,4 +17,7 @@
            <asp:TableCell meta:resourcekey="RatingCell"/>
            <asp:TableCell ID="RatingCell"/>
        </asp:TableRow>
-   </asp:Table>
+</asp:Table>
+<asp:PlaceHolder runat="server" ID="QuestionEditorPlaceHolder" />
+<asp:Button runat="server" ID="SaveButton" OnClick="SaveButton_Click" meta:resourcekey="SaveButton"/>
+<asp:Button runat="server" ID="CancelButton" PostBackUrl="~/ManageQuestions.aspx" meta:resourcekey="CancelButton"/>

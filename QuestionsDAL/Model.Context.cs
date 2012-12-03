@@ -18,6 +18,7 @@ namespace QuestionsDAL
         public Entities()
             : base("name=Entities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -29,7 +30,7 @@ namespace QuestionsDAL
         public DbSet<Memberships> Memberships { get; set; }
         public DbSet<Profiles> Profiles { get; set; }
         public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
-        public DbSet<QuestionCategorie> QuestionCategories { get; set; }
+        public DbSet<QuestionCategory> QuestionCategories { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionType> QuestionTypes { get; set; }
         public DbSet<Roles> Roles { get; set; }

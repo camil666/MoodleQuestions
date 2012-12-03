@@ -19,7 +19,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
         #region Constructors
 
         public StudentPresenter(IStudentView view)
-            :base(view)
+            : base(view)
         {
             _view = view;
             Model = new Model();

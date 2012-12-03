@@ -31,6 +31,15 @@ namespace MoodleQuestions.Pages.QuestionDetails {
         protected global::System.Web.UI.WebControls.TableCell NameCell;
         
         /// <summary>
+        /// NameTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NameTextBox;
+        
+        /// <summary>
         /// TypeCell control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace MoodleQuestions.Pages.QuestionDetails {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell CategoryCell;
+        
+        /// <summary>
+        /// CategoryDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CategoryDropDown;
         
         /// <summary>
         /// CreationDateCell control.
@@ -83,5 +101,32 @@ namespace MoodleQuestions.Pages.QuestionDetails {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList RatingDropDown;
+        
+        /// <summary>
+        /// QuestionEditorPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder QuestionEditorPlaceHolder;
+        
+        /// <summary>
+        /// SaveButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SaveButton;
+        
+        /// <summary>
+        /// CancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelButton;
     }
 }

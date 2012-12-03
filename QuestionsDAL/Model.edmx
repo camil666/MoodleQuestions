@@ -132,6 +132,7 @@
           <Property Name="AuthorId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="QuestionTypes">
           <Key>
@@ -303,12 +304,12 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Applications" EntityType="Model.Applications" />
           <EntitySet Name="Memberships" EntityType="Model.Memberships" />
           <EntitySet Name="Profiles" EntityType="Model.Profiles" />
           <EntitySet Name="QuestionAnswers" EntityType="Model.QuestionAnswer" />
-          <EntitySet Name="QuestionCategories" EntityType="Model.QuestionCategorie" />
+          <EntitySet Name="QuestionCategories" EntityType="Model.QuestionCategory" />
           <EntitySet Name="Questions" EntityType="Model.Question" />
           <EntitySet Name="QuestionTypes" EntityType="Model.QuestionType" />
           <EntitySet Name="Roles" EntityType="Model.Roles" />
@@ -412,7 +413,7 @@
           <Property Name="Fraction" Type="Double" Nullable="false" />
           <NavigationProperty Name="Questions" Relationship="Model.FK_QuestionAnswers_Questions" FromRole="QuestionAnswers" ToRole="Questions" />
         </EntityType>
-        <EntityType Name="QuestionCategorie">
+        <EntityType Name="QuestionCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -437,6 +438,7 @@
           <NavigationProperty Name="QuestionCategory" Relationship="Model.FK_Questions_QuestionCategories" FromRole="Questions" ToRole="QuestionCategories" />
           <NavigationProperty Name="QuestionType" Relationship="Model.FK_Questions_QuestionTypes" FromRole="Questions" ToRole="QuestionTypes" />
           <NavigationProperty Name="Author" Relationship="Model.FK_Questions_Users" FromRole="Questions" ToRole="Users" />
+          <Property Type="DateTime" Name="ModificationDate" Precision="3" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -545,7 +547,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Questions_QuestionCategories">
-          <End Role="QuestionCategories" Type="Model.QuestionCategorie" Multiplicity="0..1" />
+          <End Role="QuestionCategories" Type="Model.QuestionCategory" Multiplicity="0..1" />
           <End Role="Questions" Type="Model.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="QuestionCategories">
@@ -646,7 +648,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuestionCategories">
-            <EntityTypeMapping TypeName="Model.QuestionCategorie">
+            <EntityTypeMapping TypeName="Model.QuestionCategory">
               <MappingFragment StoreEntitySet="QuestionCategories">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -656,6 +658,7 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="Model.Question">
               <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />

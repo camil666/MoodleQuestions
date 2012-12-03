@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MoodleQuestions.Controls;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -12,6 +13,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
         #region Fields
 
         private StudentPresenter _presenter;
+        private QuestionComposer _questionComposer;
 
         #endregion
 
@@ -40,6 +42,16 @@ namespace MoodleQuestions.Pages.QuestionDetails
             set { RatingCell.Text = value.ToString(); }
         }
 
+        public QuestionComposer QuestionComposer
+        {
+            get 
+            {
+                if (_questionComposer == null)
+                    _questionComposer = LoadControl("~/Controls/QuestionComposer.ascx") as QuestionComposer;
+                return _questionComposer; 
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -56,6 +68,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected void Page_Load(object sender, EventArgs e)
         {
             _presenter.SetQuestionDetails();
+            _presenter.SetQuestionContent();
+            if (_questionComposer != null)
+                QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
         }
 
         #endregion

@@ -47,7 +47,9 @@ namespace MoodleQuestions
             }
 
             foreach (var question in questions)
+            {
                 quizRoot.Add(GenerateXml(question, numbering));
+            }
 
             return quizRoot;
         }

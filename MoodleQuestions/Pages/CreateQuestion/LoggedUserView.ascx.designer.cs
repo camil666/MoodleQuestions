@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MoodleQuestions {
+namespace MoodleQuestions.Pages.CreateQuestion {
     
     
-    public partial class CreateQuestion {
+    public partial class LoggedUserView {
         
         /// <summary>
-        /// ViewPlaceHolder control.
+        /// AnonymousUserView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ViewPlaceHolder;
+        protected global::MoodleQuestions.Pages.CreateQuestion.AnonymousUserView AnonymousUserView;
+        
+        /// <summary>
+        /// SaveQuestionButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SaveQuestionButton;
     }
 }

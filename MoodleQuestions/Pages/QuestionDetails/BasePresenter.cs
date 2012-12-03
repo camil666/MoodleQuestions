@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MoodleQuestions.Controls;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
@@ -37,11 +38,23 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             Question = Model.GetQuestion(_view.QuestionId);
             if (Question == null)
+            {
                 return;
+            }
 
             _view.QuestionCreationDate = Question.CreationDate.ToShortDateString();
             if (Question.Author != null)
+            {
                 _view.QuestionAuthor = Question.Author.UserName;
+            }
+        }
+        //TODO: dokonczyc
+        public void SetQuestionContent()
+        {
+            if (Question.Rating == null)
+            {
+                _view.QuestionComposer.Question = Question;
+            }
         }
 
         #endregion

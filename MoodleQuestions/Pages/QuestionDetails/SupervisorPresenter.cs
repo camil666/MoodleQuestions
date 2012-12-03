@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -32,16 +33,29 @@ namespace MoodleQuestions.Pages.QuestionDetails
             base.SetQuestionDetails();
 
             _view.QuestionName = Question.Name;
-
-            if (Question.QuestionCategory != null)
-                _view.QuestionCategory = Question.QuestionCategory.Name;
-            else
-                _view.QuestionCategory = Constants.EmptyText;
+            _view.QuestionCategoryDataSource = Model.GetQuestionCategories();
 
             if (Question.QuestionType != null)
+            {
                 _view.QuestionType = Question.QuestionType.Name;
+            }
             else
+            {
                 _view.QuestionType = Constants.EmptyText;
+            }
+        }
+
+        public void SaveChanges()
+        {
+            var newQuestion = new Question()
+                {
+                    CategoryId = int.Parse(_view.QuestionCategory),
+                    Name = _view.QuestionName,
+                    Rating = _view.SelectedRating,
+                    //Content = _view.
+                };
+
+            Model.SaveChanges(Question, newQuestion);
         }
 
         #endregion

@@ -77,6 +77,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Controls\QuestionComposer.ascx" />
     <Content Include="App_Data\aspnet-MoodleQuestions-20121021124734.mdf" />
     <Content Include="App_Data\aspnet-MoodleQuestions-20121021124734_log.ldf">
       <DependentUpon>aspnet-MoodleQuestions-20121021124734.mdf</DependentUpon>
@@ -158,6 +159,8 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Pages\CreateQuestion\AnonymousUserView.ascx" />
+    <Content Include="Pages\CreateQuestion\LoggedUserView.ascx" />
     <Content Include="Pages\QuestionDetails\StudentView.ascx" />
     <Content Include="Pages\QuestionDetails\SupervisorView.ascx" />
     <Content Include="QuestionDetails.aspx">
@@ -464,6 +467,13 @@
     </Compile>
     <Compile Include="App_Code\AnswerNumbering.cs" />
     <Compile Include="App_Code\Constants.cs" />
+    <Compile Include="Controls\QuestionComposer.ascx.cs">
+      <DependentUpon>QuestionComposer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\QuestionComposer.ascx.designer.cs">
+      <DependentUpon>QuestionComposer.ascx</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\DoubleHelper.cs" />
     <Compile Include="App_Code\PermissionHelper.cs" />
     <Compile Include="App_Code\XmlGenerator.cs" />
@@ -474,7 +484,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Controls\QuestionAnswerControl.cs" />
+    <Compile Include="Controls\QuestionAnswerControl.cs" />
     <Compile Include="CreateQuestion.aspx.cs">
       <DependentUpon>CreateQuestion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -499,6 +509,24 @@
     <Compile Include="ManageQuestions.aspx.designer.cs">
       <DependentUpon>ManageQuestions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CreateQuestion\AnonymousUserPresenter.cs" />
+    <Compile Include="Pages\CreateQuestion\AnonymousUserView.ascx.cs">
+      <DependentUpon>AnonymousUserView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateQuestion\AnonymousUserView.ascx.designer.cs">
+      <DependentUpon>AnonymousUserView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateQuestion\IView.cs" />
+    <Compile Include="Pages\CreateQuestion\LoggedUserPresenter.cs" />
+    <Compile Include="Pages\CreateQuestion\LoggedUserView.ascx.cs">
+      <DependentUpon>LoggedUserView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateQuestion\LoggedUserView.ascx.designer.cs">
+      <DependentUpon>LoggedUserView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateQuestion\Model.cs" />
     <Compile Include="Pages\QuestionDetails\BasePresenter.cs" />
     <Compile Include="Pages\QuestionDetails\IBaseView.cs" />
     <Compile Include="Pages\QuestionDetails\ISupervisorView.cs" />
@@ -538,7 +566,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\" />
-    <Folder Include="Pages\CreateQuestion\" />
     <Folder Include="Pages\ManageQuestions\" />
   </ItemGroup>
   <ItemGroup>
@@ -573,6 +600,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\QuestionDetails\App_LocalResources\SupervisorView.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\CreateQuestion\App_LocalResources\AnonymousUserView.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\CreateQuestion\App_LocalResources\LoggedUserView.ascx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

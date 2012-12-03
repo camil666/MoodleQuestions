@@ -7,7 +7,7 @@ namespace MoodleQuestions
     {
         #region Methods
 
-        public static double GetDouble(string value)
+        public static double Parse(string value)
         {
             double result;
 

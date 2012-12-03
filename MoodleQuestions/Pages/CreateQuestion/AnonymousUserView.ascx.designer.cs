@@ -7,81 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MoodleQuestions.Pages.QuestionDetails {
+namespace MoodleQuestions.Pages.CreateQuestion {
     
     
-    public partial class StudentView {
+    public partial class AnonymousUserView {
         
         /// <summary>
-        /// QuestionTable control.
+        /// AnswerCountLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table QuestionTable;
+        protected global::System.Web.UI.WebControls.Label AnswerCountLabel;
         
         /// <summary>
-        /// NameCell control.
+        /// AnswerCountDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell NameCell;
+        protected global::System.Web.UI.WebControls.DropDownList AnswerCountDropDown;
         
         /// <summary>
-        /// CreationDateCell control.
+        /// QuestionComposerPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell CreationDateCell;
+        protected global::System.Web.UI.WebControls.PlaceHolder QuestionComposerPlaceHolder;
         
         /// <summary>
-        /// AuthorCell control.
+        /// ButtonsPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell AuthorCell;
+        protected global::System.Web.UI.WebControls.PlaceHolder ButtonsPlaceHolder;
         
         /// <summary>
-        /// RatingCell control.
+        /// GenerateXMLButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell RatingCell;
+        protected global::System.Web.UI.WebControls.Button GenerateXMLButton;
         
         /// <summary>
-        /// QuestionEditorPlaceHolder control.
+        /// CustomValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder QuestionEditorPlaceHolder;
-        
-        /// <summary>
-        /// SaveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveButton;
-        
-        /// <summary>
-        /// CancelButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CancelButton;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
     }
 }

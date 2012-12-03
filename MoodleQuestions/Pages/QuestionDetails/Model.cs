@@ -20,6 +20,37 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
+        public ICollection<QuestionCategory> GetQuestionCategories()
+        {
+            using (var context = new Entities())
+            {
+                return (from item in context.QuestionCategories select item).ToList();
+            }
+        }
+
+        public void SaveChanges(Question oldQuestion, Question modifiedQuestion)
+        {
+            using (var context = new Entities())
+            {
+                var selectedQuestion = (from item in context.Questions.Include("QuestionCategory").Include("QuestionAnswers")
+                                        where item.Id == oldQuestion.Id
+                                        select item).FirstOrDefault();
+
+                selectedQuestion.CategoryId = modifiedQuestion.CategoryId;
+                selectedQuestion.Content = modifiedQuestion.Content;
+                selectedQuestion.Name = modifiedQuestion.Name;
+                selectedQuestion.Rating = modifiedQuestion.Rating;
+                selectedQuestion.ModificationDate = DateTime.Now;
+                for (int i = 0; i < selectedQuestion.QuestionAnswers.Count; ++i)
+                {
+                    selectedQuestion.QuestionAnswers.ElementAt(i).Content = modifiedQuestion.QuestionAnswers.ElementAt(i).Content;
+                    selectedQuestion.QuestionAnswers.ElementAt(i).Fraction = modifiedQuestion.QuestionAnswers.ElementAt(i).Fraction;
+                }
+
+                context.SaveChanges();
+            }
+        }
+
         #endregion
     }
 }

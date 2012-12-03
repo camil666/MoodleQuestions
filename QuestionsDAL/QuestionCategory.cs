@@ -12,9 +12,9 @@ namespace QuestionsDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class QuestionCategorie
+    public partial class QuestionCategory
     {
-        public QuestionCategorie()
+        public QuestionCategory()
         {
             this.Questions = new HashSet<Question>();
         }

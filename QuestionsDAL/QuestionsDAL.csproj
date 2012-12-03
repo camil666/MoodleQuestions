@@ -77,7 +77,7 @@
     <Compile Include="QuestionAnswer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuestionCategorie.cs">
+    <Compile Include="QuestionCategory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="QuestionType.cs">

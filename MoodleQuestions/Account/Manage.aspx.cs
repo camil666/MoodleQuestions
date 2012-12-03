@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Account
 {
-    public partial class Manage : System.Web.UI.Page
+    public partial class Manage : Page
     {
         protected string SuccessMessage
         {
@@ -34,8 +35,8 @@ namespace MoodleQuestions.Account
                         message == "ChangePwdSuccess" ? "Your password has been changed."
                         : message == "SetPwdSuccess" ? "Your password has been set."
                         : message == "RemoveLoginSuccess" ? "The external login was removed."
-                        : String.Empty;
-                    successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
+                        : string.Empty;
+                    successMessage.Visible = !string.IsNullOrEmpty(SuccessMessage);
                 }
             }
         }
@@ -48,7 +49,6 @@ namespace MoodleQuestions.Account
         {
             return GetDataItem() as T ?? default(T);
         }
-
 
         protected static string ConvertToDisplayDateTime(DateTime? utcDateTime)
         {

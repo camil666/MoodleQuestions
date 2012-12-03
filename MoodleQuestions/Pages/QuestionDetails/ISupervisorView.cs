@@ -11,7 +11,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
         #region Properties
 
         string QuestionName { get; set; }
-        string QuestionCategory { get; set; }
+        string QuestionCategory { get; }
+        object QuestionCategoryDataSource { get; set; }
         string QuestionType { get; set; }
 
         int? SelectedRating { get; }

@@ -30,11 +30,13 @@ namespace MoodleQuestions.Controls
         public string AnswerContent
         {
             get { return _answerTextBox.Text; }
+            set { _answerTextBox.Text = value; }
         }
 
         public string FractionValue
         {
             get { return _fractionDropDown.SelectedValue; }
+            set { _fractionDropDown.Items.FindByText(value).Selected = true; }
         }
 
         public object FractionDropDownDataSource

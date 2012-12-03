@@ -41,7 +41,9 @@ namespace MoodleQuestions
             {
                 var user = Membership.GetUser();
                 if (user == null)
+                {
                     return;
+                }
 
                 var userId = Guid.Parse(user.ProviderUserKey.ToString());
 

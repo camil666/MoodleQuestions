@@ -28,9 +28,10 @@ namespace QuestionsDAL
         public System.Guid AuthorId { get; set; }
         public System.DateTime CreationDate { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<System.DateTime> ModificationDate { get; set; }
     
         public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
-        public virtual QuestionCategorie QuestionCategory { get; set; }
+        public virtual QuestionCategory QuestionCategory { get; set; }
         public virtual QuestionType QuestionType { get; set; }
         public virtual Users Author { get; set; }
     }
