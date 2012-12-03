@@ -77,7 +77,6 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Controls\QuestionComposer.ascx" />
     <Content Include="App_Data\aspnet-MoodleQuestions-20121021124734.mdf" />
     <Content Include="App_Data\aspnet-MoodleQuestions-20121021124734_log.ldf">
       <DependentUpon>aspnet-MoodleQuestions-20121021124734.mdf</DependentUpon>
@@ -171,6 +170,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\QuestionComposerScripts.js" />
     <Content Include="Scripts\tiny_mce\langs\en.js" />
     <Content Include="Scripts\tiny_mce\license.txt" />
     <Content Include="Scripts\tiny_mce\plugins\advhr\css\advhr.css" />
@@ -467,16 +467,14 @@
     </Compile>
     <Compile Include="App_Code\AnswerNumbering.cs" />
     <Compile Include="App_Code\Constants.cs" />
-    <Compile Include="Controls\QuestionComposer.ascx.cs">
-      <DependentUpon>QuestionComposer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QuestionComposer.ascx.designer.cs">
-      <DependentUpon>QuestionComposer.ascx</DependentUpon>
-    </Compile>
     <Compile Include="App_Code\DoubleHelper.cs" />
     <Compile Include="App_Code\PermissionHelper.cs" />
     <Compile Include="App_Code\XmlGenerator.cs" />
+    <Compile Include="App_GlobalResources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -485,6 +483,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\QuestionAnswerControl.cs" />
+    <Compile Include="Controls\QuestionComposer.cs" />
     <Compile Include="CreateQuestion.aspx.cs">
       <DependentUpon>CreateQuestion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -606,6 +605,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\CreateQuestion\App_LocalResources\LoggedUserView.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Strings.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

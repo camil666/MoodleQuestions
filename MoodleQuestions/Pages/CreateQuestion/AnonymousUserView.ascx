@@ -18,4 +18,3 @@
     <asp:PlaceHolder runat="server" ID="ButtonsPlaceHolder">
         <asp:Button runat="server" ID="GenerateXMLButton" OnClick="GenerateXMLButton_Click" meta:resourcekey="GenerateXMLButton"></asp:Button>
     </asp:PlaceHolder>
-    <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="Answers.ValidateSum" Display="Dynamic" meta:resourcekey="SumValidator"></asp:CustomValidator>

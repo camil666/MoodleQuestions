@@ -10,12 +10,15 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Controls
 {
-    public partial class QuestionComposer : UserControl
+    public class QuestionComposer : WebControl
     {
         #region Fields
 
-        //private Question _question;
         private Collection<QuestionAnswerControl> _answerControls;
+        private TextBox _questionContentTextBox;
+        private DropDownList _questionCountDropDown;
+        private Label _questionLabel;
+        private CustomValidator _validator;
 
         #endregion
 
@@ -23,11 +26,21 @@ namespace MoodleQuestions.Controls
 
         public int AnswerCount { get; set; }
 
+        public string QuestionLabelText
+        {
+            get { return _questionLabel.Text; }
+            set { _questionLabel.Text = value; }
+        }
+
         public string AnswerLabelText { get; set; }
 
         public string FractionLabelText { get; set; }
 
-        public string ValidationErrorMessage { get; set; }
+        public string ValidatorErrorMessage
+        {
+            get { return _validator.ErrorMessage; }
+            set { _validator.ErrorMessage = value; }
+        }
 
         public Question Question
         {
@@ -36,7 +49,7 @@ namespace MoodleQuestions.Controls
                 var question = new Question()
                 {
                     CreationDate = DateTime.Now,
-                    Content = QuestionContentTextBox.Text
+                    Content = _questionContentTextBox.Text
                 };
 
                 var user = Membership.GetUser();
@@ -59,7 +72,7 @@ namespace MoodleQuestions.Controls
             set
             {
                 //_question = value;
-                QuestionContentTextBox.Text = value.Content;
+                _questionContentTextBox.Text = value.Content;
                 foreach (var control in _answerControls)
                 {
                     control.AnswerContent = value.QuestionAnswers.ElementAt(_answerControls.IndexOf(control)).Content;
@@ -73,8 +86,16 @@ namespace MoodleQuestions.Controls
         #region Constructors
 
         public QuestionComposer()
+            : base(HtmlTextWriterTag.Div)
         {
             _answerControls = new Collection<QuestionAnswerControl>();
+            _questionContentTextBox = new TextBox() { TextMode = TextBoxMode.MultiLine };
+            _questionLabel = new Label();
+            _validator = new CustomValidator()
+            {
+                Display = ValidatorDisplay.Dynamic,
+                ClientValidationFunction = "Answers.ValidateSum"
+            };
         }
 
         #endregion
@@ -86,7 +107,7 @@ namespace MoodleQuestions.Controls
             var question = new Question()
             {
                 CreationDate = DateTime.Now,
-                Content = QuestionContentTextBox.Text
+                Content = _questionContentTextBox.Text
             };
 
             var user = Membership.GetUser();
@@ -106,43 +127,12 @@ namespace MoodleQuestions.Controls
             return question;
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnPreRender(e);
+            base.OnLoad(e);
+            Page.ClientScript.RegisterClientScriptInclude("TinyMce", ResolveClientUrl("~/Scripts/tiny_mce/tiny_mce.js"));
+            Page.ClientScript.RegisterClientScriptInclude("ComposerScripts", ResolveClientUrl("~/Scripts/QuestionComposerScripts.js"));
 
-            if (!Page.IsPostBack)
-            {
-                var itemCollection = new Collection<ListItem>();
-                for (int fractionValue = -100; fractionValue <= 100; fractionValue += 5)
-                {
-                    itemCollection.Add(new ListItem(fractionValue.ToString()));
-                }
-
-                itemCollection.Add(new ListItem("11,111"));
-                itemCollection.Add(new ListItem("12,5"));
-                itemCollection.Add(new ListItem("14,2857"));
-                itemCollection.Add(new ListItem("16,666"));
-                itemCollection.Add(new ListItem("33,333"));
-                itemCollection.Add(new ListItem("66,666"));
-                itemCollection.Add(new ListItem("83,333"));
-                itemCollection.Add(new ListItem("-11,111"));
-                itemCollection.Add(new ListItem("-12,5"));
-                itemCollection.Add(new ListItem("-14,2857"));
-                itemCollection.Add(new ListItem("-16,666"));
-                itemCollection.Add(new ListItem("-33,333"));
-                itemCollection.Add(new ListItem("-66,666"));
-                itemCollection.Add(new ListItem("-83,333"));
-
-                foreach (var control in _answerControls)
-                {
-                    control.FractionDropDownDataSource = itemCollection.OrderByDescending(item => DoubleHelper.Parse(item.Text));
-                    control.DataBind();
-                }
-            }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
             //if (_question != null)
             //{
             //    QuestionContentTextBox.Text = _question.Content;
@@ -153,17 +143,54 @@ namespace MoodleQuestions.Controls
             //    }
             //}
 
+            Controls.Add(_questionLabel);
+            Controls.Add(_questionContentTextBox);
+
             for (int i = 0; i < AnswerCount; ++i)
             {
                 var control = new QuestionAnswerControl()
                     {
-                        AnswerLabelText = string.Format(AnswerLabelText, i + 1),
-                        FractionLabelText = FractionLabelText,
-                        ValidationErrorMessage = ValidationErrorMessage
+                        AnswerLabelText = AnswerLabelText,
+                        FractionLabelText = FractionLabelText
                     };
 
                 _answerControls.Add(control);
-                AnswersPlaceHolder.Controls.Add(control);
+                Controls.Add(control);
+            }
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+
+            if (!Page.IsPostBack)
+            {
+                var fractions = new Collection<ListItem>();
+                for (int fractionValue = -100; fractionValue <= 100; fractionValue += 5)
+                {
+                    fractions.Add(new ListItem(fractionValue.ToString()));
+                }
+
+                fractions.Add(new ListItem("11,111"));
+                fractions.Add(new ListItem("12,5"));
+                fractions.Add(new ListItem("14,2857"));
+                fractions.Add(new ListItem("16,666"));
+                fractions.Add(new ListItem("33,333"));
+                fractions.Add(new ListItem("66,666"));
+                fractions.Add(new ListItem("83,333"));
+                fractions.Add(new ListItem("-11,111"));
+                fractions.Add(new ListItem("-12,5"));
+                fractions.Add(new ListItem("-14,2857"));
+                fractions.Add(new ListItem("-16,666"));
+                fractions.Add(new ListItem("-33,333"));
+                fractions.Add(new ListItem("-66,666"));
+                fractions.Add(new ListItem("-83,333"));
+
+                foreach (var control in _answerControls)
+                {
+                    control.FractionDropDownDataSource = fractions.OrderByDescending(item => DoubleHelper.Parse(item.Text));
+                    control.DataBind();
+                }
             }
         }
 

@@ -12,7 +12,7 @@ namespace MoodleQuestions.Controls
     {
         #region Constants
 
-        private const string FractionTextBoxClass = "FractionDropDown";
+        private const string FractionDropDownClass = "FractionDropDown";
 
         #endregion
 
@@ -33,10 +33,22 @@ namespace MoodleQuestions.Controls
             set { _answerTextBox.Text = value; }
         }
 
+        public string AnswerLabelText
+        {
+            get { return _answerLabel.Text; }
+            set { _answerLabel.Text = value; }
+        }
+
         public string FractionValue
         {
             get { return _fractionDropDown.SelectedValue; }
             set { _fractionDropDown.Items.FindByText(value).Selected = true; }
+        }
+
+        public string FractionLabelText
+        {
+            get { return _fractionLabel.Text; }
+            set { _fractionLabel.Text = value; }
         }
 
         public object FractionDropDownDataSource
@@ -44,18 +56,6 @@ namespace MoodleQuestions.Controls
             get { return _fractionDropDown.DataSource; }
             set { _fractionDropDown.DataSource = value; }
         }
-
-        public string AnswerLabelText
-        {
-            set { _answerLabel.Text = value; }
-        }
-
-        public string FractionLabelText
-        {
-            set { _fractionLabel.Text = value; }
-        }
-
-        public string ValidationErrorMessage { get; set; }
 
         #endregion
 
@@ -66,12 +66,8 @@ namespace MoodleQuestions.Controls
         {
             _fractionLabel = new Label();
             _answerLabel = new Label();
-            _fractionDropDown = new DropDownList() { CssClass = FractionTextBoxClass };
-            _answerTextBox = new TextBox
-            {
-                TextMode = TextBoxMode.MultiLine,
-                CausesValidation = false
-            };
+            _fractionDropDown = new DropDownList() { CssClass = "FractionDropDownClass" };
+            _answerTextBox = new TextBox { TextMode = TextBoxMode.MultiLine };
         }
 
         #endregion

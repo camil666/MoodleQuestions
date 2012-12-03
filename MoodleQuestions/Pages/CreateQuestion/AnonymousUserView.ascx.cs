@@ -40,11 +40,14 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _questionComposerControl = LoadControl("~/Controls/QuestionComposer.ascx") as QuestionComposer;
-            _questionComposerControl.AnswerCount = int.Parse(AnswerCountDropDown.SelectedValue);
-            _questionComposerControl.AnswerLabelText = GetLocalResourceObject("QuestionAnswerControl.AnswerLabel.Text").ToString();
-            _questionComposerControl.FractionLabelText = GetLocalResourceObject("QuestionAnswerControl.FractionLabel.Text").ToString();
-            _questionComposerControl.ValidationErrorMessage = GetLocalResourceObject("QuestionAnswerControl.ValidationErrorMessage").ToString();
+            _questionComposerControl = new QuestionComposer()
+            {
+                AnswerCount = int.Parse(AnswerCountDropDown.SelectedValue),
+                QuestionLabelText = GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
+                AnswerLabelText = GetGlobalResourceObject("Strings", "AnswerLabelText").ToString(),
+                FractionLabelText = GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
+                ValidatorErrorMessage = GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString()
+            };
 
             QuestionComposerPlaceHolder.Controls.Add(_questionComposerControl);
         }
