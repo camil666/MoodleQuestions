@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using MoodleQuestions.Pages.QuestionDetails;
 
 namespace MoodleQuestions
 {
@@ -11,11 +12,11 @@ namespace MoodleQuestions
         {
             if (PermissionHelper.UserIsSupervisor)
             {
-                ViewPlaceHolder.Controls.Add(LoadControl("~/Pages/QuestionDetails/SupervisorView.ascx"));
+                ViewPlaceHolder.Controls.Add(new SupervisorView());
             }
             else if (PermissionHelper.UserIsStudent)
             {
-                ViewPlaceHolder.Controls.Add(LoadControl("~/Pages/QuestionDetails/StudentView.ascx"));
+                ViewPlaceHolder.Controls.Add(new StudentView());
             }
         }
 

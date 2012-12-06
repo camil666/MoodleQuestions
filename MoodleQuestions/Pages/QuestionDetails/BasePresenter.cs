@@ -47,6 +47,24 @@ namespace MoodleQuestions.Pages.QuestionDetails
             {
                 _view.QuestionAuthor = Question.Author.UserName;
             }
+
+            if (Question.QuestionType != null && !string.IsNullOrEmpty(Question.QuestionType.Name))
+            {
+                _view.QuestionType = Question.QuestionType.Name;
+            }
+            else
+            {
+                _view.QuestionType = Constants.EmptyText;
+            }
+
+            if (!string.IsNullOrEmpty(Question.Name))
+            {
+                _view.QuestionName = Question.QuestionType.Name;
+            }
+            else
+            {
+                _view.QuestionName = Constants.EmptyText;
+            }
         }
         //TODO: dokonczyc
         public void SetQuestionContent()

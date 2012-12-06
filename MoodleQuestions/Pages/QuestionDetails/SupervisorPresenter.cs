@@ -32,8 +32,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             base.SetQuestionDetails();
 
-            _view.QuestionName = Question.Name;
             _view.QuestionCategoryDataSource = Model.GetQuestionCategories();
+            _view.QuestionRatingDataSource = new string[] { "-", "2", "3", "4", "5" };
 
             if (Question.QuestionType != null)
             {
@@ -42,6 +42,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
             else
             {
                 _view.QuestionType = Constants.EmptyText;
+            }
+
+            if (Question.Rating != null)
+            {
+                _view.SelectedRating = Question.Rating.Value;
             }
         }
         //TODO: dokonczyc

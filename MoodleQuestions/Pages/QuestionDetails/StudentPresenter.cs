@@ -34,7 +34,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
             base.SetQuestionDetails();
 
             if (Question.Rating != null)
+            {
                 _view.QuestionRating = Question.Rating.Value.ToString();
+            }
+            else
+            {
+                _view.QuestionRating = Constants.EmptyText;
+            }
         }
         //TODO: dokonczyc
         public void SaveChanges()

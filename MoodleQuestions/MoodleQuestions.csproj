@@ -160,8 +160,6 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Pages\CreateQuestion\AnonymousUserView.ascx" />
     <Content Include="Pages\CreateQuestion\LoggedUserView.ascx" />
-    <Content Include="Pages\QuestionDetails\StudentView.ascx" />
-    <Content Include="Pages\QuestionDetails\SupervisorView.ascx" />
     <Content Include="QuestionDetails.aspx">
       <BrowseToURL>~/QuestionDetails.aspx</BrowseToURL>
     </Content>
@@ -527,26 +525,15 @@
     </Compile>
     <Compile Include="Pages\CreateQuestion\Model.cs" />
     <Compile Include="Pages\QuestionDetails\BasePresenter.cs" />
+    <Compile Include="Pages\QuestionDetails\BaseView.cs" />
     <Compile Include="Pages\QuestionDetails\IBaseView.cs" />
     <Compile Include="Pages\QuestionDetails\ISupervisorView.cs" />
     <Compile Include="Pages\QuestionDetails\IStudentView.cs" />
     <Compile Include="Pages\QuestionDetails\Model.cs" />
     <Compile Include="Pages\QuestionDetails\StudentPresenter.cs" />
-    <Compile Include="Pages\QuestionDetails\StudentView.ascx.cs">
-      <DependentUpon>StudentView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\QuestionDetails\StudentView.ascx.designer.cs">
-      <DependentUpon>StudentView.ascx</DependentUpon>
-    </Compile>
+    <Compile Include="Pages\QuestionDetails\StudentView.cs" />
     <Compile Include="Pages\QuestionDetails\SupervisorPresenter.cs" />
-    <Compile Include="Pages\QuestionDetails\SupervisorView.ascx.cs">
-      <DependentUpon>SupervisorView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\QuestionDetails\SupervisorView.ascx.designer.cs">
-      <DependentUpon>SupervisorView.ascx</DependentUpon>
-    </Compile>
+    <Compile Include="Pages\QuestionDetails\SupervisorView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionDetails.aspx.cs">
       <DependentUpon>QuestionDetails.aspx</DependentUpon>
