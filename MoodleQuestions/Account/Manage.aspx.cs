@@ -8,6 +8,14 @@ namespace MoodleQuestions.Account
 {
     public partial class Manage : Page
     {
+        protected static string ConvertToDisplayDateTime(DateTime? utcDateTime)
+        {
+            // You can change this method to convert the UTC date time into the desired display
+            // offset and format. Here we're converting it to the server timezone and formatting
+            // as a short date and a long time string, using the current thread culture.
+            return utcDateTime.HasValue ? utcDateTime.Value.ToLocalTime().ToString("G") : "[never]";
+        }
+
         protected string SuccessMessage
         {
             get;
@@ -48,14 +56,6 @@ namespace MoodleQuestions.Account
         protected T Item<T>() where T : class
         {
             return GetDataItem() as T ?? default(T);
-        }
-
-        protected static string ConvertToDisplayDateTime(DateTime? utcDateTime)
-        {
-            // You can change this method to convert the UTC date time into the desired display
-            // offset and format. Here we're converting it to the server timezone and formatting
-            // as a short date and a long time string, using the current thread culture.
-            return utcDateTime.HasValue ? utcDateTime.Value.ToLocalTime().ToString("G") : "[never]";
         }
     }
 }

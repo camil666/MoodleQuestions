@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
 
@@ -11,12 +12,12 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Fields
 
-        private QuestionComposer _questionComposer;
-        private TableCell _creationDateCell;
-        private TableCell _authorCell;
         protected TableCell _ratingCell;
         protected TableCell _nameCell;
         protected TableCell _typeCell;
+        private TableCell _creationDateCell;
+        private TableCell _authorCell;
+        private QuestionComposer _questionComposer;
 
         #endregion
 
@@ -56,6 +57,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             get
             {
                 if (_questionComposer == null)
+                {
                     _questionComposer = new QuestionComposer()
                         {
                             QuestionLabelText = HttpContext.GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
@@ -63,6 +65,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
                             FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
                             ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString()
                         };
+                }
 
                 return _questionComposer;
             }
@@ -77,6 +80,15 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected Button CancelButton { get; private set; }
 
         protected Button SaveButton { get; private set; }
+
+        #endregion
+
+        #region Constructors
+
+        public BaseView()
+            : base(HtmlTextWriterTag.Div)
+        {
+        }
 
         #endregion
 
@@ -135,7 +147,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
             Presenter.SetQuestionDetails();
             Presenter.SetQuestionContent();
             if (_questionComposer != null)
+            {
                 QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
+            }
         }
 
         #endregion

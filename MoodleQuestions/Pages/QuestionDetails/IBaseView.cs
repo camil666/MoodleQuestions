@@ -12,10 +12,15 @@ namespace MoodleQuestions.Pages.QuestionDetails
         #region Properties
 
         string QuestionName { get; set; }
+
         string QuestionType { get; set; }
+
         int QuestionId { get; }
+
         string QuestionCreationDate { get; set; }
+
         string QuestionAuthor { get; set; }
+
         QuestionComposer QuestionComposer { get; }
 
         #endregion

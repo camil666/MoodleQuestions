@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ilość odpowiedzi:.
+        /// </summary>
+        internal static string AnswerCountDropDownLabel {
+            get {
+                return ResourceManager.GetString("AnswerCountDropDownLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Odpowiedź:.
         /// </summary>
         internal static string AnswerLabelText {
@@ -120,6 +129,15 @@ namespace Resources {
         internal static string FractionValidatorErrorMessage {
             get {
                 return ResourceManager.GetString("FractionValidatorErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wygeneruj plik XML.
+        /// </summary>
+        internal static string GenerateXMLButtonText {
+            get {
+                return ResourceManager.GetString("GenerateXMLButtonText", resourceCulture);
             }
         }
         

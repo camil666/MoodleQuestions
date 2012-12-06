@@ -54,7 +54,9 @@ namespace MoodleQuestions.Controls
 
                 var user = Membership.GetUser();
                 if (user != null)
+                {
                     question.AuthorId = Guid.Parse(user.ProviderUserKey.ToString());
+                }
 
                 foreach (var control in _answerControls)
                 {

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerCountDropDownLabel" xml:space="preserve">
+    <value>Ilość odpowiedzi:</value>
+  </data>
   <data name="AnswerLabelText" xml:space="preserve">
     <value>Odpowiedź:</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="FractionValidatorErrorMessage" xml:space="preserve">
     <value>Suma ocen cząstkowych jest nieprawidłowa</value>
+  </data>
+  <data name="GenerateXMLButtonText" xml:space="preserve">
+    <value>Wygeneruj plik XML</value>
   </data>
   <data name="NameLabelText" xml:space="preserve">
     <value>Nazwa:</value>

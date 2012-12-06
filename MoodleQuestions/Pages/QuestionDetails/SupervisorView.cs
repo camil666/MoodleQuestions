@@ -11,11 +11,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Fields
 
-        private DropDownList _categoryDropDown { get; set; }
-
-        private DropDownList _ratingDropDown { get; set; }
-
-        private TextBox _nameTextBox { get; set; }
+        private DropDownList _categoryDropDown;
+        private DropDownList _ratingDropDown;
+        private TextBox _nameTextBox;
 
         #endregion
 

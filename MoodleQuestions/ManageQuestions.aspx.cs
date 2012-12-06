@@ -36,8 +36,18 @@ namespace MoodleQuestions
         protected override void OnPreRender(EventArgs e)
         {
             base.OnPreRender(e);
-                    
-            if (PermissionHelper.UserIsStudent)
+
+            if (PermissionHelper.UserIsSupervisor)
+            {
+                using (var context = new Entities())
+                {
+                    QuestionGridView.DataSource = (from question in context.Questions select question).ToList();
+                }
+
+                _usersDropDown.DataSource = PermissionHelper.GetStudents();
+                _usersDropDown.DataBind();
+            }
+            else if (PermissionHelper.UserIsStudent)
             {
                 var user = Membership.GetUser();
                 if (user == null)
@@ -53,16 +63,6 @@ namespace MoodleQuestions
                                                    where question.AuthorId == userId
                                                    select question).ToList();
                 }
-            }
-            if (PermissionHelper.UserIsSupervisor)
-            {
-                using (var context = new Entities())
-                {
-                    QuestionGridView.DataSource = (from question in context.Questions select question).ToList();
-                }
-
-                _usersDropDown.DataSource = PermissionHelper.GetStudents();
-                _usersDropDown.DataBind();
             }
 
             QuestionGridView.DataBind();

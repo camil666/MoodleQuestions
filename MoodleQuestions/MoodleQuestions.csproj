@@ -158,8 +158,6 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Pages\CreateQuestion\AnonymousUserView.ascx" />
-    <Content Include="Pages\CreateQuestion\LoggedUserView.ascx" />
     <Content Include="QuestionDetails.aspx">
       <BrowseToURL>~/QuestionDetails.aspx</BrowseToURL>
     </Content>
@@ -507,22 +505,10 @@
       <DependentUpon>ManageQuestions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CreateQuestion\AnonymousUserPresenter.cs" />
-    <Compile Include="Pages\CreateQuestion\AnonymousUserView.ascx.cs">
-      <DependentUpon>AnonymousUserView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\CreateQuestion\AnonymousUserView.ascx.designer.cs">
-      <DependentUpon>AnonymousUserView.ascx</DependentUpon>
-    </Compile>
+    <Compile Include="Pages\CreateQuestion\AnonymousUserView.cs" />
     <Compile Include="Pages\CreateQuestion\IView.cs" />
     <Compile Include="Pages\CreateQuestion\LoggedUserPresenter.cs" />
-    <Compile Include="Pages\CreateQuestion\LoggedUserView.ascx.cs">
-      <DependentUpon>LoggedUserView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\CreateQuestion\LoggedUserView.ascx.designer.cs">
-      <DependentUpon>LoggedUserView.ascx</DependentUpon>
-    </Compile>
+    <Compile Include="Pages\CreateQuestion\LoggedUserView.cs" />
     <Compile Include="Pages\CreateQuestion\Model.cs" />
     <Compile Include="Pages\QuestionDetails\BasePresenter.cs" />
     <Compile Include="Pages\QuestionDetails\BaseView.cs" />
@@ -580,12 +566,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\QuestionDetails.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Pages\CreateQuestion\App_LocalResources\AnonymousUserView.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Pages\CreateQuestion\App_LocalResources\LoggedUserView.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Strings.resx">

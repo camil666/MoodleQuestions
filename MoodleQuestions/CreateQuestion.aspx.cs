@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
+using MoodleQuestions.Pages.CreateQuestion;
 using QuestionsDAL;
 
 namespace MoodleQuestions
@@ -23,11 +24,11 @@ namespace MoodleQuestions
             //else 
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                ViewPlaceHolder.Controls.Add(LoadControl("~/Pages/CreateQuestion/LoggedUserView.ascx"));
+                ViewPlaceHolder.Controls.Add(new LoggedUserView());
             }
             else
             {
-                ViewPlaceHolder.Controls.Add(LoadControl("~/Pages/CreateQuestion/AnonymousUserView.ascx"));
+                ViewPlaceHolder.Controls.Add(new AnonymousUserView());
             }
         }
 

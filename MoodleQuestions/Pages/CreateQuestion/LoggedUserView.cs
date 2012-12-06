@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public partial class LoggedUserView : UserControl, IView
+    public class LoggedUserView : AnonymousUserView, IView
     {
         #region Fields
 
         private LoggedUserPresenter _presenter;
+        private Button _saveButton;
 
         #endregion
 
@@ -25,23 +25,21 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #endregion
 
-        #region IView Methods
-
-        public Question GetQuestion()
-        {
-            return AnonymousUserView.GetQuestion();
-        }
-
-        #endregion
-
         #region Methods
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnInit(EventArgs e)
         {
+            base.OnInit(e);
+            _saveButton = new Button()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString()
+            };
 
+            _saveButton.Click += SaveButton_Click;
+            Controls.Add(_saveButton);
         }
 
-        protected void SaveQuestionButton_Click(object sender, EventArgs e)
+        protected void SaveButton_Click(object sender, EventArgs e)
         {
             _presenter.SaveQuestion();
         }
