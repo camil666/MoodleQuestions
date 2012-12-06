@@ -54,7 +54,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
             else
             {
-                _view.QuestionType = Constants.EmptyText;
+                _view.QuestionType = string.Empty;
             }
 
             if (!string.IsNullOrEmpty(Question.Name))
@@ -63,10 +63,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
             else
             {
-                _view.QuestionName = Constants.EmptyText;
+                _view.QuestionName = string.Empty;
             }
         }
-        //TODO: dokonczyc
+
         public void SetQuestionContent()
         {
             if (Question.Rating == null)

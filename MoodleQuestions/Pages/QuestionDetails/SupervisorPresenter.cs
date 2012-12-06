@@ -41,7 +41,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
             else
             {
-                _view.QuestionType = Constants.EmptyText;
+                _view.QuestionType = string.Empty;
             }
 
             if (Question.Rating != null)
@@ -52,13 +52,17 @@ namespace MoodleQuestions.Pages.QuestionDetails
         //TODO: dokonczyc
         public void SaveChanges()
         {
-            var newQuestion = new Question()
-            {
-                CategoryId = int.Parse(_view.QuestionCategory),
-                Name = _view.QuestionName,
-                Rating = _view.SelectedRating,
-                //Content = _view.
-            };
+            var newQuestion = _view.QuestionComposer.Question;
+            newQuestion.Name = _view.QuestionName;
+            newQuestion.CategoryId = int.Parse(_view.QuestionCategory);
+            newQuestion.Rating = _view.SelectedRating;
+            //var newQuestion = new Q_view.QuestionNameuestion()
+            //{
+            //    CategoryId = int.Parse(_view.QuestionCategory),
+            //    Name = _view.QuestionName,
+            //    Rating = _view.SelectedRating,
+            //    Content = _view.QuestioncC
+            //};
 
             Model.SaveChanges(Question, newQuestion);
         }
