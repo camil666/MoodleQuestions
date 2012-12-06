@@ -36,7 +36,16 @@ namespace MoodleQuestions.Pages.QuestionDetails
             if (Question.Rating != null)
                 _view.QuestionRating = Question.Rating.Value.ToString();
         }
+        //TODO: dokonczyc
+        public void SaveChanges()
+        {
+            var newQuestion = new Question()
+            {
+                //Content = _view.
+            };
 
+            Model.SaveChanges(Question, newQuestion);
+        }
         #endregion
     }
 }

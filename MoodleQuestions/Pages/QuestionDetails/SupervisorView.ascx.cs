@@ -80,7 +80,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             get
             {
                 if (_questionComposer == null)
-                    _questionComposer = LoadControl("~/Controls/QuestionComposer.ascx") as QuestionComposer;
+                    _questionComposer = new QuestionComposer();
                 return _questionComposer;
             }
         }

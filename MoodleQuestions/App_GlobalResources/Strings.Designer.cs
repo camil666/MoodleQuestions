@@ -70,7 +70,43 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ocena:.
+        ///   Looks up a localized string similar to Autor:.
+        /// </summary>
+        internal static string AuthorLabelText {
+            get {
+                return ResourceManager.GetString("AuthorLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anuluj.
+        /// </summary>
+        internal static string CancelButtonText {
+            get {
+                return ResourceManager.GetString("CancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategoria:.
+        /// </summary>
+        internal static string CategoryLabelText {
+            get {
+                return ResourceManager.GetString("CategoryLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data utworzenia:.
+        /// </summary>
+        internal static string CreationDateLabelText {
+            get {
+                return ResourceManager.GetString("CreationDateLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocena odpowiedzi:.
         /// </summary>
         internal static string FractionLabelText {
             get {
@@ -88,11 +124,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nazwa:.
+        /// </summary>
+        internal static string NameLabelText {
+            get {
+                return ResourceManager.GetString("NameLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pytanie:.
         /// </summary>
         internal static string QuestionLabelText {
             get {
                 return ResourceManager.GetString("QuestionLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocena:.
+        /// </summary>
+        internal static string RatingLabelText {
+            get {
+                return ResourceManager.GetString("RatingLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapisz.
+        /// </summary>
+        internal static string SaveButtonText {
+            get {
+                return ResourceManager.GetString("SaveButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ:.
+        /// </summary>
+        internal static string TypeLabelText {
+            get {
+                return ResourceManager.GetString("TypeLabelText", resourceCulture);
             }
         }
     }

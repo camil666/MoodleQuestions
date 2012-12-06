@@ -31,7 +31,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         public Question GetQuestion()
         {
-            return _questionComposerControl.GetQuestion();
+            return _questionComposerControl.Question;
         }
 
         #endregion

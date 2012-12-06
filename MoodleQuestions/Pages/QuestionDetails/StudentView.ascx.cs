@@ -47,7 +47,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             get 
             {
                 if (_questionComposer == null)
-                    _questionComposer = LoadControl("~/Controls/QuestionComposer.ascx") as QuestionComposer;
+                    _questionComposer = new QuestionComposer();
                 return _questionComposer; 
             }
         }
@@ -71,6 +71,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
             _presenter.SetQuestionContent();
             if (_questionComposer != null)
                 QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
+        }
+
+        protected void SaveButton_Click(object sender, EventArgs e)
+        {
+            _presenter.SaveChanges();
         }
 
         #endregion

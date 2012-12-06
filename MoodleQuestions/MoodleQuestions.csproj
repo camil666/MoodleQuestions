@@ -595,12 +595,6 @@
     <Content Include="App_LocalResources\QuestionDetails.aspx.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\QuestionDetails\App_LocalResources\StudentView.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Pages\QuestionDetails\App_LocalResources\SupervisorView.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Pages\CreateQuestion\App_LocalResources\AnonymousUserView.ascx.resx" />
   </ItemGroup>
   <ItemGroup>

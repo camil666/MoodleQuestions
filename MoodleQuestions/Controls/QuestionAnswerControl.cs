@@ -22,6 +22,7 @@ namespace MoodleQuestions.Controls
         private DropDownList _fractionDropDown;
         private Label _answerLabel;
         private Label _fractionLabel;
+        private string _fraction;
 
         #endregion
 
@@ -42,7 +43,7 @@ namespace MoodleQuestions.Controls
         public string FractionValue
         {
             get { return _fractionDropDown.SelectedValue; }
-            set { _fractionDropDown.Items.FindByText(value).Selected = true; }
+            set { _fraction = value; }
         }
 
         public string FractionLabelText
@@ -78,6 +79,10 @@ namespace MoodleQuestions.Controls
         {
             base.DataBind();
             _fractionDropDown.DataBind();
+            if (!string.IsNullOrEmpty(_fraction))
+            {
+                _fractionDropDown.Items.FindByText(_fraction).Selected = true;
+            }
         }
 
         protected override void OnLoad(EventArgs e)

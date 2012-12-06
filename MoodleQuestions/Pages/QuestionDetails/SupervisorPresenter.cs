@@ -44,20 +44,19 @@ namespace MoodleQuestions.Pages.QuestionDetails
                 _view.QuestionType = Constants.EmptyText;
             }
         }
-
+        //TODO: dokonczyc
         public void SaveChanges()
         {
             var newQuestion = new Question()
-                {
-                    CategoryId = int.Parse(_view.QuestionCategory),
-                    Name = _view.QuestionName,
-                    Rating = _view.SelectedRating,
-                    //Content = _view.
-                };
+            {
+                CategoryId = int.Parse(_view.QuestionCategory),
+                Name = _view.QuestionName,
+                Rating = _view.SelectedRating,
+                //Content = _view.
+            };
 
             Model.SaveChanges(Question, newQuestion);
         }
-
         #endregion
     }
 }

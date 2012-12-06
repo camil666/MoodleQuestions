@@ -16,9 +16,9 @@ namespace MoodleQuestions.Controls
 
         private Collection<QuestionAnswerControl> _answerControls;
         private TextBox _questionContentTextBox;
-        private DropDownList _questionCountDropDown;
         private Label _questionLabel;
         private CustomValidator _validator;
+        private Question _question;
 
         #endregion
 
@@ -71,13 +71,7 @@ namespace MoodleQuestions.Controls
 
             set
             {
-                //_question = value;
-                _questionContentTextBox.Text = value.Content;
-                foreach (var control in _answerControls)
-                {
-                    control.AnswerContent = value.QuestionAnswers.ElementAt(_answerControls.IndexOf(control)).Content;
-                    control.FractionValue = value.QuestionAnswers.ElementAt(_answerControls.IndexOf(control)).Fraction.ToString() + "%";
-                }
+                _question = value;
             }
         }
 
@@ -102,60 +96,46 @@ namespace MoodleQuestions.Controls
 
         #region Methods
 
-        public Question GetQuestion()
-        {
-            var question = new Question()
-            {
-                CreationDate = DateTime.Now,
-                Content = _questionContentTextBox.Text
-            };
-
-            var user = Membership.GetUser();
-            if (user != null)
-                question.AuthorId = Guid.Parse(user.ProviderUserKey.ToString());
-
-            foreach (var control in _answerControls)
-            {
-                question.QuestionAnswers.Add(
-                    new QuestionAnswer()
-                    {
-                        Content = control.AnswerContent,
-                        Fraction = DoubleHelper.Parse(control.FractionValue)
-                    });
-            }
-
-            return question;
-        }
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             Page.ClientScript.RegisterClientScriptInclude("TinyMce", ResolveClientUrl("~/Scripts/tiny_mce/tiny_mce.js"));
             Page.ClientScript.RegisterClientScriptInclude("ComposerScripts", ResolveClientUrl("~/Scripts/QuestionComposerScripts.js"));
 
-            //if (_question != null)
-            //{
-            //    QuestionContentTextBox.Text = _question.Content;
-            //    foreach (var control in _answerControls)
-            //    {
-            //        control.AnswerContent = _question.QuestionAnswers.ElementAt(_answerControls.IndexOf(control)).Content;
-            //        control.FractionValue = _question.QuestionAnswers.ElementAt(_answerControls.IndexOf(control)).Fraction.ToString() + "%";
-            //    }
-            //}
-
             Controls.Add(_questionLabel);
             Controls.Add(_questionContentTextBox);
 
-            for (int i = 0; i < AnswerCount; ++i)
+            if (_question != null)
             {
-                var control = new QuestionAnswerControl()
+                for (int i = 0; i < _question.QuestionAnswers.Count; ++i)
+                {
+                    _questionContentTextBox.Text = _question.Content;
+
+                    var control = new QuestionAnswerControl()
+                    {
+                        AnswerLabelText = AnswerLabelText,
+                        AnswerContent = _question.QuestionAnswers.ElementAt(i).Content,
+                        FractionLabelText = FractionLabelText,
+                        FractionValue = _question.QuestionAnswers.ElementAt(i).Fraction.ToString()
+                    };
+
+                    _answerControls.Add(control);
+                    Controls.Add(control);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < AnswerCount; ++i)
+                {
+                    var control = new QuestionAnswerControl()
                     {
                         AnswerLabelText = AnswerLabelText,
                         FractionLabelText = FractionLabelText
                     };
 
-                _answerControls.Add(control);
-                Controls.Add(control);
+                    _answerControls.Add(control);
+                    Controls.Add(control);
+                }
             }
         }
 
