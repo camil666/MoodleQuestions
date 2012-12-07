@@ -132,8 +132,14 @@
   <data name="CategoryLabelText" xml:space="preserve">
     <value>Kategoria:</value>
   </data>
+  <data name="CreationDateHeaderText" xml:space="preserve">
+    <value>Data utworzenia</value>
+  </data>
   <data name="CreationDateLabelText" xml:space="preserve">
     <value>Data utworzenia:</value>
+  </data>
+  <data name="DetailsLabelText" xml:space="preserve">
+    <value>Szczegóły</value>
   </data>
   <data name="FractionLabelText" xml:space="preserve">
     <value>Ocena odpowiedzi:</value>
@@ -144,11 +150,17 @@
   <data name="GenerateXMLButtonText" xml:space="preserve">
     <value>Wygeneruj plik XML</value>
   </data>
+  <data name="NameHeaderText" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
   <data name="NameLabelText" xml:space="preserve">
     <value>Nazwa:</value>
   </data>
   <data name="QuestionLabelText" xml:space="preserve">
     <value>Pytanie:</value>
+  </data>
+  <data name="RatingHeaderText" xml:space="preserve">
+    <value>Ocena</value>
   </data>
   <data name="RatingLabelText" xml:space="preserve">
     <value>Ocena:</value>

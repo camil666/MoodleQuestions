@@ -510,6 +510,16 @@
     <Compile Include="Pages\CreateQuestion\LoggedUserPresenter.cs" />
     <Compile Include="Pages\CreateQuestion\LoggedUserView.cs" />
     <Compile Include="Pages\CreateQuestion\Model.cs" />
+    <Compile Include="Pages\ManageQuestions\BasePresenter.cs" />
+    <Compile Include="Pages\ManageQuestions\BaseView.cs" />
+    <Compile Include="Pages\ManageQuestions\IBaseView.cs" />
+    <Compile Include="Pages\ManageQuestions\IStudentView.cs" />
+    <Compile Include="Pages\ManageQuestions\ISupervisorView.cs" />
+    <Compile Include="Pages\ManageQuestions\Model.cs" />
+    <Compile Include="Pages\ManageQuestions\StudentPresenter.cs" />
+    <Compile Include="Pages\ManageQuestions\StudentView.cs" />
+    <Compile Include="Pages\ManageQuestions\SupervisorPresenter.cs" />
+    <Compile Include="Pages\ManageQuestions\SupervisorView.cs" />
     <Compile Include="Pages\QuestionDetails\BasePresenter.cs" />
     <Compile Include="Pages\QuestionDetails\BaseView.cs" />
     <Compile Include="Pages\QuestionDetails\IBaseView.cs" />
@@ -538,7 +548,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\" />
-    <Folder Include="Pages\ManageQuestions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
