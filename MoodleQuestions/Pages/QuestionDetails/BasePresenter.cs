@@ -59,7 +59,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
             if (!string.IsNullOrEmpty(Question.Name))
             {
-                _view.QuestionName = Question.QuestionType.Name;
+                _view.QuestionName = Question.Name;
             }
             else
             {
