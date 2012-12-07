@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Średnia ocena:.
+        /// </summary>
+        internal static string AverageRatingLabelText {
+            get {
+                return ResourceManager.GetString("AverageRatingLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anuluj.
         /// </summary>
         internal static string CancelButtonText {
@@ -129,6 +138,15 @@ namespace Resources {
         internal static string DetailsLabelText {
             get {
                 return ResourceManager.GetString("DetailsLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stworzone przed:.
+        /// </summary>
+        internal static string EndDateLabelText {
+            get {
+                return ResourceManager.GetString("EndDateLabelText", resourceCulture);
             }
         }
         
@@ -178,11 +196,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ilość pytań:.
+        /// </summary>
+        internal static string QuestionCountLabelText {
+            get {
+                return ResourceManager.GetString("QuestionCountLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pytanie:.
         /// </summary>
         internal static string QuestionLabelText {
             get {
                 return ResourceManager.GetString("QuestionLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pytanie ocenione:.
+        /// </summary>
+        internal static string RatedQuestionCountLabelText {
+            get {
+                return ResourceManager.GetString("RatedQuestionCountLabelText", resourceCulture);
             }
         }
         
@@ -214,11 +250,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Szukaj.
+        /// </summary>
+        internal static string SearchButtonText {
+            get {
+                return ResourceManager.GetString("SearchButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stworzone po:.
+        /// </summary>
+        internal static string StartDateLabelText {
+            get {
+                return ResourceManager.GetString("StartDateLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Typ:.
         /// </summary>
         internal static string TypeLabelText {
             get {
                 return ResourceManager.GetString("TypeLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pytanie nieocenione:.
+        /// </summary>
+        internal static string UnratedQuestionCountLabelText {
+            get {
+                return ResourceManager.GetString("UnratedQuestionCountLabelText", resourceCulture);
             }
         }
     }

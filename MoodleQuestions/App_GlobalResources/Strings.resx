@@ -126,6 +126,9 @@
   <data name="AuthorLabelText" xml:space="preserve">
     <value>Autor:</value>
   </data>
+  <data name="AverageRatingLabelText" xml:space="preserve">
+    <value>Średnia ocena:</value>
+  </data>
   <data name="CancelButtonText" xml:space="preserve">
     <value>Anuluj</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="DetailsLabelText" xml:space="preserve">
     <value>Szczegóły</value>
+  </data>
+  <data name="EndDateLabelText" xml:space="preserve">
+    <value>Stworzone przed:</value>
   </data>
   <data name="FractionLabelText" xml:space="preserve">
     <value>Ocena odpowiedzi:</value>
@@ -156,8 +162,14 @@
   <data name="NameLabelText" xml:space="preserve">
     <value>Nazwa:</value>
   </data>
+  <data name="QuestionCountLabelText" xml:space="preserve">
+    <value>Ilość pytań:</value>
+  </data>
   <data name="QuestionLabelText" xml:space="preserve">
     <value>Pytanie:</value>
+  </data>
+  <data name="RatedQuestionCountLabelText" xml:space="preserve">
+    <value>Pytanie ocenione:</value>
   </data>
   <data name="RatingHeaderText" xml:space="preserve">
     <value>Ocena</value>
@@ -168,7 +180,16 @@
   <data name="SaveButtonText" xml:space="preserve">
     <value>Zapisz</value>
   </data>
+  <data name="SearchButtonText" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="StartDateLabelText" xml:space="preserve">
+    <value>Stworzone po:</value>
+  </data>
   <data name="TypeLabelText" xml:space="preserve">
     <value>Typ:</value>
+  </data>
+  <data name="UnratedQuestionCountLabelText" xml:space="preserve">
+    <value>Pytanie nieocenione:</value>
   </data>
 </root>

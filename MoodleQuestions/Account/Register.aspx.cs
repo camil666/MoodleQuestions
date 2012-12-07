@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 namespace MoodleQuestions.Account
 {
     public partial class Register : Page
-    {
+    {//TODO: podawanie imienia i nazwiska przy rejestracji(markup)
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];

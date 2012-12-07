@@ -28,10 +28,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             _view.UserDropDownDataSource = Model.GetUsers();
         }
-        //TODO: Poprawic na pobieranie pytan wybranego uzytkownika albozrobic finda z kilkoma filtrami
+        //TODO: zrobic finda z kilkoma filtrami (do przemyslenia)?
         public override void SetupGrid()
         {
-            _view.QuestionGridDataSource = Model.GetAllQuestions();
+            var userid = _view.SelectedStudentId;
+            _view.QuestionGridDataSource = Model.GetUserQuestions(userid);
         }
 
         #endregion

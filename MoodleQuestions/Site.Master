@@ -6,9 +6,11 @@
     <meta charset="utf-8" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:PlaceHolder runat="server">        
         <script src="<%: ResolveUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/jquery-1.7.1.min.js") %>"></script>
     </asp:PlaceHolder>
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
@@ -17,7 +19,6 @@
     <form runat="server">
     <asp:ScriptManager runat="server">
         <Scripts>
-            <asp:ScriptReference Name="jquery" />
             <asp:ScriptReference Name="jquery.ui.combined" />
         </Scripts>
     </asp:ScriptManager>
@@ -50,6 +51,7 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/CreateQuestion.aspx">Create Question</a></li>
                         <li><a runat="server" href="~/ManageQuestions.aspx">Manage Questions</a></li>
+                        <li><a runat="server" href="~/Raports.aspx">Raports</a></li>
                         <li><a runat="server" href="~/About.aspx">About</a></li>
                         <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
                     </ul>

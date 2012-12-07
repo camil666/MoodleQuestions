@@ -159,6 +159,8 @@
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="IsAnonymous" Type="bit" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="UsersInRoles">
           <Key>
@@ -473,6 +475,8 @@
           <NavigationProperty Name="Profiles" Relationship="Model.UserProfile" FromRole="Users" ToRole="Profiles" />
           <NavigationProperty Name="Questions" Relationship="Model.FK_Questions_Users" FromRole="Users" ToRole="Questions" />
           <NavigationProperty Name="Roles" Relationship="Model.UsersInRoles" FromRole="Users" ToRole="Roles" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Model.Applications" Multiplicity="1" />
@@ -692,6 +696,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

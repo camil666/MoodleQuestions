@@ -18,10 +18,18 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Properties
 
-        public object UserDropDownDataSource 
+        public object UserDropDownDataSource
         {
             get { return _userDropDown.DataSource; }
             set { _userDropDown.DataSource = value; }
+        }
+
+        public Guid SelectedStudentId
+        {
+            get
+            {
+                return Guid.Parse(_userDropDown.SelectedItem.Value);
+            }
         }
 
         #endregion
@@ -31,7 +39,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
         public SupervisorView()
         {
             _presenter = new SupervisorPresenter(this);
-            _userDropDown = new DropDownList();
+            _userDropDown = new DropDownList()
+            {
+                DataTextField = "FullName",
+                DataValueField = "Id"
+            };
         }
 
         #endregion
@@ -42,7 +54,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             Controls.Add(_userDropDown);
             base.OnInit(e);
-            
+
             //var students = System.Web.Security.Roles.GetUsersInRole("Student");
         }
 

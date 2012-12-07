@@ -21,16 +21,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
             }
         }
 
-        public IEnumerable<Question> GetAllQuestions()
-        {
-            using (var context = new Entities())
-            {
-                return (from question in context.Questions 
-                        select question).ToList();
-            }
-        }
-
-        public string[] GetUsers()
+        public IEnumerable<Student> GetUsers()
         {
             return PermissionHelper.GetStudents();
         }

@@ -25,6 +25,8 @@ namespace QuestionsDAL
         public string UserName { get; set; }
         public bool IsAnonymous { get; set; }
         public System.DateTime LastActivityDate { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     
         public virtual Applications Applications { get; set; }
         public virtual Memberships Memberships { get; set; }

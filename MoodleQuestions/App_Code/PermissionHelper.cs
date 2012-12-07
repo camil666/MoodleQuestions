@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using QuestionsDAL;
 
 namespace MoodleQuestions
 {
@@ -31,14 +32,29 @@ namespace MoodleQuestions
 
         #region Methods
 
-        public static string[] GetStudents()
+        public static IEnumerable<Student> GetStudents()
         {
-            return Roles.GetUsersInRole(Student);
+            var students = new List<Student>();
+            var studentAccountNames = System.Web.Security.Roles.GetUsersInRole(Student);
+
+            using (var context = new Entities())
+            {
+                foreach (var accountname in studentAccountNames)
+                {
+                    var foundStudent = (from item in context.Users
+                                        where item.UserName == accountname
+                                        select item).FirstOrDefault();
+
+                    students.Add(new Student(string.Format("{0} {1}", foundStudent.FirstName, foundStudent.LastName), foundStudent.UserId));
+                }
+            }
+
+            return students;
         }
 
         private static bool IsUserInRole(string roleName)
         {
-            var rolesArray = Roles.GetRolesForUser();
+            var rolesArray = System.Web.Security.Roles.GetRolesForUser();
             return rolesArray.Contains(roleName);
         }
 
