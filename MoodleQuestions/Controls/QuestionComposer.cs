@@ -17,12 +17,22 @@ namespace MoodleQuestions.Controls
         private Collection<QuestionAnswerControl> _answerControls;
         private TextBox _questionContentTextBox;
         private Label _questionLabel;
+        private CheckBox _isVisibleCheckbox;
         private CustomValidator _validator;
         private Question _question;
 
         #endregion
 
         #region Properties
+
+        public bool AnonymousMode { get; set; }
+
+        public bool IsVisible
+        {
+            get { return _isVisibleCheckbox.Checked; }
+        }
+
+        public string IsVisibleLabelText { get; set; }
 
         public int AnswerCount { get; set; }
 
@@ -49,7 +59,8 @@ namespace MoodleQuestions.Controls
                 var question = new Question()
                 {
                     CreationDate = DateTime.Now,
-                    Content = _questionContentTextBox.Text
+                    Content = _questionContentTextBox.Text,
+                    IsVisible = IsVisible
                 };
 
                 var user = Membership.GetUser();
@@ -87,6 +98,7 @@ namespace MoodleQuestions.Controls
             _answerControls = new Collection<QuestionAnswerControl>();
             _questionContentTextBox = new TextBox() { TextMode = TextBoxMode.MultiLine };
             _questionLabel = new Label();
+            _isVisibleCheckbox = new CheckBox();
             _validator = new CustomValidator()
             {
                 Display = ValidatorDisplay.Dynamic,
@@ -98,14 +110,29 @@ namespace MoodleQuestions.Controls
 
         #region Methods
 
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            if (AnonymousMode == false)
+            {
+                Controls.Add(new Label() { Text = IsVisibleLabelText });
+                Controls.Add(_isVisibleCheckbox);
+            }
+
+            Controls.Add(_questionLabel);
+            Controls.Add(_questionContentTextBox);
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             Page.ClientScript.RegisterClientScriptInclude("TinyMce", ResolveClientUrl("~/Scripts/tiny_mce/tiny_mce.js"));
             Page.ClientScript.RegisterClientScriptInclude("ComposerScripts", ResolveClientUrl("~/Scripts/QuestionComposerScripts.js"));
+        }
 
-            Controls.Add(_questionLabel);
-            Controls.Add(_questionContentTextBox);
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
 
             if (_question != null)
             {
@@ -139,11 +166,6 @@ namespace MoodleQuestions.Controls
                     Controls.Add(control);
                 }
             }
-        }
-
-        protected override void OnPreRender(EventArgs e)
-        {
-            base.OnPreRender(e);
 
             if (!Page.IsPostBack)
             {

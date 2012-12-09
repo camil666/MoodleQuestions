@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public class AnonymousUserPresenter
+    public class BasePresenter
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Constructors
 
-        public AnonymousUserPresenter(IView view)
+        public BasePresenter(IView view)
         {
             _view = view;
             _model = new Model();

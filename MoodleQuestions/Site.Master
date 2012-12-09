@@ -4,7 +4,7 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %></title>
     <link href="~/Content/Site.css" rel="stylesheet" /> 
     <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -25,35 +25,35 @@
     <header>
         <div class="content-wrapper">
             <div class="float-left">
-                <p class="site-title"><a runat="server" href="~/">your logo here</a></p>
+                <p class="site-title"><a runat="server" href="~/"><%= GetGlobalResourceObject("Strings","MainLogoText") %></a></p>
             </div>
             <div class="float-right">
                 <section id="login">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul>
-                                <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Register</a></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                                <li><a id="registerLink" runat="server" href="~/Account/Register.aspx"><%= GetGlobalResourceObject("Strings","RegisterText") %></a></li>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx"><%= GetGlobalResourceObject("Strings","LoginText") %></a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <p>
-                                Hello, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
+                                <%= GetGlobalResourceObject("Strings", "HelloText") %>, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
                                     <asp:LoginName runat="server" CssClass="username" />
                                 </a>!
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="<%$ Resources: Strings, LogoutText %>" LogoutPageUrl="~/" />
                             </p>
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </section>
                 <nav>
                     <ul id="menu">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/CreateQuestion.aspx">Create Question</a></li>
-                        <li><a runat="server" href="~/ManageQuestions.aspx">Manage Questions</a></li>
-                        <li><a runat="server" href="~/Raports.aspx">Raports</a></li>
-                        <li><a runat="server" href="~/About.aspx">About</a></li>
-                        <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
+                        <li><a runat="server" href="~/"><%= GetGlobalResourceObject("Strings","HomePageNavLink") %></a></li>
+                        <li><a runat="server" href="~/CreateQuestion.aspx"><%= GetGlobalResourceObject("Strings","CreateQuestionsPageNavLink") %></a></li>
+                        <li><a runat="server" href="~/ManageQuestions.aspx"><%= GetGlobalResourceObject("Strings","ManageQuestionsNavLink") %></a></li>
+                        <li><a runat="server" href="~/ViewQuestions.aspx"><%= GetGlobalResourceObject("Strings","ViewQuestionsNavLink") %></a></li>
+                        <li><a runat="server" href="~/Raports.aspx"><%= GetGlobalResourceObject("Strings","RaportsNavLink") %></a></li>
+                        <li><a runat="server" href="~/Contact.aspx"><%= GetGlobalResourceObject("Strings","ContactNavLink") %></a></li>
                     </ul>
                 </nav>
             </div>
@@ -65,13 +65,6 @@
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>
     </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </div>
-        </div>
-    </footer>
     </form>
 </body>
 </html>

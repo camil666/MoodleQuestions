@@ -99,8 +99,8 @@ namespace MoodleQuestions.Pages.Raports
                 DataValueField = "Id"
             };
 
-            _startDateTextBox = new TextBox() { ID = "startDateTextBox", ClientIDMode = ClientIDMode.Static };
-            _endDateTextBox = new TextBox() { ID = "endDateTextBox", ClientIDMode = ClientIDMode.Static };
+            _startDateTextBox = new TextBox() { ID = "startDateTextBox", ClientIDMode = ClientIDMode.Static, ReadOnly = true };
+            _endDateTextBox = new TextBox() { ID = "endDateTextBox", ClientIDMode = ClientIDMode.Static, ReadOnly = true };
             _presenter = new Presenter(this);
             //_validator = new CustomValidator()
             //{

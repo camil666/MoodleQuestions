@@ -133,6 +133,7 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionTypes">
           <Key>
@@ -441,6 +442,7 @@
           <NavigationProperty Name="QuestionType" Relationship="Model.FK_Questions_QuestionTypes" FromRole="Questions" ToRole="QuestionTypes" />
           <NavigationProperty Name="Author" Relationship="Model.FK_Questions_Users" FromRole="Questions" ToRole="Users" />
           <Property Type="DateTime" Name="ModificationDate" Precision="3" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -662,6 +664,7 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="Model.Question">
               <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
                 <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />

@@ -29,6 +29,7 @@ namespace QuestionsDAL
         public System.DateTime CreationDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> ModificationDate { get; set; }
+        public bool IsVisible { get; set; }
     
         public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
         public virtual QuestionCategory QuestionCategory { get; set; }

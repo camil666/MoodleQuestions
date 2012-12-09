@@ -135,6 +135,21 @@
   <data name="CategoryLabelText" xml:space="preserve">
     <value>Kategoria:</value>
   </data>
+  <data name="ContactNavLink" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="ContactPageTitle" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="CreateQuestionPageSubtitle" xml:space="preserve">
+    <value>Tworzenie nowego pytania testowego.</value>
+  </data>
+  <data name="CreateQuestionPageTitle" xml:space="preserve">
+    <value>Stwórz pytanie</value>
+  </data>
+  <data name="CreateQuestionsPageNavLink" xml:space="preserve">
+    <value>Stwórz</value>
+  </data>
   <data name="CreationDateHeaderText" xml:space="preserve">
     <value>Data utworzenia</value>
   </data>
@@ -156,6 +171,45 @@
   <data name="GenerateXMLButtonText" xml:space="preserve">
     <value>Wygeneruj plik XML</value>
   </data>
+  <data name="HelloText" xml:space="preserve">
+    <value>Witaj</value>
+  </data>
+  <data name="HomePageDescription" xml:space="preserve">
+    <value>Strona umożliwia tworzenie i zarządzanie pytaniami dla platformy Moodle.</value>
+  </data>
+  <data name="HomePageInstructions" xml:space="preserve">
+    <value>Skorzystaj z odpowiednich przycisków nawigacyjnych dostępnych na górze strony, aby wykonać odpowiednią akcję.</value>
+  </data>
+  <data name="HomePageNavLink" xml:space="preserve">
+    <value>Główna</value>
+  </data>
+  <data name="HomePageSubtitle" xml:space="preserve">
+    <value>Zarządzanie pytaniami testowymi</value>
+  </data>
+  <data name="HomePageTitle" xml:space="preserve">
+    <value>Strona główna</value>
+  </data>
+  <data name="IsVisibleLabelText" xml:space="preserve">
+    <value>Widoczne dla innych:</value>
+  </data>
+  <data name="LoginText" xml:space="preserve">
+    <value>Zaloguj</value>
+  </data>
+  <data name="LogoutText" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
+  <data name="MainLogoText" xml:space="preserve">
+    <value>Moodle</value>
+  </data>
+  <data name="ManageQuestionsNavLink" xml:space="preserve">
+    <value>Zarządzaj</value>
+  </data>
+  <data name="ManageQuestionsPageSubtitle" xml:space="preserve">
+    <value>Zarządzanie pytaniami testowymi.</value>
+  </data>
+  <data name="ManageQuestionsPageTitle" xml:space="preserve">
+    <value>Zarządzaj pytaniami</value>
+  </data>
   <data name="NameHeaderText" xml:space="preserve">
     <value>Nazwa</value>
   </data>
@@ -165,8 +219,23 @@
   <data name="QuestionCountLabelText" xml:space="preserve">
     <value>Ilość pytań:</value>
   </data>
+  <data name="QuestionDetailsPageSubtitle" xml:space="preserve">
+    <value>Szczegóły pytania testowego.</value>
+  </data>
+  <data name="QuestionDetailsPageTitle" xml:space="preserve">
+    <value>Szczegóły pytania</value>
+  </data>
   <data name="QuestionLabelText" xml:space="preserve">
     <value>Pytanie:</value>
+  </data>
+  <data name="RaportsNavLink" xml:space="preserve">
+    <value>Statystyki</value>
+  </data>
+  <data name="RaportsPageSubtitle" xml:space="preserve">
+    <value>Statystyki pytań studenta.</value>
+  </data>
+  <data name="RaportsPageTitle" xml:space="preserve">
+    <value>Statystyki</value>
   </data>
   <data name="RatedQuestionCountLabelText" xml:space="preserve">
     <value>Pytanie ocenione:</value>
@@ -176,6 +245,9 @@
   </data>
   <data name="RatingLabelText" xml:space="preserve">
     <value>Ocena:</value>
+  </data>
+  <data name="RegisterText" xml:space="preserve">
+    <value>Zarejestruj</value>
   </data>
   <data name="SaveButtonText" xml:space="preserve">
     <value>Zapisz</value>
@@ -191,5 +263,14 @@
   </data>
   <data name="UnratedQuestionCountLabelText" xml:space="preserve">
     <value>Pytanie nieocenione:</value>
+  </data>
+  <data name="ViewQuestionsNavLink" xml:space="preserve">
+    <value>Przeglądaj</value>
+  </data>
+  <data name="ViewQuestionsPageSubtitle" xml:space="preserve">
+    <value>Przeglądanie widocznych pytań.</value>
+  </data>
+  <data name="ViewQuestionsPageTitle" xml:space="preserve">
+    <value>Przeglądaj pytania</value>
   </data>
 </root>

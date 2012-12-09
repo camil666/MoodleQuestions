@@ -115,6 +115,51 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kontakt.
+        /// </summary>
+        internal static string ContactNavLink {
+            get {
+                return ResourceManager.GetString("ContactNavLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kontakt.
+        /// </summary>
+        internal static string ContactPageTitle {
+            get {
+                return ResourceManager.GetString("ContactPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tworzenie nowego pytania testowego..
+        /// </summary>
+        internal static string CreateQuestionPageSubtitle {
+            get {
+                return ResourceManager.GetString("CreateQuestionPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stwórz pytanie.
+        /// </summary>
+        internal static string CreateQuestionPageTitle {
+            get {
+                return ResourceManager.GetString("CreateQuestionPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stwórz.
+        /// </summary>
+        internal static string CreateQuestionsPageNavLink {
+            get {
+                return ResourceManager.GetString("CreateQuestionsPageNavLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data utworzenia.
         /// </summary>
         internal static string CreationDateHeaderText {
@@ -178,6 +223,123 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Witaj.
+        /// </summary>
+        internal static string HelloText {
+            get {
+                return ResourceManager.GetString("HelloText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strona umożliwia tworzenie i zarządzanie pytaniami dla platformy Moodle..
+        /// </summary>
+        internal static string HomePageDescription {
+            get {
+                return ResourceManager.GetString("HomePageDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skorzystaj z odpowiednich przycisków nawigacyjnych dostępnych na górze strony, aby wykonać odpowiednią akcję..
+        /// </summary>
+        internal static string HomePageInstructions {
+            get {
+                return ResourceManager.GetString("HomePageInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Główna.
+        /// </summary>
+        internal static string HomePageNavLink {
+            get {
+                return ResourceManager.GetString("HomePageNavLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarządzanie pytaniami testowymi.
+        /// </summary>
+        internal static string HomePageSubtitle {
+            get {
+                return ResourceManager.GetString("HomePageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strona główna.
+        /// </summary>
+        internal static string HomePageTitle {
+            get {
+                return ResourceManager.GetString("HomePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widoczne dla innych:.
+        /// </summary>
+        internal static string IsVisibleLabelText {
+            get {
+                return ResourceManager.GetString("IsVisibleLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaloguj.
+        /// </summary>
+        internal static string LoginText {
+            get {
+                return ResourceManager.GetString("LoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wyloguj.
+        /// </summary>
+        internal static string LogoutText {
+            get {
+                return ResourceManager.GetString("LogoutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moodle.
+        /// </summary>
+        internal static string MainLogoText {
+            get {
+                return ResourceManager.GetString("MainLogoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarządzaj.
+        /// </summary>
+        internal static string ManageQuestionsNavLink {
+            get {
+                return ResourceManager.GetString("ManageQuestionsNavLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarządzanie pytaniami testowymi..
+        /// </summary>
+        internal static string ManageQuestionsPageSubtitle {
+            get {
+                return ResourceManager.GetString("ManageQuestionsPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarządzaj pytaniami.
+        /// </summary>
+        internal static string ManageQuestionsPageTitle {
+            get {
+                return ResourceManager.GetString("ManageQuestionsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nazwa.
         /// </summary>
         internal static string NameHeaderText {
@@ -205,11 +367,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Szczegóły pytania testowego..
+        /// </summary>
+        internal static string QuestionDetailsPageSubtitle {
+            get {
+                return ResourceManager.GetString("QuestionDetailsPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły pytania.
+        /// </summary>
+        internal static string QuestionDetailsPageTitle {
+            get {
+                return ResourceManager.GetString("QuestionDetailsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pytanie:.
         /// </summary>
         internal static string QuestionLabelText {
             get {
                 return ResourceManager.GetString("QuestionLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statystyki.
+        /// </summary>
+        internal static string RaportsNavLink {
+            get {
+                return ResourceManager.GetString("RaportsNavLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statystyki pytań studenta..
+        /// </summary>
+        internal static string RaportsPageSubtitle {
+            get {
+                return ResourceManager.GetString("RaportsPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statystyki.
+        /// </summary>
+        internal static string RaportsPageTitle {
+            get {
+                return ResourceManager.GetString("RaportsPageTitle", resourceCulture);
             }
         }
         
@@ -237,6 +444,15 @@ namespace Resources {
         internal static string RatingLabelText {
             get {
                 return ResourceManager.GetString("RatingLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarejestruj.
+        /// </summary>
+        internal static string RegisterText {
+            get {
+                return ResourceManager.GetString("RegisterText", resourceCulture);
             }
         }
         
@@ -282,6 +498,33 @@ namespace Resources {
         internal static string UnratedQuestionCountLabelText {
             get {
                 return ResourceManager.GetString("UnratedQuestionCountLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przeglądaj.
+        /// </summary>
+        internal static string ViewQuestionsNavLink {
+            get {
+                return ResourceManager.GetString("ViewQuestionsNavLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przeglądanie widocznych pytań..
+        /// </summary>
+        internal static string ViewQuestionsPageSubtitle {
+            get {
+                return ResourceManager.GetString("ViewQuestionsPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przeglądaj pytania.
+        /// </summary>
+        internal static string ViewQuestionsPageTitle {
+            get {
+                return ResourceManager.GetString("ViewQuestionsPageTitle", resourceCulture);
             }
         }
     }

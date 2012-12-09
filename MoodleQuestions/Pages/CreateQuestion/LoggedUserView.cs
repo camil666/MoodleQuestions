@@ -7,7 +7,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public class LoggedUserView : AnonymousUserView, IView
+    public class LoggedUserView : BaseView, IView
     {
         #region Fields
 
@@ -21,6 +21,12 @@ namespace MoodleQuestions.Pages.CreateQuestion
         public LoggedUserView()
         {
             _presenter = new LoggedUserPresenter(this);
+            _saveButton = new Button()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString()
+            };
+
+            _saveButton.Click += SaveButton_Click;
         }
 
         #endregion
@@ -30,12 +36,6 @@ namespace MoodleQuestions.Pages.CreateQuestion
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            _saveButton = new Button()
-            {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString()
-            };
-
-            _saveButton.Click += SaveButton_Click;
             Controls.Add(_saveButton);
         }
 
