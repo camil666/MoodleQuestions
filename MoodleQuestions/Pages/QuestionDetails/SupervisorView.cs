@@ -64,6 +64,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
         public SupervisorView()
         {
             Presenter = new SupervisorPresenter(this);
+            SaveButton.Click += SaveButton_Click;
         }
 
         #endregion
@@ -73,8 +74,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-
-            SaveButton.Click += SaveButton_Click;
 
             _categoryDropDown = new DropDownList();
             var categoryRow = new TableRow();

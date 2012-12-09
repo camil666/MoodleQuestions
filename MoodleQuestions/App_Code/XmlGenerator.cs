@@ -32,7 +32,7 @@ namespace MoodleQuestions
 
         #region Methods
 
-        public XElement GenerateXml(ICollection<Question> questions, string category = null, AnswerNumbering numbering = AnswerNumbering.Numerical)
+        public XElement GenerateXml(IEnumerable<Question> questions, string category = null, AnswerNumbering numbering = AnswerNumbering.Numerical)
         {
             var quizRoot = new XElement(QuizTag);
 

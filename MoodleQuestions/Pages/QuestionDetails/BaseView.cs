@@ -88,6 +88,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
         public BaseView()
             : base(HtmlTextWriterTag.Div)
         {
+            DetailsTable = new Table();
+            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString() };
+            CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
+            QuestionEditorPlaceHolder = new PlaceHolder();
         }
 
         #endregion
@@ -97,8 +101,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-
-            DetailsTable = new Table();
 
             var nameRow = new TableRow();
             nameRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "NameLabelText").ToString() });
@@ -131,13 +133,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
             DetailsTable.Rows.Add(ratingRow);
 
             Controls.Add(DetailsTable);
-
-            QuestionEditorPlaceHolder = new PlaceHolder();
             Controls.Add(QuestionEditorPlaceHolder);
-
-            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString() };
             Controls.Add(SaveButton);
-            CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
             Controls.Add(CancelButton);
         }
 

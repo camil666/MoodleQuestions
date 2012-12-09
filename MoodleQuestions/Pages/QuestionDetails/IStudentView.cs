@@ -13,6 +13,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         string QuestionRating { get; set; }
 
+        bool IsEditable { get; set; }
+
         #endregion
     }
 }

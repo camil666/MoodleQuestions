@@ -36,10 +36,12 @@ namespace MoodleQuestions.Pages.QuestionDetails
             if (Question.Rating != null)
             {
                 _view.QuestionRating = Question.Rating.Value.ToString();
+                _view.IsEditable = false;
             }
             else
             {
                 _view.QuestionRating = Constants.EmptyText;
+                _view.IsEditable = true;
             }
         }
         //TODO: dokonczyc

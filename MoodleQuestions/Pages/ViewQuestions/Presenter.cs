@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Xml.Linq;
 
 namespace MoodleQuestions.Pages.ViewQuestions
 {
@@ -29,6 +26,14 @@ namespace MoodleQuestions.Pages.ViewQuestions
         public void SetupRepeater()
         {
             _view.QuestionRepeaterDataSource = _model.GetViewableQuestions();
+        }
+
+        public XElement GenerateXML()
+        {
+            var questionIds = _view.GetQuestionIds();
+            var questions = _model.GetQuestions(questionIds);
+            var xmlGenerator = new XmlGenerator();
+            return xmlGenerator.GenerateXml(questions);
         }
 
         #endregion

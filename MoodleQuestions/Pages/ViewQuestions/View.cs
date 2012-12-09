@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.ViewQuestions
 {
@@ -14,6 +15,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         private Presenter _presenter;
         private Repeater _questionRepeater;
+        private Button _generateXMLButton;
 
         #endregion
 
@@ -33,6 +35,12 @@ namespace MoodleQuestions.Pages.ViewQuestions
             : base(HtmlTextWriterTag.Div)
         {
             _presenter = new Presenter(this);
+            _generateXMLButton = new Button()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "GenerateXMLButtonText").ToString()
+            };
+
+            _generateXMLButton.Click += GenerateXMLButton_Click;
             _questionRepeater = new Repeater()
                 {
                     ItemTemplate = new QuestionItemTemplate()
@@ -43,10 +51,27 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Methods
 
+        public IEnumerable<int> GetQuestionIds()
+        {
+            var list = new List<int>();
+
+            foreach (RepeaterItem item in _questionRepeater.Items)
+            {
+                var checkBox = item.Controls[0] as CheckBox;
+                if (checkBox.Checked == true)
+                {
+                    list.Add(int.Parse(checkBox.Attributes["QuestionId"]));
+                }
+            }
+
+            return list;
+        }
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
             Controls.Add(_questionRepeater);
+            Controls.Add(_generateXMLButton);
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -54,6 +79,15 @@ namespace MoodleQuestions.Pages.ViewQuestions
             base.OnPreRender(e);
             _presenter.SetupRepeater();
             _questionRepeater.DataBind();
+        }
+
+        private void GenerateXMLButton_Click(object sender, EventArgs e)
+        {
+            var xml = _presenter.GenerateXML();
+            Page.Response.ContentType = "text/xml";
+            Page.Response.AppendHeader("content-disposition", "attachment;filename=Question.xml");
+            xml.Save(Page.Response.OutputStream);
+            Page.Response.End();
         }
 
         #endregion
