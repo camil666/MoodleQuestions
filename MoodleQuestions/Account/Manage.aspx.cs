@@ -41,8 +41,6 @@ namespace MoodleQuestions.Account
 
                     SuccessMessage =
                         message == "ChangePwdSuccess" ? "Your password has been changed."
-                        : message == "SetPwdSuccess" ? "Your password has been set."
-                        : message == "RemoveLoginSuccess" ? "The external login was removed."
                         : string.Empty;
                     successMessage.Visible = !string.IsNullOrEmpty(SuccessMessage);
                 }

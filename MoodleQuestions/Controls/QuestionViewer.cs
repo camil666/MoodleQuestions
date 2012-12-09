@@ -51,7 +51,7 @@ namespace MoodleQuestions.Controls
 
                 for (int i = 1; i <= _question.QuestionAnswers.Count; ++i)
                 {
-                    var answerContentLabel = new Label() { Text = string.Format("{0}. {1}", i, _question.QuestionAnswers.ElementAt(i-1).Content) };
+                    var answerContentLabel = new Label() { Text = string.Format("{0}. {1}", i, _question.QuestionAnswers.ElementAt(i - 1).Content) };
                     _answersContentLabels.Add(answerContentLabel);
                     Controls.Add(answerContentLabel);
                 }

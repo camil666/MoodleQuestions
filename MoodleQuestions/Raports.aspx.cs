@@ -8,10 +8,16 @@ namespace MoodleQuestions
     {
         #region Methods
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnInit(EventArgs e)
         {
+            base.OnInit(e);
             ViewPlaceHolder.Controls.Add(new View());
         }
+
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+        //    ViewPlaceHolder.Controls.Add(new View());
+        //}
 
         #endregion
     }

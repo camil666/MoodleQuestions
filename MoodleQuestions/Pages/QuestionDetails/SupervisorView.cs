@@ -36,12 +36,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
             set { _categoryDropDown.DataSource = value; }
         }
 
-        public object QuestionRatingDataSource
-        {
-            get { return _ratingDropDown.DataSource; }
-            set { _ratingDropDown.DataSource = value; }
-        }
-
         public int? SelectedRating
         {
             get
@@ -97,16 +91,19 @@ namespace MoodleQuestions.Pages.QuestionDetails
             _nameCell.Controls.Add(_nameTextBox);
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnPreRender(e);
             if (!Page.IsPostBack)
             {
                 _categoryDropDown.DataTextField = "Name";
                 _categoryDropDown.DataValueField = "Id";
+                (Presenter as SupervisorPresenter).SetupCategoryDropDown();
                 _categoryDropDown.DataBind();
+                _ratingDropDown.DataSource = new string[] { "-", "2", "3", "4", "5" };
                 _ratingDropDown.DataBind();
             }
+
+            base.OnLoad(e);
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)

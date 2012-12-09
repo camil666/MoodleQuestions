@@ -27,24 +27,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Methods
 
-        //protected override void OnInit(EventArgs e)
-        //{
-        //    base.OnInit(e);
-        //    //var students = System.Web.Security.Roles.GetUsersInRole("Student");
-        //}
-
-        protected override void OnPreRender(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            //var user = Membership.GetUser();
-            //if (user != null)
-            //{
-            //    var userId = Guid.Parse(user.ProviderUserKey.ToString());
-
-            //}
-
             _presenter.SetupGrid();
 
-            base.OnPreRender(e);
+            base.OnLoad(e);
         }
 
         #endregion

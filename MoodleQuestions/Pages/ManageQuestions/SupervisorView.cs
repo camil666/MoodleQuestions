@@ -52,19 +52,22 @@ namespace MoodleQuestions.Pages.ManageQuestions
         //TODO: dodac inicjalizacja grida z markupu
         protected override void OnInit(EventArgs e)
         {
+            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "UserDropDownLabel").ToString() });
             Controls.Add(_userDropDown);
             base.OnInit(e);
-
-            //var students = System.Web.Security.Roles.GetUsersInRole("Student");
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            _presenter.SetupUserDropDown();
-            _presenter.SetupGrid();
-            _userDropDown.DataBind();
+            if (!Page.IsPostBack)
+            {
+                _presenter.SetupUserDropDown();
+                _userDropDown.DataBind();
+                _userDropDown.SelectedIndex = 0;
+                _presenter.SetupGrid();
+            }
 
-            base.OnPreRender(e);
+            base.OnLoad(e);
         }
 
         #endregion

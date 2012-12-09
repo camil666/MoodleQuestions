@@ -8,8 +8,7 @@ body {
     background-color: #fff;
     border-top: solid 10px #000;
     color: #333;
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: "Segoe UI Light", "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
 }
@@ -70,7 +69,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.75em;
+    font-size: 1.5em;
 }
 
 h3 {
@@ -104,17 +103,12 @@ h5, h6 {
 }
 
 .main-content {
-    background: url("../Images/accent.png") no-repeat;
     padding-left: 10px;
-    padding-top: 30px;
-}
-
-.featured + .main-content {
-    background: url("../Images/heroAccent.png") no-repeat;
+    padding-top: 10px;
 }
 
 header .content-wrapper {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 footer {
@@ -129,8 +123,8 @@ footer {
 ----------------------------------------------------------*/
 .site-title {
     color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
-    font-size: 2.3em;
+    font-family: "Segoe UI", Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 3em;
     margin: 0;
 }
 
@@ -179,7 +173,6 @@ footer {
 ----------------------------------------------------------*/
 ul#menu {
     font-size: 1.3em;
-    font-weight: 600;
     margin: 0 0 5px;
     padding: 0;
     text-align: right;
@@ -404,7 +397,7 @@ input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 5px 0 6px 0;
     padding: 5px;
     width: 300px;
@@ -433,7 +426,7 @@ button {
     cursor: pointer;
     font-size: 1.2em;
     font-weight: 600;
-    padding: 7px;
+    padding: 5px;
     margin-right: 8px;
     width: auto;
 }

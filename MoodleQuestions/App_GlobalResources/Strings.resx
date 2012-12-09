@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountManagePageTitle" xml:space="preserve">
+    <value>Zarządzanie kontem</value>
+  </data>
   <data name="AnswerCountDropDownLabel" xml:space="preserve">
     <value>Ilość odpowiedzi:</value>
   </data>
@@ -134,6 +137,18 @@
   </data>
   <data name="CategoryLabelText" xml:space="preserve">
     <value>Kategoria:</value>
+  </data>
+  <data name="ChangePasswordButtonText" xml:space="preserve">
+    <value>Zmień hasło</value>
+  </data>
+  <data name="ChangePasswordHeader" xml:space="preserve">
+    <value>Zmiana hasła</value>
+  </data>
+  <data name="ConfirmNewPasswordLabel" xml:space="preserve">
+    <value>Potwierdż nowe hasło</value>
+  </data>
+  <data name="ConfirmPasswordLabel" xml:space="preserve">
+    <value>Powtórz hasło</value>
   </data>
   <data name="ContactNavLink" xml:space="preserve">
     <value>Kontakt</value>
@@ -156,11 +171,23 @@
   <data name="CreationDateLabelText" xml:space="preserve">
     <value>Data utworzenia:</value>
   </data>
+  <data name="CurrentPasswordLabel" xml:space="preserve">
+    <value>Obecne hasło</value>
+  </data>
   <data name="DetailsLabelText" xml:space="preserve">
     <value>Szczegóły</value>
   </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
   <data name="EndDateLabelText" xml:space="preserve">
     <value>Stworzone przed:</value>
+  </data>
+  <data name="FieldIsRequiredMessage" xml:space="preserve">
+    <value>Pole jest wymagane.</value>
+  </data>
+  <data name="FirstNameLabel" xml:space="preserve">
+    <value>Imię</value>
   </data>
   <data name="FractionLabelText" xml:space="preserve">
     <value>Ocena odpowiedzi:</value>
@@ -192,6 +219,18 @@
   <data name="IsVisibleLabelText" xml:space="preserve">
     <value>Widoczne dla innych:</value>
   </data>
+  <data name="LastNameLabel" xml:space="preserve">
+    <value>Nazwisko</value>
+  </data>
+  <data name="LoggedInAsMessage" xml:space="preserve">
+    <value>Jesteś zalogowany/a jako:</value>
+  </data>
+  <data name="LoginLabel" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginPageTitle" xml:space="preserve">
+    <value>Logowanie</value>
+  </data>
   <data name="LoginText" xml:space="preserve">
     <value>Zaloguj</value>
   </data>
@@ -210,11 +249,23 @@
   <data name="ManageQuestionsPageTitle" xml:space="preserve">
     <value>Zarządzaj pytaniami</value>
   </data>
+  <data name="MinimumPasswordLengthText" xml:space="preserve">
+    <value>Hasło powinno składać się z co najmniej 6 znaków.</value>
+  </data>
   <data name="NameHeaderText" xml:space="preserve">
     <value>Nazwa</value>
   </data>
   <data name="NameLabelText" xml:space="preserve">
     <value>Nazwa:</value>
+  </data>
+  <data name="NewPasswordLabel" xml:space="preserve">
+    <value>Nowe hasło</value>
+  </data>
+  <data name="PasswordConfimrationIsWrongMessage" xml:space="preserve">
+    <value>Hasła nie są takie same.</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Hasło</value>
   </data>
   <data name="QuestionCountLabelText" xml:space="preserve">
     <value>Ilość pytań:</value>
@@ -246,8 +297,20 @@
   <data name="RatingLabelText" xml:space="preserve">
     <value>Ocena:</value>
   </data>
+  <data name="RegisterButtonText" xml:space="preserve">
+    <value>Zarejestruj</value>
+  </data>
+  <data name="RegisterPageSubtitle" xml:space="preserve">
+    <value>Rejestracja nowego użytkownika.</value>
+  </data>
+  <data name="RegisterPageTitle" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
   <data name="RegisterText" xml:space="preserve">
     <value>Zarejestruj</value>
+  </data>
+  <data name="RememberMeLabel" xml:space="preserve">
+    <value>Zapamiętaj mnie</value>
   </data>
   <data name="SaveButtonText" xml:space="preserve">
     <value>Zapisz</value>
@@ -263,6 +326,9 @@
   </data>
   <data name="UnratedQuestionCountLabelText" xml:space="preserve">
     <value>Pytanie nieocenione:</value>
+  </data>
+  <data name="UserDropDownLabel" xml:space="preserve">
+    <value>Student</value>
   </data>
   <data name="ViewQuestionsNavLink" xml:space="preserve">
     <value>Przeglądaj</value>

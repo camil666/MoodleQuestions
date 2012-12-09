@@ -128,11 +128,6 @@ namespace MoodleQuestions.Controls
             base.OnLoad(e);
             Page.ClientScript.RegisterClientScriptInclude("TinyMce", ResolveClientUrl("~/Scripts/tiny_mce/tiny_mce.js"));
             Page.ClientScript.RegisterClientScriptInclude("ComposerScripts", ResolveClientUrl("~/Scripts/QuestionComposerScripts.js"));
-        }
-
-        protected override void OnPreRender(EventArgs e)
-        {
-            base.OnPreRender(e);
 
             if (_question != null)
             {
@@ -167,34 +162,36 @@ namespace MoodleQuestions.Controls
                 }
             }
 
-            if (!Page.IsPostBack)
+            BindFractionDropDowns();
+        }
+
+        private void BindFractionDropDowns()
+        {
+            var fractions = new Collection<ListItem>();
+            for (int fractionValue = -100; fractionValue <= 100; fractionValue += 5)
             {
-                var fractions = new Collection<ListItem>();
-                for (int fractionValue = -100; fractionValue <= 100; fractionValue += 5)
-                {
-                    fractions.Add(new ListItem(fractionValue.ToString()));
-                }
+                fractions.Add(new ListItem(fractionValue.ToString()));
+            }
 
-                fractions.Add(new ListItem("11,111"));
-                fractions.Add(new ListItem("12,5"));
-                fractions.Add(new ListItem("14,2857"));
-                fractions.Add(new ListItem("16,666"));
-                fractions.Add(new ListItem("33,333"));
-                fractions.Add(new ListItem("66,666"));
-                fractions.Add(new ListItem("83,333"));
-                fractions.Add(new ListItem("-11,111"));
-                fractions.Add(new ListItem("-12,5"));
-                fractions.Add(new ListItem("-14,2857"));
-                fractions.Add(new ListItem("-16,666"));
-                fractions.Add(new ListItem("-33,333"));
-                fractions.Add(new ListItem("-66,666"));
-                fractions.Add(new ListItem("-83,333"));
+            fractions.Add(new ListItem("11,111"));
+            fractions.Add(new ListItem("12,5"));
+            fractions.Add(new ListItem("14,2857"));
+            fractions.Add(new ListItem("16,666"));
+            fractions.Add(new ListItem("33,333"));
+            fractions.Add(new ListItem("66,666"));
+            fractions.Add(new ListItem("83,333"));
+            fractions.Add(new ListItem("-11,111"));
+            fractions.Add(new ListItem("-12,5"));
+            fractions.Add(new ListItem("-14,2857"));
+            fractions.Add(new ListItem("-16,666"));
+            fractions.Add(new ListItem("-33,333"));
+            fractions.Add(new ListItem("-66,666"));
+            fractions.Add(new ListItem("-83,333"));
 
-                foreach (var control in _answerControls)
-                {
-                    control.FractionDropDownDataSource = fractions.OrderByDescending(item => DoubleHelper.Parse(item.Text));
-                    control.DataBind();
-                }
+            foreach (var control in _answerControls)
+            {
+                control.FractionDropDownDataSource = fractions.OrderByDescending(item => DoubleHelper.Parse(item.Text));
+                control.DataBind();
             }
         }
 

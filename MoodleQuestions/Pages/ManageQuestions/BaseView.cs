@@ -76,18 +76,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
                 HeaderText = HttpContext.GetGlobalResourceObject("Strings", "DetailsLabelText").ToString(),
                 Text = HttpContext.GetGlobalResourceObject("Strings", "DetailsLabelText").ToString(),
                 DataNavigateUrlFields = new string[] { "Id" },
-                DataNavigateUrlFormatString = "QuestionDetails.aspx?q={0}"
+                DataNavigateUrlFormatString = "QuestionDetails.aspx?q={0}",
+                ShowHeader = false
             };
 
             _questionGridView.Columns.Add(detailsField);
-
-            var deleteField = new CommandField()
-            {
-                ButtonType = ButtonType.Button,
-                ShowDeleteButton = true
-            };
-
-            _questionGridView.Columns.Add(deleteField);
         }
 
         #endregion
@@ -100,9 +93,9 @@ namespace MoodleQuestions.Pages.ManageQuestions
             Controls.Add(_questionGridView);
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnPreRender(e);
+            base.OnLoad(e);
             _questionGridView.DataBind();
         }
 

@@ -102,11 +102,6 @@ namespace MoodleQuestions.Pages.Raports
             _startDateTextBox = new TextBox() { ID = "startDateTextBox", ClientIDMode = ClientIDMode.Static, ReadOnly = true };
             _endDateTextBox = new TextBox() { ID = "endDateTextBox", ClientIDMode = ClientIDMode.Static, ReadOnly = true };
             _presenter = new Presenter(this);
-            //_validator = new CustomValidator()
-            //{
-            //    Display = ValidatorDisplay.Dynamic,
-            //    ClientValidationFunction = "Answers.ValidateSum"
-            //};
         }
 
         #endregion
@@ -169,7 +164,6 @@ namespace MoodleQuestions.Pages.Raports
         {
             base.OnLoad(e);
             Page.ClientScript.RegisterClientScriptInclude("DatePickersScripts", ResolveClientUrl("~/Scripts/DatePickersScripts.js"));
-
         }
 
         protected override void OnPreRender(EventArgs e)

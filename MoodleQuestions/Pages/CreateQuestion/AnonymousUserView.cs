@@ -19,15 +19,5 @@ namespace MoodleQuestions.Pages.CreateQuestion
         }
 
         #endregion
-
-        //#region Methods
-
-        //protected override void OnInit(EventArgs e)
-        //{
-        //    base.OnInit(e);
-        //    QuestionComposerControl.AnonymousMode = true;
-        //}
-
-        //#endregion
     }
 }

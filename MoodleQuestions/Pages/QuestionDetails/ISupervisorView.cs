@@ -14,8 +14,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         object QuestionCategoryDataSource { get; set; }
 
-        object QuestionRatingDataSource { get; set; }
-
         int? SelectedRating { get; set; }
 
         #endregion

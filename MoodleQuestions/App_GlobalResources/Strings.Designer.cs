@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zarządzanie kontem.
+        /// </summary>
+        internal static string AccountManagePageTitle {
+            get {
+                return ResourceManager.GetString("AccountManagePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ilość odpowiedzi:.
         /// </summary>
         internal static string AnswerCountDropDownLabel {
@@ -111,6 +120,42 @@ namespace Resources {
         internal static string CategoryLabelText {
             get {
                 return ResourceManager.GetString("CategoryLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmień hasło.
+        /// </summary>
+        internal static string ChangePasswordButtonText {
+            get {
+                return ResourceManager.GetString("ChangePasswordButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmiana hasła.
+        /// </summary>
+        internal static string ChangePasswordHeader {
+            get {
+                return ResourceManager.GetString("ChangePasswordHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potwierdż nowe hasło.
+        /// </summary>
+        internal static string ConfirmNewPasswordLabel {
+            get {
+                return ResourceManager.GetString("ConfirmNewPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powtórz hasło.
+        /// </summary>
+        internal static string ConfirmPasswordLabel {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordLabel", resourceCulture);
             }
         }
         
@@ -178,6 +223,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Obecne hasło.
+        /// </summary>
+        internal static string CurrentPasswordLabel {
+            get {
+                return ResourceManager.GetString("CurrentPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Szczegóły.
         /// </summary>
         internal static string DetailsLabelText {
@@ -187,11 +241,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail.
+        /// </summary>
+        internal static string EmailLabel {
+            get {
+                return ResourceManager.GetString("EmailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stworzone przed:.
         /// </summary>
         internal static string EndDateLabelText {
             get {
                 return ResourceManager.GetString("EndDateLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pole jest wymagane..
+        /// </summary>
+        internal static string FieldIsRequiredMessage {
+            get {
+                return ResourceManager.GetString("FieldIsRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imię.
+        /// </summary>
+        internal static string FirstNameLabel {
+            get {
+                return ResourceManager.GetString("FirstNameLabel", resourceCulture);
             }
         }
         
@@ -286,6 +367,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nazwisko.
+        /// </summary>
+        internal static string LastNameLabel {
+            get {
+                return ResourceManager.GetString("LastNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jesteś zalogowany/a jako:.
+        /// </summary>
+        internal static string LoggedInAsMessage {
+            get {
+                return ResourceManager.GetString("LoggedInAsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string LoginLabel {
+            get {
+                return ResourceManager.GetString("LoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logowanie.
+        /// </summary>
+        internal static string LoginPageTitle {
+            get {
+                return ResourceManager.GetString("LoginPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zaloguj.
         /// </summary>
         internal static string LoginText {
@@ -340,6 +457,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hasło powinno składać się z co najmniej 6 znaków..
+        /// </summary>
+        internal static string MinimumPasswordLengthText {
+            get {
+                return ResourceManager.GetString("MinimumPasswordLengthText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nazwa.
         /// </summary>
         internal static string NameHeaderText {
@@ -354,6 +480,33 @@ namespace Resources {
         internal static string NameLabelText {
             get {
                 return ResourceManager.GetString("NameLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowe hasło.
+        /// </summary>
+        internal static string NewPasswordLabel {
+            get {
+                return ResourceManager.GetString("NewPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasła nie są takie same..
+        /// </summary>
+        internal static string PasswordConfimrationIsWrongMessage {
+            get {
+                return ResourceManager.GetString("PasswordConfimrationIsWrongMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasło.
+        /// </summary>
+        internal static string PasswordLabel {
+            get {
+                return ResourceManager.GetString("PasswordLabel", resourceCulture);
             }
         }
         
@@ -450,9 +603,45 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Zarejestruj.
         /// </summary>
+        internal static string RegisterButtonText {
+            get {
+                return ResourceManager.GetString("RegisterButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejestracja nowego użytkownika..
+        /// </summary>
+        internal static string RegisterPageSubtitle {
+            get {
+                return ResourceManager.GetString("RegisterPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejestracja.
+        /// </summary>
+        internal static string RegisterPageTitle {
+            get {
+                return ResourceManager.GetString("RegisterPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarejestruj.
+        /// </summary>
         internal static string RegisterText {
             get {
                 return ResourceManager.GetString("RegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapamiętaj mnie.
+        /// </summary>
+        internal static string RememberMeLabel {
+            get {
+                return ResourceManager.GetString("RememberMeLabel", resourceCulture);
             }
         }
         
@@ -498,6 +687,15 @@ namespace Resources {
         internal static string UnratedQuestionCountLabelText {
             get {
                 return ResourceManager.GetString("UnratedQuestionCountLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        internal static string UserDropDownLabel {
+            get {
+                return ResourceManager.GetString("UserDropDownLabel", resourceCulture);
             }
         }
         

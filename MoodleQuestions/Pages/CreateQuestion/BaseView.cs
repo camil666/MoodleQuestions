@@ -22,7 +22,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Properties
 
-        protected QuestionComposer QuestionComposerControl;
+        protected QuestionComposer QuestionComposerControl { get; set; }
 
         #endregion
 
@@ -85,12 +85,12 @@ namespace MoodleQuestions.Pages.CreateQuestion
                 _answerCountDropDown.DataSource = new string[] { "2", "3", "4", "5", "6", "7", "8", "9", "10" };
                 _answerCountDropDown.DataBind();
                 _answerCountDropDown.Items.FindByText("4").Selected = true;
-            }  
+            }
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnPreRender(e);
+            base.OnLoad(e);
             QuestionComposerControl.AnswerCount = int.Parse(_answerCountDropDown.SelectedValue);
         }
 

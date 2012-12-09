@@ -28,12 +28,14 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        public void SetupCategoryDropDown()
+        {
+            _view.QuestionCategoryDataSource = Model.GetQuestionCategories();
+        }
+
         public override void SetQuestionDetails()
         {
             base.SetQuestionDetails();
-
-            _view.QuestionCategoryDataSource = Model.GetQuestionCategories();
-            _view.QuestionRatingDataSource = new string[] { "-", "2", "3", "4", "5" };
 
             if (Question.QuestionType != null)
             {

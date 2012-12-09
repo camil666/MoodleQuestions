@@ -7,12 +7,6 @@ namespace MoodleQuestions.Pages.ManageQuestions
 {
     public class BasePresenter
     {
-        //#region Fields
-
-        //private IBaseView _view;
-
-        //#endregion
-
         #region Properties
 
         protected Model Model { get; set; }

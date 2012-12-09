@@ -17,11 +17,10 @@ namespace MoodleQuestions
     {
         #region Methods
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnInit(EventArgs e)
         {
-            //if (PermissionHelper.UserIsSupervisor)
-            //    ViewPlaceHolder.Controls.Add(LoadControl("~/Pages/CreateQuestion/SupervisorView.ascx"));
-            //else 
+            base.OnInit(e);
+
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 ViewPlaceHolder.Controls.Add(new LoggedUserView());
