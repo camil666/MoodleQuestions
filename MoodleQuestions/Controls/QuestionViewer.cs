@@ -11,9 +11,7 @@ namespace MoodleQuestions.Controls
     {
         #region Fields
 
-        private Label _questionContentLabel;
         private Question _question;
-        private Collection<Label> _answersContentLabels;
 
         #endregion
 
@@ -32,8 +30,6 @@ namespace MoodleQuestions.Controls
         public QuestionViewer()
             : base(HtmlTextWriterTag.Div)
         {
-            _answersContentLabels = new Collection<Label>();
-            _questionContentLabel = new Label();
         }
 
         #endregion
@@ -46,15 +42,17 @@ namespace MoodleQuestions.Controls
 
             if (_question != null)
             {
-                _questionContentLabel.Text = _question.Content;
-                Controls.Add(_questionContentLabel);
+                Controls.Add(new LiteralControl(_question.Content));
+                Controls.Add(new LiteralControl("<ol>"));
 
                 for (int i = 1; i <= _question.QuestionAnswers.Count; ++i)
                 {
-                    var answerContentLabel = new Label() { Text = string.Format("{0}. {1}", i, _question.QuestionAnswers.ElementAt(i - 1).Content) };
-                    _answersContentLabels.Add(answerContentLabel);
-                    Controls.Add(answerContentLabel);
+                    Controls.Add(new LiteralControl("<li>"));
+                    Controls.Add(new LiteralControl(_question.QuestionAnswers.ElementAt(i - 1).Content));
+                    Controls.Add(new LiteralControl("</li>"));
                 }
+
+                Controls.Add(new LiteralControl("</ol>"));
             }
         }
 

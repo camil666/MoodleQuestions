@@ -124,6 +124,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zmień dane.
+        /// </summary>
+        internal static string ChangeNameButtonText {
+            get {
+                return ResourceManager.GetString("ChangeNameButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmiana danych osobowych.
+        /// </summary>
+        internal static string ChangeNameHeader {
+            get {
+                return ResourceManager.GetString("ChangeNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zmień hasło.
         /// </summary>
         internal static string ChangePasswordButtonText {
@@ -552,6 +570,15 @@ namespace Resources {
         internal static string QuestionLabelText {
             get {
                 return ResourceManager.GetString("QuestionLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaznacz pytanie.
+        /// </summary>
+        internal static string QuestionViewCheckboxText {
+            get {
+                return ResourceManager.GetString("QuestionViewCheckboxText", resourceCulture);
             }
         }
         

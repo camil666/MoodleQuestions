@@ -43,8 +43,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
             _generateXMLButton.Click += GenerateXMLButton_Click;
             _questionRepeater = new Repeater()
                 {
-                    ItemTemplate = new QuestionItemTemplate()
+                    ItemTemplate = new QuestionItemTemplate() { CheckboxText = HttpContext.GetGlobalResourceObject("Strings", "QuestionViewCheckboxText").ToString() }
                 };
+
+            CssClass = "questionViewer";
         }
 
         #endregion
@@ -57,10 +59,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
             foreach (RepeaterItem item in _questionRepeater.Items)
             {
-                var checkBox = item.Controls[0] as CheckBox;
+                var checkBox = item.Controls[0].Controls[0] as CheckBox;
                 if (checkBox.Checked == true)
                 {
-                    list.Add(int.Parse(checkBox.Attributes["QuestionId"]));
+                    list.Add(int.Parse((checkBox.Parent as WebControl).Attributes["QuestionId"]));
                 }
             }
 

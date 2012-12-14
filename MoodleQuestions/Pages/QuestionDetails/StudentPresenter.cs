@@ -54,6 +54,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
             Model.SaveChanges(Question, newQuestion);
         }
+
         #endregion
     }
 }

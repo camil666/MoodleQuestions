@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Account
 {
     public partial class Manage : Page
     {
-        protected static string ConvertToDisplayDateTime(DateTime? utcDateTime)
-        {
-            // You can change this method to convert the UTC date time into the desired display
-            // offset and format. Here we're converting it to the server timezone and formatting
-            // as a short date and a long time string, using the current thread culture.
-            return utcDateTime.HasValue ? utcDateTime.Value.ToLocalTime().ToString("G") : "[never]";
-        }
+        #region Properties
 
         protected string SuccessMessage
         {
@@ -26,6 +20,18 @@ namespace MoodleQuestions.Account
         {
             get;
             private set;
+        }
+
+        #endregion
+
+        #region Methods
+
+        protected static string ConvertToDisplayDateTime(DateTime? utcDateTime)
+        {
+            // You can change this method to convert the UTC date time into the desired display
+            // offset and format. Here we're converting it to the server timezone and formatting
+            // as a short date and a long time string, using the current thread culture.
+            return utcDateTime.HasValue ? utcDateTime.Value.ToLocalTime().ToString("G") : "[never]";
         }
 
         protected void Page_Load()
@@ -44,6 +50,18 @@ namespace MoodleQuestions.Account
                         : string.Empty;
                     successMessage.Visible = !string.IsNullOrEmpty(SuccessMessage);
                 }
+
+                var loggedUserId = (Guid)Membership.GetUser().ProviderUserKey;
+
+                using (var context = new Entities())
+                {
+                    var user = (from item in context.Users
+                                where item.UserId == loggedUserId
+                                select item).FirstOrDefault();
+
+                    FirstName.Text = user.FirstName;
+                    LastName.Text = user.LastName;
+                }
             }
         }
 
@@ -55,5 +73,24 @@ namespace MoodleQuestions.Account
         {
             return GetDataItem() as T ?? default(T);
         }
+
+        protected void NameChange_Click(object sender, EventArgs e)
+        {
+            var loggedUserId = (Guid)Membership.GetUser().ProviderUserKey;
+
+            using (var context = new Entities())
+            {
+                var user = (from item in context.Users
+                            where item.UserId == loggedUserId
+                            select item).FirstOrDefault();
+
+                user.FirstName = FirstName.Text;
+                user.LastName = LastName.Text;
+
+                context.SaveChanges();
+            }
+        }
+
+        #endregion
     }
 }

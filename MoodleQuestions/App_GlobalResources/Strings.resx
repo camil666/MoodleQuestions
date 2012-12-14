@@ -138,6 +138,12 @@
   <data name="CategoryLabelText" xml:space="preserve">
     <value>Kategoria:</value>
   </data>
+  <data name="ChangeNameButtonText" xml:space="preserve">
+    <value>Zmień dane</value>
+  </data>
+  <data name="ChangeNameHeader" xml:space="preserve">
+    <value>Zmiana danych osobowych</value>
+  </data>
   <data name="ChangePasswordButtonText" xml:space="preserve">
     <value>Zmień hasło</value>
   </data>
@@ -281,6 +287,9 @@
   </data>
   <data name="QuestionLabelText" xml:space="preserve">
     <value>Pytanie:</value>
+  </data>
+  <data name="QuestionViewCheckboxText" xml:space="preserve">
+    <value>Zaznacz pytanie</value>
   </data>
   <data name="RaportsNavLink" xml:space="preserve">
     <value>Statystyki</value>

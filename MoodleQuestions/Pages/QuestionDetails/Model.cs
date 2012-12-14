@@ -51,6 +51,20 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
+        public void DeleteQuestion(int id)
+        {
+            using (var context = new Entities())
+            {
+                var question = (from item in context.Questions
+                                where item.Id == id
+                                select item).FirstOrDefault();
+
+                question.IsDeleted = true;
+
+                context.SaveChanges();
+            }
+        }
+
         #endregion
     }
 }
