@@ -610,7 +610,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pytanie ocenione:.
+        ///   Looks up a localized string similar to Pytania ocenione:.
         /// </summary>
         internal static string RatedQuestionCountLabelText {
             get {
@@ -718,7 +718,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pytanie nieocenione:.
+        ///   Looks up a localized string similar to Pytania nieocenione:.
         /// </summary>
         internal static string UnratedQuestionCountLabelText {
             get {

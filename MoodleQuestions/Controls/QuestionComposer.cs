@@ -113,14 +113,17 @@ namespace MoodleQuestions.Controls
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            Controls.Add(new LiteralControl("<br>"));
             if (AnonymousMode == false)
             {
                 Controls.Add(new Label() { Text = IsVisibleLabelText });
                 Controls.Add(_isVisibleCheckbox);
+                Controls.Add(new LiteralControl("<br>"));
             }
-
+            
             Controls.Add(_questionLabel);
             Controls.Add(_questionContentTextBox);
+            Controls.Add(new LiteralControl("<br>"));
         }
 
         protected override void OnLoad(EventArgs e)
@@ -145,6 +148,7 @@ namespace MoodleQuestions.Controls
 
                     _answerControls.Add(control);
                     Controls.Add(control);
+                    Controls.Add(new LiteralControl("<br>"));
                 }
             }
             else
@@ -159,6 +163,7 @@ namespace MoodleQuestions.Controls
 
                     _answerControls.Add(control);
                     Controls.Add(control);
+                    Controls.Add(new LiteralControl("<br>"));
                 }
             }
 

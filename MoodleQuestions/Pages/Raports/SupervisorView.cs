@@ -5,26 +5,26 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MoodleQuestions.Pages.ManageQuestions
+namespace MoodleQuestions.Pages.Raports
 {
     public class SupervisorView : BaseView, ISupervisorView
     {
         #region Fields
 
-        private SupervisorPresenter _presenter;
         private DropDownList _userDropDown;
+        private SupervisorPresenter _presenter;
 
         #endregion
 
         #region Properties
 
-        public object UserDropDownDataSource
+        public object DropDownDataSource
         {
             get { return _userDropDown.DataSource; }
             set { _userDropDown.DataSource = value; }
         }
 
-        public Guid SelectedStudentId
+        public override Guid SelectedStudentId
         {
             get
             {
@@ -38,14 +38,13 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         public SupervisorView()
         {
-            _presenter = new SupervisorPresenter(this);
             _userDropDown = new DropDownList()
             {
                 DataTextField = "FullName",
                 DataValueField = "Id"
             };
 
-            _userDropDown.Style.Add(HtmlTextWriterStyle.MarginLeft, "5px");
+            _presenter = new SupervisorPresenter(this);
         }
 
         #endregion
@@ -54,22 +53,17 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         protected override void OnInit(EventArgs e)
         {
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "UserDropDownLabel").ToString() });
+            Controls.Add(new LiteralControl(HttpContext.GetGlobalResourceObject("Strings", "AuthorLabelText").ToString()));
             Controls.Add(_userDropDown);
-            base.OnInit(e);
-        }
+            Controls.Add(new LiteralControl("<br>"));
 
-        protected override void OnLoad(EventArgs e)
-        {
+            base.OnInit(e);
+
             if (!Page.IsPostBack)
             {
-                _presenter.SetupUserDropDown();
+                _presenter.SetupDropDown();
                 _userDropDown.DataBind();
-                _userDropDown.SelectedIndex = 0;
-                _presenter.SetupGrid();
             }
-
-            base.OnLoad(e);
         }
 
         #endregion

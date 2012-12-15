@@ -7,12 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.Raports
 {
-    public class View : WebControl, IView
+    public class BaseView : WebControl, IBaseView
     {
         #region Fields
 
-        private DropDownList _userDropDown;
-        private Presenter _presenter;
+        private BasePresenter _presenter;
         private TextBox _startDateTextBox;
         private TextBox _endDateTextBox;
         private TableCell _questionCountCell;
@@ -23,6 +22,11 @@ namespace MoodleQuestions.Pages.Raports
         #endregion
 
         #region Properties
+
+        public virtual Guid SelectedStudentId
+        {
+            get { return Guid.Empty; }
+        }
 
         public string QuestionCount
         {
@@ -42,20 +46,6 @@ namespace MoodleQuestions.Pages.Raports
         public string AverageRating
         {
             set { _ratingCell.Text = value; }
-        }
-
-        public object DropDownDataSource
-        {
-            get { return _userDropDown.DataSource; }
-            set { _userDropDown.DataSource = value; }
-        }
-
-        public Guid SelectedStudentId
-        {
-            get
-            {
-                return Guid.Parse(_userDropDown.SelectedItem.Value);
-            }
         }
 
         public DateTime? StartDate
@@ -90,18 +80,12 @@ namespace MoodleQuestions.Pages.Raports
 
         #region Constructors
 
-        public View()
+        public BaseView()
             : base(HtmlTextWriterTag.Div)
         {
-            _userDropDown = new DropDownList()
-            {
-                DataTextField = "FullName",
-                DataValueField = "Id"
-            };
-
-            _startDateTextBox = new TextBox() { ID = "startDateTextBox", ClientIDMode = ClientIDMode.Static, ReadOnly = true };
-            _endDateTextBox = new TextBox() { ID = "endDateTextBox", ClientIDMode = ClientIDMode.Static, ReadOnly = true };
-            _presenter = new Presenter(this);
+            _startDateTextBox = new TextBox() { ID = "startDateTextBox", ClientIDMode = ClientIDMode.Static };
+            _endDateTextBox = new TextBox() { ID = "endDateTextBox", ClientIDMode = ClientIDMode.Static };
+            _presenter = new BasePresenter(this);
         }
 
         #endregion
@@ -111,18 +95,19 @@ namespace MoodleQuestions.Pages.Raports
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "AuthorLabelText").ToString() });
-            Controls.Add(_userDropDown);
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "StartDateLabelText").ToString() });
+            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "StartDateLabelText").ToString(), Width = 180 });
             Controls.Add(_startDateTextBox);
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "EndDateLabelText").ToString() });
+            Controls.Add(new LiteralControl("<br>"));
+            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "EndDateLabelText").ToString(), Width = 180 });
             Controls.Add(_endDateTextBox);
+            Controls.Add(new LiteralControl("<br>"));
 
             var searchButton = new Button()
             {
                 Text = HttpContext.GetGlobalResourceObject("Strings", "SearchButtonText").ToString()
             };
 
+            searchButton.Click += SearchButton_Click;
             Controls.Add(searchButton);
 
             var detailsTable = new Table();
@@ -152,12 +137,6 @@ namespace MoodleQuestions.Pages.Raports
             ratingRow.Cells.Add(_ratingCell);
 
             Controls.Add(detailsTable);
-
-            if (!Page.IsPostBack)
-            {
-                _presenter.SetupDropDown();
-                _userDropDown.DataBind();
-            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -166,9 +145,8 @@ namespace MoodleQuestions.Pages.Raports
             Page.ClientScript.RegisterClientScriptInclude("DatePickersScripts", ResolveClientUrl("~/Scripts/DatePickersScripts.js"));
         }
 
-        protected override void OnPreRender(EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
-            base.OnPreRender(e);
             _presenter.DisplayUserReport();
         }
 

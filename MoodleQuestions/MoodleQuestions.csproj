@@ -528,10 +528,14 @@
     <Compile Include="Pages\QuestionDetails\StudentView.cs" />
     <Compile Include="Pages\QuestionDetails\SupervisorPresenter.cs" />
     <Compile Include="Pages\QuestionDetails\SupervisorView.cs" />
-    <Compile Include="Pages\Raports\IView.cs" />
+    <Compile Include="Pages\Raports\BaseView.cs" />
+    <Compile Include="Pages\Raports\ISupervisorView.cs" />
+    <Compile Include="Pages\Raports\IBaseView.cs" />
     <Compile Include="Pages\Raports\Model.cs" />
-    <Compile Include="Pages\Raports\Presenter.cs" />
-    <Compile Include="Pages\Raports\View.cs" />
+    <Compile Include="Pages\Raports\BasePresenter.cs" />
+    <Compile Include="Pages\Raports\StudentView.cs" />
+    <Compile Include="Pages\Raports\SupervisorPresenter.cs" />
+    <Compile Include="Pages\Raports\SupervisorView.cs" />
     <Compile Include="Pages\ViewQuestions\IView.cs" />
     <Compile Include="Pages\ViewQuestions\Model.cs" />
     <Compile Include="Pages\ViewQuestions\Presenter.cs" />

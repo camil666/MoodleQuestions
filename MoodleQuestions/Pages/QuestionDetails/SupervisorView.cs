@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
 
@@ -63,7 +64,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public SupervisorView()
         {
+            _categoryDropDown = new DropDownList();
             Presenter = new SupervisorPresenter(this);
+            _ratingDropDown = new DropDownList();
+            _nameTextBox = new TextBox();
             SaveButton.Click += SaveButton_Click;
         }
 
@@ -75,18 +79,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             base.OnInit(e);
 
-            _categoryDropDown = new DropDownList();
             var categoryRow = new TableRow();
             categoryRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "CategoryLabelText").ToString() });
             var categoryCell = new TableCell();
             categoryRow.Cells.Add(categoryCell);
             categoryCell.Controls.Add(_categoryDropDown);
             DetailsTable.Rows.Add(categoryRow);
-
-            _ratingDropDown = new DropDownList();
             _ratingCell.Controls.Add(_ratingDropDown);
-
-            _nameTextBox = new TextBox();
             _nameCell.Controls.Add(_nameTextBox);
         }
 

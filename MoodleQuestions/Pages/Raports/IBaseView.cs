@@ -5,11 +5,9 @@ using System.Text;
 
 namespace MoodleQuestions.Pages.Raports
 {
-    public interface IView
+    public interface IBaseView
     {
         #region Properties
-
-        object DropDownDataSource { get; set; }
 
         Guid SelectedStudentId { get; }
 

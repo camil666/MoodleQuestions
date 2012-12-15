@@ -11,13 +11,15 @@ namespace MoodleQuestions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            ViewPlaceHolder.Controls.Add(new View());
+            if (PermissionHelper.UserIsSupervisor)
+            {
+                ViewPlaceHolder.Controls.Add(new SupervisorView());
+            }
+            else if (PermissionHelper.UserIsStudent)
+            {
+                ViewPlaceHolder.Controls.Add(new StudentView());
+            }
         }
-
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    ViewPlaceHolder.Controls.Add(new View());
-        //}
 
         #endregion
     }

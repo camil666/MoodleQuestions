@@ -301,7 +301,7 @@
     <value>Statystyki</value>
   </data>
   <data name="RatedQuestionCountLabelText" xml:space="preserve">
-    <value>Pytanie ocenione:</value>
+    <value>Pytania ocenione:</value>
   </data>
   <data name="RatingHeaderText" xml:space="preserve">
     <value>Ocena</value>
@@ -337,7 +337,7 @@
     <value>Typ:</value>
   </data>
   <data name="UnratedQuestionCountLabelText" xml:space="preserve">
-    <value>Pytanie nieocenione:</value>
+    <value>Pytania nieocenione:</value>
   </data>
   <data name="UserDropDownLabel" xml:space="preserve">
     <value>Student</value>
