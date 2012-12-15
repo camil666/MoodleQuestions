@@ -22,37 +22,32 @@ namespace MoodleQuestions.Pages.QuestionDetails
             : base(view)
         {
             _view = view;
-            Model = new Model();
+            Model = new StudentModel();
         }
 
         #endregion
 
         #region Methods
 
-        public override void SetQuestionDetails()
+        public void SaveChanges()
         {
-            base.SetQuestionDetails();
-
-            if (Question.Rating != null)
+            var newQuestion = _view.ChangedQuestion;
+            if (newQuestion != null)
             {
-                _view.QuestionRating = Question.Rating.Value.ToString();
-                _view.IsEditable = false;
+                newQuestion.Id = _view.QuestionId;
             }
             else
             {
-                _view.QuestionRating = Constants.EmptyText;
-                _view.IsEditable = true;
+                newQuestion = Model.GetQuestion(_view.QuestionId);
+                newQuestion.IsVisible = _view.QuestionIsVisible;
             }
-        }
-        //TODO: dokonczyc
-        public void SaveChanges()
-        {
-            var newQuestion = new Question()
-            {
-                //Content = _view.
-            };
 
-            Model.SaveChanges(Question, newQuestion);
+            Model.SaveChanges(newQuestion);
+        }
+
+        public void DeleteQuestion(int id)
+        {
+            Model.DeleteQuestion(id);
         }
 
         #endregion

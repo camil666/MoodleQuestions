@@ -7,17 +7,18 @@ namespace MoodleQuestions.Pages.ManageQuestions
 {
     public class SupervisorPresenter : BasePresenter
     {
-        #region Fields
+        //#region Fields
 
-        private ISupervisorView _view;
+        //private ISupervisorView _view;
 
-        #endregion
+        //#endregion
 
         #region Constructors
 
         public SupervisorPresenter(ISupervisorView view)
+            : base(view)
         {
-            _view = view;
+            //_view = view;
         }
 
         #endregion
@@ -26,13 +27,13 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         public void SetupUserDropDown()
         {
-            _view.UserDropDownDataSource = Model.GetUsers();
+            (View as ISupervisorView).UserDropDownDataSource = Model.GetUsers();
         }
         //TODO: zrobic finda z kilkoma filtrami (do przemyslenia)?
         public override void SetupGrid()
         {
-            var userid = _view.SelectedStudentId;
-            _view.QuestionGridDataSource = Model.GetUserQuestions(userid);
+            var userid = (View as ISupervisorView).SelectedStudentId;
+            View.QuestionGridDataSource = Model.GetUserQuestions(userid);
         }
 
         #endregion

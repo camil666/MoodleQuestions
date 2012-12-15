@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -11,17 +12,19 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Properties
 
-        string QuestionName { get; set; }
-
-        string QuestionType { get; set; }
-
         int QuestionId { get; }
 
-        string QuestionCreationDate { get; set; }
+        //string QuestionName { get; set; }
 
-        string QuestionAuthor { get; set; }
+        //string QuestionType { get; set; }
 
-        QuestionComposer QuestionComposer { get; }
+        //string QuestionCreationDate { get; set; }
+
+        //string QuestionAuthor { get; set; }
+
+        //QuestionViewer QuestionViewer { get; }
+
+        Question QuestionToDisplay { get; set; }
 
         #endregion
     }

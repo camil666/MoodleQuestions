@@ -20,15 +20,25 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Properties
 
-        public override string QuestionName
+        public string QuestionName
         {
             get { return _nameTextBox.Text; }
-            set { _nameTextBox.Text = value; }
         }
 
-        public string QuestionCategory
+        public int? QuestionCategoryId
         {
-            get { return _categoryDropDown.SelectedItem.Value; }
+            get
+            {
+                int result;
+                if (int.TryParse(_categoryDropDown.SelectedItem.Value, out result) == true)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         public object QuestionCategoryDataSource
@@ -102,6 +112,25 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
 
             base.OnLoad(e);
+
+            QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
+            {
+                Question = QuestionToDisplay
+            });
+
+            if (!string.IsNullOrEmpty(QuestionToDisplay.Name))
+            {
+                _nameTextBox.Text = QuestionToDisplay.Name;
+            }
+            else
+            {
+                _nameTextBox.Text = string.Empty;
+            }
+
+            if (QuestionToDisplay.Rating != null)
+            {
+                SelectedRating = QuestionToDisplay.Rating.Value;
+            }
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)

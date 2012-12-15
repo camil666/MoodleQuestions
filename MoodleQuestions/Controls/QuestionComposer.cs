@@ -98,7 +98,17 @@ namespace MoodleQuestions.Controls
             _answerControls = new Collection<QuestionAnswerControl>();
             _questionContentTextBox = new TextBox() { TextMode = TextBoxMode.MultiLine };
             _questionLabel = new Label();
-            _isVisibleCheckbox = new CheckBox();
+            _isVisibleCheckbox = new CheckBox()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
+                TextAlign = TextAlign.Left
+            };
+
+            _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.Display, "inline");
+            _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.MarginRight, "5px");
+            _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.FontWeight, "normal");
+            _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.FontSize, "1em");
+
             _validator = new CustomValidator()
             {
                 Display = ValidatorDisplay.Dynamic,
@@ -116,9 +126,8 @@ namespace MoodleQuestions.Controls
             Controls.Add(new LiteralControl("<br>"));
             if (AnonymousMode == false)
             {
-                Controls.Add(new Label() { Text = IsVisibleLabelText });
                 Controls.Add(_isVisibleCheckbox);
-                Controls.Add(new LiteralControl("<br>"));
+                Controls.Add(new LiteralControl("<br><br>"));
             }
             
             Controls.Add(_questionLabel);
@@ -134,10 +143,11 @@ namespace MoodleQuestions.Controls
 
             if (_question != null)
             {
+                _questionContentTextBox.Text = _question.Content;
+                _isVisibleCheckbox.Checked = _question.IsVisible;
+
                 for (int i = 0; i < _question.QuestionAnswers.Count; ++i)
                 {
-                    _questionContentTextBox.Text = _question.Content;
-
                     var control = new QuestionAnswerControl()
                     {
                         AnswerLabelText = AnswerLabelText,

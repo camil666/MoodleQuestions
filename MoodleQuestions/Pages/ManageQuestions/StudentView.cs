@@ -12,7 +12,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Fields
 
-        protected StudentPresenter _presenter { get; set; }
+        //protected StudentPresenter _presenter { get; set; }
 
         #endregion
 
@@ -20,7 +20,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         public StudentView()
         {
-            _presenter = new StudentPresenter(this);
+            Presenter = new StudentPresenter(this);
         }
 
         #endregion
@@ -29,8 +29,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         protected override void OnLoad(EventArgs e)
         {
-            _presenter.SetupGrid();
-
+            Presenter.SetupGrid();
             base.OnLoad(e);
         }
 

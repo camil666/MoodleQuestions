@@ -730,14 +730,29 @@ tr.pager td {
 .questionViewer {
 }
 
-.questionViewer div {
-    padding:5px;
+    .questionViewer div {
+        padding: 5px;
+    }
+
+    .questionViewer > div:nth-child(odd) {
+        background-color: rgb(211,211,211);
+    }
+
+    .questionViewer > div:nth-child(even) {
+        background-color: rgb(231,231,231);
+    }
+
+.questionGrid {
 }
 
-.questionViewer>div:nth-child(odd) {
-    background-color: rgb(211,211,211);
-}
+    .questionGrid tr:nth-child(odd) {
+        background-color: rgb(211,211,211);
+    }
 
-.questionViewer>div:nth-child(even) {
-     background-color: rgb(231,231,231);
-}
+    .questionGrid tr:nth-child(even) {
+        background-color: rgb(231,231,231);
+    }
+
+    .questionGrid td, th {
+        padding: 3px 5px;
+    }

@@ -11,6 +11,8 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         object QuestionGridDataSource { get; set; }
 
+        IEnumerable<int> QuestionIds { get; }
+
         #endregion
     }
 }

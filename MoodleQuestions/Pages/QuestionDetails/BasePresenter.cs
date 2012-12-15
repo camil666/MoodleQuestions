@@ -17,9 +17,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Properties
 
-        protected Question Question { get; set; }
-
-        protected Model Model { get; set; }
+        protected BaseModel Model { get; set; }
 
         #endregion
 
@@ -34,45 +32,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
-        public virtual void SetQuestionDetails()
+        public void SetQuestion()
         {
-            Question = Model.GetQuestion(_view.QuestionId);
-            if (Question == null)
-            {
-                return;
-            }
-
-            _view.QuestionCreationDate = Question.CreationDate.ToShortDateString();
-            if (Question.Author != null)
-            {
-                _view.QuestionAuthor = Question.Author.UserName;
-            }
-
-            if (Question.QuestionType != null && !string.IsNullOrEmpty(Question.QuestionType.Name))
-            {
-                _view.QuestionType = Question.QuestionType.Name;
-            }
-            else
-            {
-                _view.QuestionType = string.Empty;
-            }
-
-            if (!string.IsNullOrEmpty(Question.Name))
-            {
-                _view.QuestionName = Question.Name;
-            }
-            else
-            {
-                _view.QuestionName = string.Empty;
-            }
-        }
-
-        public void SetQuestionContent()
-        {
-            if (Question.Rating == null)
-            {
-                _view.QuestionComposer.Question = Question;
-            }
+            _view.QuestionToDisplay = Model.GetQuestion(_view.QuestionId);
         }
 
         #endregion

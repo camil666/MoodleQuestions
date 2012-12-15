@@ -7,10 +7,6 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    //<asp:PlaceHolder runat="server" ID="ButtonsPlaceHolder">
-    //    <asp:Button runat="server" ID="GenerateXMLButton" OnClick="GenerateXMLButton_Click" meta:resourcekey="GenerateXMLButton"></asp:Button>
-    //</asp:PlaceHolder>--%>
-
     public class BaseView : WebControl, IBaseView
     {
         #region Fields
@@ -21,11 +17,32 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Properties
 
+        public IEnumerable<int> QuestionIds
+        {
+            get
+            {
+                var results = new List<int>();
+                foreach (GridViewRow row in _questionGridView.Rows)
+                {
+                    var checkBox = (row.Controls[1] as DataControlFieldCell).Controls[0] as CheckBox;
+
+                    if (checkBox.Checked)
+                    {
+                        results.Add((int)_questionGridView.DataKeys[row.RowIndex].Value);
+                    }
+                }
+
+                return results;
+            }
+        }
+
         public object QuestionGridDataSource
         {
             get { return _questionGridView.DataSource; }
             set { _questionGridView.DataSource = value; }
         }
+
+        protected BasePresenter Presenter;
 
         #endregion
 
@@ -36,7 +53,9 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             _questionGridView = new GridView()
                 {
-                    AutoGenerateColumns = false
+                    AutoGenerateColumns = false,
+                    CssClass = "questionGrid",
+                    DataKeyNames = new string[] { "Id" }
                 };
 
             var idField = new BoundField()
@@ -46,6 +65,13 @@ namespace MoodleQuestions.Pages.ManageQuestions
             };
 
             _questionGridView.Columns.Add(idField);
+
+            var selectionField = new TemplateField()
+            {
+                ItemTemplate = new SelectionTemplate()
+            };
+
+            _questionGridView.Columns.Add(selectionField);
 
             var nameField = new BoundField()
             {
@@ -91,12 +117,32 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             base.OnInit(e);
             Controls.Add(_questionGridView);
+
+            var generateXmlButton = new Button()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "GenerateXMLButtonText").ToString(),
+            };
+
+            generateXmlButton.Click += GenerateXmlButton_Click;
+            Controls.Add(generateXmlButton);
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            _questionGridView.DataBind();
+            if (!Page.IsPostBack)
+            {
+                _questionGridView.DataBind();
+            }
+        }
+
+        private void GenerateXmlButton_Click(object sender, EventArgs e)
+        {
+            var xml = Presenter.GenerateXml();
+            Page.Response.ContentType = "text/xml";
+            Page.Response.AppendHeader("content-disposition", "attachment;filename=Question.xml");
+            xml.Save(Page.Response.OutputStream);
+            Page.Response.End();
         }
 
         #endregion

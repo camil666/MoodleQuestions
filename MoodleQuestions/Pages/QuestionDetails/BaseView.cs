@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -17,7 +18,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected TableCell _typeCell;
         private TableCell _creationDateCell;
         private TableCell _authorCell;
-        private QuestionComposer _questionComposer;
 
         #endregion
 
@@ -28,49 +28,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             get { return int.Parse(Page.Request.QueryString[Constants.QuestionIdQueryString]); }
         }
 
-        public virtual string QuestionName
-        {
-            get { return _nameCell.Text; }
-            set { _nameCell.Text = value; }
-        }
-
-        public string QuestionCreationDate
-        {
-            get { return _creationDateCell.Text; }
-            set { _creationDateCell.Text = value; }
-        }
-
-        public string QuestionAuthor
-        {
-            get { return _authorCell.Text; }
-            set { _authorCell.Text = value; }
-        }
-
-        public string QuestionType
-        {
-            get { return _typeCell.Text; }
-            set { _typeCell.Text = value; }
-        }
-
-        public QuestionComposer QuestionComposer
-        {
-            get
-            {
-                if (_questionComposer == null)
-                {
-                    _questionComposer = new QuestionComposer()
-                        {
-                            QuestionLabelText = HttpContext.GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
-                            AnswerLabelText = HttpContext.GetGlobalResourceObject("Strings", "AnswerLabelText").ToString(),
-                            FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
-                            ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString(),
-                            IsVisibleLabelText = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString()
-                        };
-                }
-
-                return _questionComposer;
-            }
-        }
+        public Question QuestionToDisplay { get; set; }
 
         protected BasePresenter Presenter { get; set; }
 
@@ -90,7 +48,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             : base(HtmlTextWriterTag.Div)
         {
             DetailsTable = new Table();
-            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString() };
+            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
             CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
             QuestionEditorPlaceHolder = new PlaceHolder();
         }
@@ -142,11 +100,21 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            Presenter.SetQuestionDetails();
-            Presenter.SetQuestionContent();
-            if (_questionComposer != null)
+            Presenter.SetQuestion();
+
+            _creationDateCell.Text = QuestionToDisplay.CreationDate.ToShortDateString();
+            if (QuestionToDisplay.Author != null)
             {
-                QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
+                _authorCell.Text = QuestionToDisplay.Author.UserName;
+            }
+
+            if (QuestionToDisplay.QuestionType != null && !string.IsNullOrEmpty(QuestionToDisplay.QuestionType.Name))
+            {
+                _typeCell.Text = QuestionToDisplay.QuestionType.Name;
+            }
+            else
+            {
+                _typeCell.Text = string.Empty;
             }
         }
 

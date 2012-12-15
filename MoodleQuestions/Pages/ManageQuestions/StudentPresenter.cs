@@ -8,17 +8,18 @@ namespace MoodleQuestions.Pages.ManageQuestions
 {
     public class StudentPresenter : BasePresenter
     {
-        #region Fields
+        //#region Fields
 
-        private IStudentView _view;
+        //private IStudentView _view;
 
-        #endregion
+        //#endregion
 
         #region Constructors
 
         public StudentPresenter(IStudentView view)
+            : base(view)
         {
-            _view = view;
+            //_view = view;
         }
 
         #endregion
@@ -31,7 +32,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
             if (user != null)
             {
                 var userId = Guid.Parse(user.ProviderUserKey.ToString());
-                _view.QuestionGridDataSource = Model.GetUserQuestions(userId);
+                View.QuestionGridDataSource = Model.GetUserQuestions(userId);
             }
         }
 

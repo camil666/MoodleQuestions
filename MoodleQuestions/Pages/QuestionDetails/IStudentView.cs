@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -11,9 +12,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Properties
 
-        string QuestionRating { get; set; }
+        Question ChangedQuestion { get; }
 
-        bool IsEditable { get; set; }
+        bool QuestionIsVisible { get; }
+
+        //string QuestionRating { get; set; }
+
+        //bool IsEditable { get; set; }
 
         #endregion
     }

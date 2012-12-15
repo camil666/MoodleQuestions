@@ -11,7 +11,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Fields
 
-        private SupervisorPresenter _presenter;
+        //private SupervisorPresenter _presenter;
         private DropDownList _userDropDown;
 
         #endregion
@@ -38,7 +38,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         public SupervisorView()
         {
-            _presenter = new SupervisorPresenter(this);
+            Presenter = new SupervisorPresenter(this);
             _userDropDown = new DropDownList()
             {
                 DataTextField = "FullName",
@@ -63,10 +63,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             if (!Page.IsPostBack)
             {
-                _presenter.SetupUserDropDown();
+                (Presenter as SupervisorPresenter).SetupUserDropDown();
                 _userDropDown.DataBind();
                 _userDropDown.SelectedIndex = 0;
-                _presenter.SetupGrid();
+                Presenter.SetupGrid();
             }
 
             base.OnLoad(e);

@@ -168,6 +168,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\QuestionComposerScripts.js" />
+    <Content Include="Scripts\QuestionDetailsScripts.js" />
     <Content Include="Scripts\tiny_mce\langs\en.js" />
     <Content Include="Scripts\tiny_mce\license.txt" />
     <Content Include="Scripts\tiny_mce\plugins\advhr\css\advhr.css" />
@@ -514,6 +515,7 @@
     <Compile Include="Pages\ManageQuestions\IStudentView.cs" />
     <Compile Include="Pages\ManageQuestions\ISupervisorView.cs" />
     <Compile Include="Pages\ManageQuestions\Model.cs" />
+    <Compile Include="Pages\ManageQuestions\SelectionTemplate.cs" />
     <Compile Include="Pages\ManageQuestions\StudentPresenter.cs" />
     <Compile Include="Pages\ManageQuestions\StudentView.cs" />
     <Compile Include="Pages\ManageQuestions\SupervisorPresenter.cs" />
@@ -523,9 +525,11 @@
     <Compile Include="Pages\QuestionDetails\IBaseView.cs" />
     <Compile Include="Pages\QuestionDetails\ISupervisorView.cs" />
     <Compile Include="Pages\QuestionDetails\IStudentView.cs" />
-    <Compile Include="Pages\QuestionDetails\Model.cs" />
+    <Compile Include="Pages\QuestionDetails\BaseModel.cs" />
+    <Compile Include="Pages\QuestionDetails\StudentModel.cs" />
     <Compile Include="Pages\QuestionDetails\StudentPresenter.cs" />
     <Compile Include="Pages\QuestionDetails\StudentView.cs" />
+    <Compile Include="Pages\QuestionDetails\SupervisorModel.cs" />
     <Compile Include="Pages\QuestionDetails\SupervisorPresenter.cs" />
     <Compile Include="Pages\QuestionDetails\SupervisorView.cs" />
     <Compile Include="Pages\Raports\BaseView.cs" />
