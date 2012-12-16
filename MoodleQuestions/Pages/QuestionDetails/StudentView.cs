@@ -34,7 +34,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
-        public bool QuestionIsVisible 
+        public bool QuestionIsVisible
         {
             get
             {
@@ -52,7 +52,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
             _deleteButton = new Button()
             {
                 Text = HttpContext.GetGlobalResourceObject("Strings", "DeleteButtonText").ToString(),
-                PostBackUrl = "~/ManageQuestions.aspx",
                 OnClientClick = "if (!ConfirmDelete()) { return false; };"
             };
 
@@ -87,7 +86,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
                         FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
                         ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString(),
                         IsVisibleLabelText = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
-                        Question = QuestionToDisplay
+                        Question = QuestionToDisplay,
+                        FractionsValidationGroup = "Fractions"
                     };
 
                 QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
@@ -136,11 +136,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             (Presenter as StudentPresenter).SaveChanges();
+            Page.Response.Redirect("~/ManageQuestions.aspx");
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             (Presenter as StudentPresenter).DeleteQuestion(QuestionId);
+            Page.Response.Redirect("~/ManageQuestions.aspx");
         }
 
         #endregion

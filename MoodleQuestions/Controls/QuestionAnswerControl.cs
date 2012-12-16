@@ -67,7 +67,7 @@ namespace MoodleQuestions.Controls
         {
             _fractionLabel = new Label();
             _answerLabel = new Label();
-            _fractionDropDown = new DropDownList() { CssClass = "FractionDropDownClass" };
+            _fractionDropDown = new DropDownList() { CssClass = FractionDropDownClass };
             _answerTextBox = new TextBox { TextMode = TextBoxMode.MultiLine };
         }
 

@@ -25,6 +25,8 @@ namespace MoodleQuestions.Controls
 
         #region Properties
 
+        public string FractionsValidationGroup { get; set; }
+
         public bool AnonymousMode { get; set; }
 
         public bool IsVisible
@@ -114,6 +116,11 @@ namespace MoodleQuestions.Controls
                 Display = ValidatorDisplay.Dynamic,
                 ClientValidationFunction = "Answers.ValidateSum"
             };
+
+            if (!string.IsNullOrEmpty(FractionsValidationGroup))
+            {
+                _validator.ValidationGroup = FractionsValidationGroup;
+            }
         }
 
         #endregion
@@ -129,7 +136,7 @@ namespace MoodleQuestions.Controls
                 Controls.Add(_isVisibleCheckbox);
                 Controls.Add(new LiteralControl("<br><br>"));
             }
-            
+
             Controls.Add(_questionLabel);
             Controls.Add(_questionContentTextBox);
             Controls.Add(new LiteralControl("<br>"));
@@ -178,6 +185,8 @@ namespace MoodleQuestions.Controls
             }
 
             BindFractionDropDowns();
+
+            Controls.Add(_validator);
         }
 
         private void BindFractionDropDowns()

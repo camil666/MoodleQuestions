@@ -30,7 +30,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public void SetupCategoryDropDown()
         {
-            _view.QuestionCategoryDataSource = (Model as SupervisorModel).GetQuestionCategories();
+            var questionCategories = (Model as SupervisorModel).GetQuestionCategories().ToList();
+            questionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
+            _view.QuestionCategoryDataSource = questionCategories;
         }
 
         public void SaveChanges()

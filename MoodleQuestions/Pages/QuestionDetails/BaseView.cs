@@ -48,7 +48,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             : base(HtmlTextWriterTag.Div)
         {
             DetailsTable = new Table();
-            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
+            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString() };
             CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
             QuestionEditorPlaceHolder = new PlaceHolder();
         }
@@ -99,22 +99,29 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
-            Presenter.SetQuestion();
+            try
+            {
+                base.OnLoad(e);
+                Presenter.SetQuestion();
 
-            _creationDateCell.Text = QuestionToDisplay.CreationDate.ToString();
-            if (QuestionToDisplay.Author != null)
-            {
-                _authorCell.Text = QuestionToDisplay.Author.UserName;
-            }
+                _creationDateCell.Text = QuestionToDisplay.CreationDate.ToString();
+                if (QuestionToDisplay.Author != null)
+                {
+                    _authorCell.Text = QuestionToDisplay.Author.UserName;
+                }
 
-            if (QuestionToDisplay.QuestionType != null && !string.IsNullOrEmpty(QuestionToDisplay.QuestionType.Name))
-            {
-                _typeCell.Text = QuestionToDisplay.QuestionType.Name;
+                if (QuestionToDisplay.QuestionType != null && !string.IsNullOrEmpty(QuestionToDisplay.QuestionType.Name))
+                {
+                    _typeCell.Text = QuestionToDisplay.QuestionType.Name;
+                }
+                else
+                {
+                    _typeCell.Text = string.Empty;
+                }
             }
-            else
+            catch (Exception)
             {
-                _typeCell.Text = string.Empty;
+                Page.Response.Redirect("~/");
             }
         }
 

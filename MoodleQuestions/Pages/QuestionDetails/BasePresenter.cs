@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using MoodleQuestions.Controls;
 using QuestionsDAL;
 
@@ -34,7 +35,16 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public void SetQuestion()
         {
-            _view.QuestionToDisplay = Model.GetQuestion(_view.QuestionId);
+            var loggedUserId = (Guid)Membership.GetUser().ProviderUserKey;
+            var question = Model.GetQuestion(_view.QuestionId);
+            if (loggedUserId == question.AuthorId || PermissionHelper.UserIsSupervisor)
+            {
+                _view.QuestionToDisplay = question;
+            }
+            else
+            {
+                _view.QuestionToDisplay = null;
+            }
         }
 
         #endregion

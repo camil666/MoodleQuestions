@@ -32,7 +32,12 @@ namespace MoodleQuestions.Pages.QuestionDetails
                 int result;
                 if (int.TryParse(_categoryDropDown.SelectedItem.Value, out result) == true)
                 {
-                    return result;
+                    if (result != 0)
+                    {
+                        return result;
+                    }
+
+                    return null;
                 }
                 else
                 {
@@ -101,6 +106,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
+
             if (!Page.IsPostBack)
             {
                 _categoryDropDown.DataTextField = "Name";
@@ -109,33 +116,33 @@ namespace MoodleQuestions.Pages.QuestionDetails
                 _categoryDropDown.DataBind();
                 _ratingDropDown.DataSource = new string[] { "-", "2", "3", "4", "5" };
                 _ratingDropDown.DataBind();
-            }
 
-            base.OnLoad(e);
+                if (!string.IsNullOrEmpty(QuestionToDisplay.Name))
+                {
+                    _nameTextBox.Text = QuestionToDisplay.Name;
+                }
+
+                if (QuestionToDisplay.Rating != null)
+                {
+                    SelectedRating = QuestionToDisplay.Rating.Value;
+                }
+
+                if (QuestionToDisplay.CategoryId != null)
+                {
+                    _categoryDropDown.Items.FindByValue(QuestionToDisplay.CategoryId.ToString()).Selected = true;
+                }
+            }
 
             QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
             {
                 Question = QuestionToDisplay
             });
-
-            if (!string.IsNullOrEmpty(QuestionToDisplay.Name))
-            {
-                _nameTextBox.Text = QuestionToDisplay.Name;
-            }
-            else
-            {
-                _nameTextBox.Text = string.Empty;
-            }
-
-            if (QuestionToDisplay.Rating != null)
-            {
-                SelectedRating = QuestionToDisplay.Rating.Value;
-            }
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             (Presenter as SupervisorPresenter).SaveChanges();
+            Page.Response.Redirect("~/ManageQuestions.aspx");
         }
 
         #endregion
