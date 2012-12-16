@@ -76,6 +76,7 @@ namespace MoodleQuestions.Controls
         {
             base.OnLoad(e);
             Page.ClientScript.RegisterClientScriptInclude("DatePickersScripts", ResolveClientUrl("~/Scripts/DatePickersScripts.js"));
+            Page.ClientScript.RegisterClientScriptInclude("DatePickerLocalization", ResolveClientUrl("~/Scripts/jquery.ui.datepicker-pl.js"));
         }
 
         #endregion
