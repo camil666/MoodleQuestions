@@ -23,9 +23,9 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Methods
 
-        public void SetupRepeater()
+        public void DisplayViewableQuestions()
         {
-            _view.QuestionRepeaterDataSource = _model.GetViewableQuestions();
+            _view.QuestionRepeaterDataSource = _model.GetViewableQuestions(_view.StartDate, _view.EndDate);
         }
 
         public XElement GenerateXML()

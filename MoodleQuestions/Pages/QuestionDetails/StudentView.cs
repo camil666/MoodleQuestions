@@ -26,7 +26,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
             get
             {
                 if (_questionComposer != null)
+                {
                     return _questionComposer.Question;
+                }
 
                 return null;
             }
@@ -111,7 +113,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
                         Question = QuestionToDisplay
                     });
             }
-
 
             if (QuestionToDisplay.Rating != null)
             {

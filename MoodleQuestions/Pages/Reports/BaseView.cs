@@ -4,20 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MoodleQuestions.Controls;
 
-namespace MoodleQuestions.Pages.Raports
+namespace MoodleQuestions.Pages.Reports
 {
     public class BaseView : WebControl, IBaseView
     {
         #region Fields
 
         private BasePresenter _presenter;
-        private TextBox _startDateTextBox;
-        private TextBox _endDateTextBox;
         private TableCell _questionCountCell;
         private TableCell _ratedQuestionCountCell;
         private TableCell _unratedQuestionCountCell;
         private TableCell _ratingCell;
+        private DateFilter _dateFilter;
 
         #endregion
 
@@ -50,30 +50,12 @@ namespace MoodleQuestions.Pages.Raports
 
         public DateTime? StartDate
         {
-            get
-            {
-                DateTime date;
-                if (DateTime.TryParse(_startDateTextBox.Text, out date) == true)
-                {
-                    return date;
-                }
-
-                return null;
-            }
+            get { return _dateFilter.StartDate; }
         }
 
         public DateTime? EndDate
         {
-            get
-            {
-                DateTime date;
-                if (DateTime.TryParse(_endDateTextBox.Text, out date) == true)
-                {
-                    return date;
-                }
-
-                return null;
-            }
+            get { return _dateFilter.EndDate; }
         }
 
         #endregion
@@ -83,8 +65,7 @@ namespace MoodleQuestions.Pages.Raports
         public BaseView()
             : base(HtmlTextWriterTag.Div)
         {
-            _startDateTextBox = new TextBox() { ID = "startDateTextBox", ClientIDMode = ClientIDMode.Static };
-            _endDateTextBox = new TextBox() { ID = "endDateTextBox", ClientIDMode = ClientIDMode.Static };
+            _dateFilter = new DateFilter();
             _presenter = new BasePresenter(this);
         }
 
@@ -95,12 +76,7 @@ namespace MoodleQuestions.Pages.Raports
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "StartDateLabelText").ToString(), Width = 180 });
-            Controls.Add(_startDateTextBox);
-            Controls.Add(new LiteralControl("<br>"));
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "EndDateLabelText").ToString(), Width = 180 });
-            Controls.Add(_endDateTextBox);
-            Controls.Add(new LiteralControl("<br>"));
+            Controls.Add(_dateFilter);
 
             var searchButton = new Button()
             {
@@ -137,12 +113,6 @@ namespace MoodleQuestions.Pages.Raports
             ratingRow.Cells.Add(_ratingCell);
 
             Controls.Add(detailsTable);
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            Page.ClientScript.RegisterClientScriptInclude("DatePickersScripts", ResolveClientUrl("~/Scripts/DatePickersScripts.js"));
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

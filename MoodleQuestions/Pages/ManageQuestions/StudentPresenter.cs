@@ -8,18 +8,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
 {
     public class StudentPresenter : BasePresenter
     {
-        //#region Fields
-
-        //private IStudentView _view;
-
-        //#endregion
-
         #region Constructors
 
         public StudentPresenter(IStudentView view)
             : base(view)
         {
-            //_view = view;
         }
 
         #endregion

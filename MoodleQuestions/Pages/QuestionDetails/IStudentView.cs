@@ -16,10 +16,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         bool QuestionIsVisible { get; }
 
-        //string QuestionRating { get; set; }
-
-        //bool IsEditable { get; set; }
-
         #endregion
     }
 }

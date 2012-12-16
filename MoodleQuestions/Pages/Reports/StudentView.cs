@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace MoodleQuestions.Pages.Raports
+namespace MoodleQuestions.Pages.Reports
 {
     public class StudentView : BaseView
     {

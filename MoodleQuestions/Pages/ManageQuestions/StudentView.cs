@@ -10,12 +10,6 @@ namespace MoodleQuestions.Pages.ManageQuestions
 {
     public class StudentView : BaseView, IStudentView
     {
-        #region Fields
-
-        //protected StudentPresenter _presenter { get; set; }
-
-        #endregion
-
         #region Constructors
 
         public StudentView()

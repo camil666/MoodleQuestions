@@ -14,16 +14,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         int QuestionId { get; }
 
-        //string QuestionName { get; set; }
-
-        //string QuestionType { get; set; }
-
-        //string QuestionCreationDate { get; set; }
-
-        //string QuestionAuthor { get; set; }
-
-        //QuestionViewer QuestionViewer { get; }
-
         Question QuestionToDisplay { get; set; }
 
         #endregion

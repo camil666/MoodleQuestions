@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,7 +11,6 @@ namespace MoodleQuestions.Pages.CreateQuestion
     {
         #region Fields
 
-        private BasePresenter _presenter;
         private Label _answerCountLabel;
         private DropDownList _answerCountDropDown;
         private Button _generateXmlButton;
@@ -21,6 +18,8 @@ namespace MoodleQuestions.Pages.CreateQuestion
         #endregion
 
         #region Properties
+
+        protected Presenter Presenter { get; set; }
 
         protected QuestionComposer QuestionComposerControl { get; set; }
 
@@ -31,7 +30,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
         public BaseView()
             : base(HtmlTextWriterTag.Div)
         {
-            _presenter = new BasePresenter(this);
+            Presenter = new Presenter(this);
             _answerCountLabel = new Label()
             {
                 Text = HttpContext.GetGlobalResourceObject("Strings", "AnswerCountDropDownLabel").ToString()
@@ -61,16 +60,12 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #endregion
 
-        #region IView Methods
+        #region Methods
 
         public Question GetQuestion()
         {
             return QuestionComposerControl.Question;
         }
-
-        #endregion
-
-        #region Methods
 
         protected override void OnInit(EventArgs e)
         {
@@ -96,7 +91,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         protected void GenerateXMLButton_Click(object sender, EventArgs e)
         {
-            var xml = _presenter.GenerateXML();
+            var xml = Presenter.GenerateXML();
             Page.Response.ContentType = "text/xml";
             Page.Response.AppendHeader("content-disposition", "attachment;filename=Question.xml");
             xml.Save(Page.Response.OutputStream);

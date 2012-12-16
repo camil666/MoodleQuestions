@@ -10,13 +10,22 @@ namespace MoodleQuestions.Pages.ViewQuestions
     {
         #region Methods
 
-        public IEnumerable<Question> GetViewableQuestions()
+        public IEnumerable<Question> GetViewableQuestions(DateTime? startDate, DateTime? endDate)
         {
             using (var context = new Entities())
             {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where item.IsVisible == true && item.IsDeleted == false
-                        select item).ToList();
+                if (startDate == null || endDate == null)
+                {
+                    return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
+                            where item.IsVisible == true && item.IsDeleted == false
+                            select item).ToList();
+                }
+                else
+                {
+                    return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
+                            where item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false && item.IsVisible == true
+                            select item).ToList();
+                }
             }
         }
 
@@ -25,7 +34,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
             using (var context = new Entities())
             {
                 return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where questionIds.Contains(item.Id)
+                        where questionIds.Contains(item.Id) && item.IsDeleted == false
                         select item).ToList();
             }
         }

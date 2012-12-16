@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MoodleQuestions.Pages.Raports
+namespace MoodleQuestions.Pages.Reports
 {
     public class SupervisorPresenter : BasePresenter
     {

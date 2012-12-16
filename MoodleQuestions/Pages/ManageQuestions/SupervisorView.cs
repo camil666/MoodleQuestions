@@ -11,7 +11,6 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Fields
 
-        //private SupervisorPresenter _presenter;
         private DropDownList _userDropDown;
 
         #endregion

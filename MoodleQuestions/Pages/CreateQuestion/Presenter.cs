@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using QuestionsDAL;
+﻿using System.Xml.Linq;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public class LoggedUserPresenter
+    public class Presenter
     {
         #region Fields
 
-        private IView _view;
-        private Model _model;
+        protected IView _view;
+        protected Model _model;
 
         #endregion
 
         #region Constructors
 
-        public LoggedUserPresenter(IView view)
+        public Presenter(IView view)
         {
             _view = view;
             _model = new Model();
@@ -31,6 +27,13 @@ namespace MoodleQuestions.Pages.CreateQuestion
         {
             var question = _view.GetQuestion();
             _model.SaveQuestion(question);
+        }
+
+        public XElement GenerateXML()
+        {
+            var question = _view.GetQuestion();
+            var xmlGenerator = new XmlGenerator();
+            return xmlGenerator.GenerateXml(question);
         }
 
         #endregion

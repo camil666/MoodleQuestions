@@ -288,6 +288,9 @@
   <data name="QuestionLabelText" xml:space="preserve">
     <value>Pytanie:</value>
   </data>
+  <data name="QuestionsNotFound" xml:space="preserve">
+    <value>Nie znaleziono pytań</value>
+  </data>
   <data name="QuestionViewCheckboxText" xml:space="preserve">
     <value>Zaznacz pytanie</value>
   </data>

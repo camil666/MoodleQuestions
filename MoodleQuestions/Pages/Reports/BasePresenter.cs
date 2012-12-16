@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MoodleQuestions.Pages.Raports
+namespace MoodleQuestions.Pages.Reports
 {
     public class BasePresenter
     {
         #region Properties
 
-        protected Model Model;
-        protected IBaseView View;
+        protected Model Model { get; set; }
+
+        protected IBaseView View { get; set; }
 
         #endregion
 

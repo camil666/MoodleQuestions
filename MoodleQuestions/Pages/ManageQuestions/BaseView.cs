@@ -42,7 +42,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
             set { _questionGridView.DataSource = value; }
         }
 
-        protected BasePresenter Presenter;
+        protected BasePresenter Presenter { get; set; }
 
         #endregion
 

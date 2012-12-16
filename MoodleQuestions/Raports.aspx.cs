@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI;
-using MoodleQuestions.Pages.Raports;
+using MoodleQuestions.Pages.Reports;
 
 namespace MoodleQuestions
 {

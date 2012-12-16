@@ -7,18 +7,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
 {
     public class SupervisorPresenter : BasePresenter
     {
-        //#region Fields
-
-        //private ISupervisorView _view;
-
-        //#endregion
-
         #region Constructors
 
         public SupervisorPresenter(ISupervisorView view)
             : base(view)
         {
-            //_view = view;
         }
 
         #endregion
@@ -29,7 +22,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             (View as ISupervisorView).UserDropDownDataSource = Model.GetUsers();
         }
-        //TODO: zrobic finda z kilkoma filtrami (do przemyslenia)?
+
         public override void SetupGrid()
         {
             var userid = (View as ISupervisorView).SelectedStudentId;

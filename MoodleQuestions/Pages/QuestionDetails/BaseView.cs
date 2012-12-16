@@ -102,7 +102,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             base.OnLoad(e);
             Presenter.SetQuestion();
 
-            _creationDateCell.Text = QuestionToDisplay.CreationDate.ToShortDateString();
+            _creationDateCell.Text = QuestionToDisplay.CreationDate.ToString();
             if (QuestionToDisplay.Author != null)
             {
                 _authorCell.Text = QuestionToDisplay.Author.UserName;

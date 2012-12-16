@@ -574,6 +574,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nie znaleziono pytań.
+        /// </summary>
+        internal static string QuestionsNotFound {
+            get {
+                return ResourceManager.GetString("QuestionsNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zaznacz pytanie.
         /// </summary>
         internal static string QuestionViewCheckboxText {

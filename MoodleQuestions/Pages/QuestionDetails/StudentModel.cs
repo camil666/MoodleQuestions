@@ -30,19 +30,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
-        //public void DeleteQuestion(int id)
-        //{
-        //    using (var context = new Entities())
-        //    {
-        //        var selectedQuestion = (from item in context.Questions.Include("QuestionCategory").Include("QuestionAnswers")
-        //                                where item.Id == id
-        //                                select item).FirstOrDefault();
-
-        //        context.Questions.Remove(selectedQuestion);
-        //        context.SaveChanges();
-        //    }
-        //}
-
         #endregion
     }
 }
