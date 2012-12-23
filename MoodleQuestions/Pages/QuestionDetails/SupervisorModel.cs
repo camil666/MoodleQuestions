@@ -6,7 +6,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class SupervisorModel : BaseModel
+    public class SupervisorModel : Model
     {
         #region Methods
 

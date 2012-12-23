@@ -6,7 +6,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class StudentModel : BaseModel
+    public class StudentModel : Model
     {
         #region Methods
 

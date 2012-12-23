@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dodaj kategorię.
+        /// </summary>
+        internal static string AddCategoryLabelText {
+            get {
+                return ResourceManager.GetString("AddCategoryLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wszyscy.
         /// </summary>
         internal static string AllStudentsText {
@@ -264,6 +273,15 @@ namespace Resources {
         internal static string DeleteButtonText {
             get {
                 return ResourceManager.GetString("DeleteButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuń kategorię.
+        /// </summary>
+        internal static string DeleteCategoryLabelText {
+            get {
+                return ResourceManager.GetString("DeleteCategoryLabelText", resourceCulture);
             }
         }
         
@@ -525,6 +543,15 @@ namespace Resources {
         internal static string NameLabelText {
             get {
                 return ResourceManager.GetString("NameLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowa kategoria:.
+        /// </summary>
+        internal static string NewCategoryLabelText {
+            get {
+                return ResourceManager.GetString("NewCategoryLabelText", resourceCulture);
             }
         }
         

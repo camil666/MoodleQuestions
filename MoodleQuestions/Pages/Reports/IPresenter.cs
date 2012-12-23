@@ -5,11 +5,11 @@ using System.Text;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public interface ISupervisorView : IView
+    public interface IPresenter
     {
-        #region Properties
+        #region Methods
 
-        object DropDownDataSource { get; set; }
+        void DisplayUserReport();
 
         #endregion
     }

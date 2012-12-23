@@ -4,29 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using MoodleQuestions.Controls;
+using MoodleQuestions.Generics;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class BasePresenter
+    public abstract class Presenter<TView, TModel> : GenericPresenter<TView, TModel>, IPresenter
+        where TView : IView
+        where TModel : Model, new()
     {
-        #region Fields
-
-        private IBaseView _view;
-
-        #endregion
-
-        #region Properties
-
-        protected BaseModel Model { get; set; }
-
-        #endregion
-
         #region Constructors
 
-        public BasePresenter(IBaseView view)
+        public Presenter(TView view)
+            : base(view)
         {
-            _view = view;
         }
 
         #endregion
@@ -36,14 +27,14 @@ namespace MoodleQuestions.Pages.QuestionDetails
         public void SetQuestion()
         {
             var loggedUserId = (Guid)Membership.GetUser().ProviderUserKey;
-            var question = Model.GetQuestion(_view.QuestionId);
+            var question = Model.GetQuestion(View.QuestionId);
             if (loggedUserId == question.AuthorId || PermissionHelper.UserIsSupervisor)
             {
-                _view.QuestionToDisplay = question;
+                View.QuestionToDisplay = question;
             }
             else
             {
-                _view.QuestionToDisplay = null;
+                View.QuestionToDisplay = null;
             }
         }
 

@@ -8,7 +8,7 @@ using MoodleQuestions.Controls;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class SupervisorView : BaseView, ISupervisorView
+    public class SupervisorView : View<SupervisorPresenter>, ISupervisorView
     {
         #region Fields
 

@@ -7,21 +7,13 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class SupervisorPresenter : BasePresenter
+    public class SupervisorPresenter : Presenter<ISupervisorView, SupervisorModel>
     {
-        #region Fields
-
-        private ISupervisorView _view;
-
-        #endregion
-
         #region Constructors
 
         public SupervisorPresenter(ISupervisorView view)
             : base(view)
         {
-            _view = view;
-            Model = new SupervisorModel();
         }
 
         #endregion
@@ -30,22 +22,22 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public void SetupCategoryDropDown()
         {
-            var questionCategories = (Model as SupervisorModel).GetQuestionCategories().ToList();
+            var questionCategories = Model.GetQuestionCategories().ToList();
 
             CategoryHelper.ConcatCategoryName(questionCategories);
 
             questionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
-            _view.QuestionCategoryDataSource = questionCategories;
+            View.QuestionCategoryDataSource = questionCategories;
         }
 
         public void SaveChanges()
         {
             var newQuestion = new Question()
             {
-                Id = _view.QuestionId,
-                Name = _view.QuestionName,
-                Rating = _view.SelectedRating,
-                CategoryId = _view.QuestionCategoryId
+                Id = View.QuestionId,
+                Name = View.QuestionName,
+                Rating = View.SelectedRating,
+                CategoryId = View.QuestionCategoryId
             };
 
             Model.SaveChanges(newQuestion);

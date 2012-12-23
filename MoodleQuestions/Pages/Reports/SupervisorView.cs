@@ -7,12 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public class SupervisorView : BaseView, ISupervisorView
+    public class SupervisorView : View<SupervisorPresenter>, ISupervisorView
     {
         #region Fields
 
         private DropDownList _userDropDown;
-        private SupervisorPresenter _presenter;
 
         #endregion
 
@@ -44,7 +43,7 @@ namespace MoodleQuestions.Pages.Reports
                 DataValueField = "Id"
             };
 
-            _presenter = new SupervisorPresenter(this);
+            Presenter = new SupervisorPresenter(this);
         }
 
         #endregion
@@ -61,7 +60,7 @@ namespace MoodleQuestions.Pages.Reports
 
             if (!Page.IsPostBack)
             {
-                _presenter.SetupDropDown();
+                Presenter.SetupDropDown();
                 var students = (DropDownDataSource as IEnumerable<Student>).ToList();
                 students.Insert(0, new Student(HttpContext.GetGlobalResourceObject("Strings", "AllStudentsText").ToString(), Guid.Empty));
                 DropDownDataSource = students;

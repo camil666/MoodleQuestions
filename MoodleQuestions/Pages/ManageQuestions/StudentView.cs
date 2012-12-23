@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public class StudentView : BaseView, IStudentView
+    public class StudentView : View<StudentPresenter>, IStudentView
     {
         #region Constructors
 

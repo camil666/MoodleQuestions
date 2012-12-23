@@ -9,21 +9,13 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class StudentPresenter : BasePresenter
+    public class StudentPresenter : Presenter<IStudentView, StudentModel>
     {
-        #region Fields
-
-        private IStudentView _view;
-
-        #endregion
-
         #region Constructors
 
         public StudentPresenter(IStudentView view)
             : base(view)
         {
-            _view = view;
-            Model = new StudentModel();
         }
 
         #endregion
@@ -32,15 +24,15 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public void SaveChanges()
         {
-            var newQuestion = _view.ChangedQuestion;
+            var newQuestion = View.ChangedQuestion;
             if (newQuestion != null)
             {
-                newQuestion.Id = _view.QuestionId;
+                newQuestion.Id = View.QuestionId;
             }
             else
             {
-                newQuestion = Model.GetQuestion(_view.QuestionId);
-                newQuestion.IsVisible = _view.QuestionIsVisible;
+                newQuestion = Model.GetQuestion(View.QuestionId);
+                newQuestion.IsVisible = View.QuestionIsVisible;
             }
 
             Model.SaveChanges(newQuestion);

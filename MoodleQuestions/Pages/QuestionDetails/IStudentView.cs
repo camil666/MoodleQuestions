@@ -8,7 +8,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public interface IStudentView : IBaseView
+    public interface IStudentView : IView
     {
         #region Properties
 

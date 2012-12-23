@@ -9,7 +9,8 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public abstract class BaseView : WebControl, IBaseView
+    public abstract class View<TPresenter> : WebControl, IView
+        where TPresenter : IPresenter
     {
         #region Fields
 
@@ -30,7 +31,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public Question QuestionToDisplay { get; set; }
 
-        protected BasePresenter Presenter { get; set; }
+        protected TPresenter Presenter { get; set; }
 
         protected PlaceHolder QuestionEditorPlaceHolder { get; private set; }
 
@@ -44,7 +45,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Constructors
 
-        public BaseView()
+        public View()
             : base(HtmlTextWriterTag.Div)
         {
             DetailsTable = new Table();

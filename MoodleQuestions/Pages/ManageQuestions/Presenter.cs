@@ -3,34 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
+using MoodleQuestions.Generics;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public class BasePresenter
+    public abstract class Presenter<TView, TModel> : GenericPresenter<TView, TModel>, IPresenter
+        where TView : IView
+        where TModel : Model, new()
     {
-        #region Properties
-
-        protected Model Model { get; set; }
-
-        protected IBaseView View { get; private set; }
-
-        #endregion
-
         #region Constructors
 
-        public BasePresenter(IBaseView view)
+        public Presenter(TView view)
+            : base(view)
         {
-            Model = new Model();
-            View = view;
         }
 
         #endregion
 
         #region Methods
-
-        public virtual void SetupGrid()
-        {
-        }
 
         public XElement GenerateXml()
         {

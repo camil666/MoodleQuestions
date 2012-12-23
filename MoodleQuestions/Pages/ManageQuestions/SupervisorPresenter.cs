@@ -6,7 +6,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public class SupervisorPresenter : BasePresenter
+    public class SupervisorPresenter : Presenter<ISupervisorView, Model>
     {
         #region Constructors
 
@@ -21,7 +21,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         public void SetupUserDropDown()
         {
-            (View as ISupervisorView).UserDropDownDataSource = Model.GetUsers();
+            View.UserDropDownDataSource = Model.GetUsers();
         }
 
         public void SetupCategoryDropDown()
@@ -31,12 +31,12 @@ namespace MoodleQuestions.Pages.ManageQuestions
             CategoryHelper.ConcatCategoryName(questionCategories);
 
             questionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
-            (View as ISupervisorView).CategoryDropDownDataSource = questionCategories;
+            View.CategoryDropDownDataSource = questionCategories;
         }
 
-        public override void SetupGrid()
+        public void SetupGrid()
         {
-            var userid = (View as ISupervisorView).SelectedStudentId;
+            var userid = View.SelectedStudentId;
             View.QuestionGridDataSource = Model.GetUserQuestions(userid);
         }
 

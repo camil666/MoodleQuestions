@@ -5,12 +5,7 @@ using System.Text;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public interface ISupervisorView : IView
+    public interface IStudentView : IView
     {
-        #region Properties
-
-        object DropDownDataSource { get; set; }
-
-        #endregion
     }
 }

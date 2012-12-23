@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public interface ISupervisorView : IBaseView
+    public interface ISupervisorView : IView
     {
         #region Properties
 

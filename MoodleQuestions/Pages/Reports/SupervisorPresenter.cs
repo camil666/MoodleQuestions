@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public class SupervisorPresenter : BasePresenter
+    public class SupervisorPresenter : Presenter<ISupervisorView, Model>
     {
         #region Constructors
 
@@ -20,7 +20,7 @@ namespace MoodleQuestions.Pages.Reports
 
         public void SetupDropDown()
         {
-            (View as ISupervisorView).DropDownDataSource = Model.GetStudents();
+            View.DropDownDataSource = Model.GetStudents();
         }
 
         #endregion

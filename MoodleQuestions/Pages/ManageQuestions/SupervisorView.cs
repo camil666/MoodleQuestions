@@ -7,12 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public class SupervisorView : BaseView, ISupervisorView
+    public class SupervisorView : View<SupervisorPresenter>, ISupervisorView
     {
         #region Fields
 
         private DropDownList _userDropDown;
         private DropDownList _categoryDropDown;
+        private TextBox _newCategoryTextBox;
 
         #endregion
 
@@ -58,6 +59,8 @@ namespace MoodleQuestions.Pages.ManageQuestions
                 DataTextField = "Name",
                 DataValueField = "Id"
             };
+
+            _newCategoryTextBox = new TextBox();
         }
 
         #endregion
@@ -69,19 +72,52 @@ namespace MoodleQuestions.Pages.ManageQuestions
             Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "UserDropDownLabel").ToString() });
             Controls.Add(_userDropDown);
             base.OnInit(e);
+            Controls.Add(new LiteralControl("<br>"));
+            Controls.Add(new LiteralControl("<br>"));
+            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "CategoryLabelText").ToString() });
+            Controls.Add(_categoryDropDown);
+            Controls.Add(new LiteralControl("<br>"));
+            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "NewCategoryLabelText").ToString() });
+            Controls.Add(_newCategoryTextBox);
+            Controls.Add(new LiteralControl("<br>"));
+            var addCategoryButton = new Button()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "AddCategoryLabelText").ToString()
+            };
+
+            addCategoryButton.Click += AddCategoryButton_Click;
+            Controls.Add(addCategoryButton);
+
+            var deleteCategoryButton = new Button()
+            {
+                Text = HttpContext.GetGlobalResourceObject("Strings", "DeleteCategoryLabelText").ToString()
+            };
+
+            Controls.Add(deleteCategoryButton);
+            deleteCategoryButton.Click += DeleteCategoryButton_Click;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                (Presenter as SupervisorPresenter).SetupUserDropDown();
+                Presenter.SetupUserDropDown();
                 _userDropDown.DataBind();
                 _userDropDown.SelectedIndex = 0;
                 Presenter.SetupGrid();
             }
 
             base.OnLoad(e);
+        }
+
+        private void DeleteCategoryButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddCategoryButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

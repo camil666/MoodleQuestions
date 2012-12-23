@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public interface ISupervisorView : IBaseView
+    public interface ISupervisorView : IView
     {
         #region Properties
 

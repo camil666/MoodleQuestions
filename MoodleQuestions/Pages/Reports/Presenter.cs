@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MoodleQuestions.Generics;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public class BasePresenter
+    public abstract class Presenter<TView, TModel> : GenericPresenter<TView, TModel>, IPresenter
+        where TView : IView
+        where TModel : Model, new()
     {
-        #region Properties
-
-        protected Model Model { get; set; }
-
-        protected IBaseView View { get; set; }
-
-        #endregion
-
         #region Constructors
 
-        public BasePresenter(IBaseView view)
+        public Presenter(TView view)
+            : base(view)
         {
-            View = view;
-            Model = new Model();
         }
 
         #endregion

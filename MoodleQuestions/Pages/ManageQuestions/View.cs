@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public class BaseView : WebControl, IBaseView
+    public abstract class View<TPresenter> : WebControl, IView
+        where TPresenter : IPresenter
     {
         #region Fields
 
@@ -42,13 +43,13 @@ namespace MoodleQuestions.Pages.ManageQuestions
             set { _questionGridView.DataSource = value; }
         }
 
-        protected BasePresenter Presenter { get; set; }
+        protected TPresenter Presenter { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public BaseView()
+        public View()
             : base(HtmlTextWriterTag.Div)
         {
             _questionGridView = new GridView()

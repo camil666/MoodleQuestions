@@ -6,8 +6,17 @@ using System.Web.Security;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public class StudentView : BaseView
+    public class StudentView : View<StudentPresenter>, IStudentView
     {
+        #region Construtors
+
+        public StudentView()
+        {
+            Presenter = new StudentPresenter(this);
+        }
+
+        #endregion
+
         #region Properties
 
         public override Guid SelectedStudentId

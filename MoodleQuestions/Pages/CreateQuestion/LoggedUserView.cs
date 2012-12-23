@@ -4,7 +4,7 @@ using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public class LoggedUserView : BaseView
+    public class LoggedUserView : View
     {
         #region Fields
 

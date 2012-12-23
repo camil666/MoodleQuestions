@@ -8,11 +8,11 @@ using MoodleQuestions.Controls;
 
 namespace MoodleQuestions.Pages.Reports
 {
-    public class BaseView : WebControl, IBaseView
+    public abstract class View<TPresenter> : WebControl, IView
+        where TPresenter : IPresenter
     {
         #region Fields
 
-        private BasePresenter _presenter;
         private TableCell _questionCountCell;
         private TableCell _ratedQuestionCountCell;
         private TableCell _unratedQuestionCountCell;
@@ -58,15 +58,16 @@ namespace MoodleQuestions.Pages.Reports
             get { return _dateFilter.EndDate; }
         }
 
+        protected TPresenter Presenter { get; set; }
+
         #endregion
 
         #region Constructors
 
-        public BaseView()
+        public View()
             : base(HtmlTextWriterTag.Div)
         {
             _dateFilter = new DateFilter();
-            _presenter = new BasePresenter(this);
         }
 
         #endregion
@@ -117,7 +118,7 @@ namespace MoodleQuestions.Pages.Reports
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            _presenter.DisplayUserReport();
+            Presenter.DisplayUserReport();
         }
 
         #endregion

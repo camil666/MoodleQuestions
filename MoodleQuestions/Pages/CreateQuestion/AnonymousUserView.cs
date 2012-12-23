@@ -1,6 +1,6 @@
 ﻿namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public class AnonymousUserView : BaseView
+    public class AnonymousUserView : View
     {
         #region Constructors
 

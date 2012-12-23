@@ -360,4 +360,13 @@
   <data name="AllStudentsText" xml:space="preserve">
     <value>Wszyscy</value>
   </data>
+  <data name="AddCategoryLabelText" xml:space="preserve">
+    <value>Dodaj kategorię</value>
+  </data>
+  <data name="DeleteCategoryLabelText" xml:space="preserve">
+    <value>Usuń kategorię</value>
+  </data>
+  <data name="NewCategoryLabelText" xml:space="preserve">
+    <value>Nowa kategoria:</value>
+  </data>
 </root>

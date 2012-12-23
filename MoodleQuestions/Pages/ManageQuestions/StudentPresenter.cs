@@ -6,7 +6,7 @@ using System.Web.Security;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
-    public class StudentPresenter : BasePresenter
+    public class StudentPresenter : Presenter<IStudentView, Model>
     {
         #region Constructors
 
@@ -19,7 +19,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Methods
 
-        public override void SetupGrid()
+        public void SetupGrid()
         {
             var user = Membership.GetUser();
             if (user != null)

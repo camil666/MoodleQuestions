@@ -7,7 +7,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
-    public class BaseView : WebControl, IView
+    public abstract class View : WebControl, IView
     {
         #region Fields
 
@@ -27,7 +27,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Constructors
 
-        public BaseView()
+        public View()
             : base(HtmlTextWriterTag.Div)
         {
             Presenter = new Presenter(this);

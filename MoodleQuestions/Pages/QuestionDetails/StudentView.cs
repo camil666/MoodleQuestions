@@ -9,7 +9,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class StudentView : BaseView, IStudentView
+    public class StudentView : View<StudentPresenter>, IStudentView
     {
         #region Fields
 
