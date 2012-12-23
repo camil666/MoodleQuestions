@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -23,7 +24,7 @@ namespace MoodleQuestions.Controls
             get
             {
                 DateTime date;
-                if (DateTime.TryParse(_startDateTextBox.Text, out date) == true)
+                if (DateTime.TryParseExact(_endDateTextBox.Text, "dd.mm.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                 {
                     return date;
                 }
@@ -37,7 +38,7 @@ namespace MoodleQuestions.Controls
             get
             {
                 DateTime date;
-                if (DateTime.TryParse(_endDateTextBox.Text, out date) == true)
+                if (DateTime.TryParseExact(_endDateTextBox.Text, "dd.mm.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                 {
                     return date;
                 }

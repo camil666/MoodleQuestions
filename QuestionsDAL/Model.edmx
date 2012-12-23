@@ -20,6 +20,10 @@
             <End Role="Questions" EntitySet="Questions" />
             <End Role="QuestionAnswers" EntitySet="QuestionAnswers" />
           </AssociationSet>
+          <AssociationSet Name="FK_QuestionCategories_QuestionCategories" Association="Model.Store.FK_QuestionCategories_QuestionCategories">
+            <End Role="QuestionCategories" EntitySet="QuestionCategories" />
+            <End Role="QuestionCategories1" EntitySet="QuestionCategories" />
+          </AssociationSet>
           <AssociationSet Name="FK_Questions_QuestionCategories" Association="Model.Store.FK_Questions_QuestionCategories">
             <End Role="QuestionCategories" EntitySet="QuestionCategories" />
             <End Role="Questions" EntitySet="Questions" />
@@ -118,6 +122,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="ParentCategoryId" Type="int" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -160,8 +165,8 @@
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="IsAnonymous" Type="bit" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UsersInRoles">
           <Key>
@@ -180,6 +185,18 @@
             </Principal>
             <Dependent Role="QuestionAnswers">
               <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionCategories_QuestionCategories">
+          <End Role="QuestionCategories" Type="Model.Store.QuestionCategories" Multiplicity="0..1" />
+          <End Role="QuestionCategories1" Type="Model.Store.QuestionCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuestionCategories1">
+              <PropertyRef Name="ParentCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,6 +374,10 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_QuestionCategories_QuestionCategories" Association="Model.FK_QuestionCategories_QuestionCategories">
+            <End Role="QuestionCategory" EntitySet="QuestionCategories" />
+            <End Role="QuestionCategory1" EntitySet="QuestionCategories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Applications">
           <Key>
@@ -423,6 +444,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Questions" Relationship="Model.FK_Questions_QuestionCategories" FromRole="QuestionCategories" ToRole="Questions" />
+          <Property Type="Int32" Name="ParentCategoryId" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -477,8 +499,8 @@
           <NavigationProperty Name="Profiles" Relationship="Model.UserProfile" FromRole="Users" ToRole="Profiles" />
           <NavigationProperty Name="Questions" Relationship="Model.FK_Questions_Users" FromRole="Users" ToRole="Questions" />
           <NavigationProperty Name="Roles" Relationship="Model.UsersInRoles" FromRole="Users" ToRole="Roles" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="MembershipApplication">
           <End Role="Applications" Type="Model.Applications" Multiplicity="1" />
@@ -592,6 +614,18 @@
           <End Role="Roles" Type="Model.Roles" Multiplicity="*" />
           <End Role="Users" Type="Model.Users" Multiplicity="*" />
         </Association>
+        <Association Name="FK_QuestionCategories_QuestionCategories">
+          <End Type="Model.QuestionCategory" Role="QuestionCategory" Multiplicity="0..1" />
+          <End Type="Model.QuestionCategory" Role="QuestionCategory1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuestionCategory1">
+              <PropertyRef Name="ParentCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -656,6 +690,7 @@
           <EntitySetMapping Name="QuestionCategories">
             <EntityTypeMapping TypeName="Model.QuestionCategory">
               <MappingFragment StoreEntitySet="QuestionCategories">
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>

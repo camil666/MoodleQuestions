@@ -11,6 +11,8 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         object UserDropDownDataSource { get; set; }
 
+        object CategoryDropDownDataSource { get; set; }
+
         Guid SelectedStudentId { get; }
 
         #endregion

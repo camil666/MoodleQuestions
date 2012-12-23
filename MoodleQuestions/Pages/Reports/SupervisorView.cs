@@ -62,6 +62,9 @@ namespace MoodleQuestions.Pages.Reports
             if (!Page.IsPostBack)
             {
                 _presenter.SetupDropDown();
+                var students = (DropDownDataSource as IEnumerable<Student>).ToList();
+                students.Insert(0, new Student(HttpContext.GetGlobalResourceObject("Strings", "AllStudentsText").ToString(), Guid.Empty));
+                DropDownDataSource = students;
                 _userDropDown.DataBind();
             }
         }

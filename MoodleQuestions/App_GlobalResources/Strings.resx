@@ -354,4 +354,10 @@
   <data name="ViewQuestionsPageTitle" xml:space="preserve">
     <value>Przeglądaj pytania</value>
   </data>
+  <data name="ModificationDateHeaderText" xml:space="preserve">
+    <value>Ostatnia modyfikacja</value>
+  </data>
+  <data name="AllStudentsText" xml:space="preserve">
+    <value>Wszyscy</value>
+  </data>
 </root>

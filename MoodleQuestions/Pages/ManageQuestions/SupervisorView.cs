@@ -12,6 +12,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
         #region Fields
 
         private DropDownList _userDropDown;
+        private DropDownList _categoryDropDown;
 
         #endregion
 
@@ -21,6 +22,12 @@ namespace MoodleQuestions.Pages.ManageQuestions
         {
             get { return _userDropDown.DataSource; }
             set { _userDropDown.DataSource = value; }
+        }
+        //TODO: dokonczyc zarzadzanie kategoriami
+        public object CategoryDropDownDataSource
+        {
+            get { return _categoryDropDown.DataSource; }
+            set { _categoryDropDown.DataSource = value; }
         }
 
         public Guid SelectedStudentId
@@ -45,6 +52,12 @@ namespace MoodleQuestions.Pages.ManageQuestions
             };
 
             _userDropDown.Style.Add(HtmlTextWriterStyle.MarginLeft, "5px");
+
+            _categoryDropDown = new DropDownList()
+            {
+                DataTextField = "Name",
+                DataValueField = "Id"
+            };
         }
 
         #endregion

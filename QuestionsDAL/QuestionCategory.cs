@@ -21,6 +21,7 @@ namespace QuestionsDAL
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public Nullable<int> ParentCategoryId { get; set; }
     
         public virtual ICollection<Question> Questions { get; set; }
     }

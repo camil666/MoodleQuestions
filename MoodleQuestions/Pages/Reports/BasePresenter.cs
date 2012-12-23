@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.Reports
 {
@@ -29,7 +30,17 @@ namespace MoodleQuestions.Pages.Reports
 
         public void DisplayUserReport()
         {
-            var questions = Model.GetStudentQuestions(View.SelectedStudentId, View.StartDate, View.EndDate);
+            IEnumerable<Question> questions = null;
+
+            if (View.SelectedStudentId == Guid.Empty)
+            {
+                questions = Model.GetAllQuestions(View.StartDate, View.EndDate);
+            }
+            else
+            {
+                questions = Model.GetStudentQuestions(View.SelectedStudentId, View.StartDate, View.EndDate);
+            }
+
             if (questions != null && questions.Count() > 0)
             {
                 var ratedQuestions = from question in questions

@@ -68,7 +68,8 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var selectionField = new TemplateField()
             {
-                ItemTemplate = new SelectionTemplate()
+                ItemTemplate = new SelectionTemplate(),
+                HeaderTemplate = new SelectionTemplate()
             };
 
             _questionGridView.Columns.Add(selectionField);
@@ -88,6 +89,14 @@ namespace MoodleQuestions.Pages.ManageQuestions
             };
 
             _questionGridView.Columns.Add(creationDateField);
+
+            var modificationDateField = new BoundField()
+            {
+                HeaderText = HttpContext.GetGlobalResourceObject("Strings", "ModificationDateHeaderText").ToString(),
+                DataField = "ModificationDate"
+            };
+
+            _questionGridView.Columns.Add(modificationDateField);
 
             var ratingField = new BoundField()
             {
@@ -130,6 +139,8 @@ namespace MoodleQuestions.Pages.ManageQuestions
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            Page.ClientScript.RegisterClientScriptInclude("QuestionManagementScripts", ResolveClientUrl("~/Scripts/QuestionManagementScripts.js"));
+
             if (!Page.IsPostBack)
             {
                 _questionGridView.DataBind();

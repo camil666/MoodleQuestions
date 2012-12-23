@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wszyscy.
+        /// </summary>
+        internal static string AllStudentsText {
+            get {
+                return ResourceManager.GetString("AllStudentsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ilość odpowiedzi:.
         /// </summary>
         internal static string AnswerCountDropDownLabel {
@@ -489,6 +498,15 @@ namespace Resources {
         internal static string MinimumPasswordLengthText {
             get {
                 return ResourceManager.GetString("MinimumPasswordLengthText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ostatnia modyfikacja.
+        /// </summary>
+        internal static string ModificationDateHeaderText {
+            get {
+                return ResourceManager.GetString("ModificationDateHeaderText", resourceCulture);
             }
         }
         

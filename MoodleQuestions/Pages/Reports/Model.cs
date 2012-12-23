@@ -26,6 +26,16 @@ namespace MoodleQuestions.Pages.Reports
             }
         }
 
+        public IEnumerable<Question> GetAllQuestions(DateTime? startDate, DateTime? endDate)
+        {
+            using (var context = new Entities())
+            {
+                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
+                        where item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false
+                        select item).ToList();
+            }
+        }
+
         #endregion
     }
 }

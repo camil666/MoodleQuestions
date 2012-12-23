@@ -171,6 +171,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\QuestionComposerScripts.js" />
     <Content Include="Scripts\QuestionDetailsScripts.js" />
+    <Content Include="Scripts\QuestionManagementScripts.js" />
     <Content Include="Scripts\tiny_mce\langs\en.js" />
     <Content Include="Scripts\tiny_mce\license.txt" />
     <Content Include="Scripts\tiny_mce\plugins\advhr\css\advhr.css" />
@@ -460,6 +461,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\AnswerNumbering.cs" />
+    <Compile Include="App_Code\CategoryHelper.cs" />
     <Compile Include="App_Code\Constants.cs" />
     <Compile Include="App_Code\DoubleHelper.cs" />
     <Compile Include="App_Code\PermissionHelper.cs" />

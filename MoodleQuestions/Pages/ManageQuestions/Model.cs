@@ -36,6 +36,14 @@ namespace MoodleQuestions.Pages.ManageQuestions
             return PermissionHelper.GetStudents();
         }
 
+        public ICollection<QuestionCategory> GetQuestionCategories()
+        {
+            using (var context = new Entities())
+            {
+                return (from item in context.QuestionCategories select item).ToList();
+            }
+        }
+
         #endregion
     }
 }
