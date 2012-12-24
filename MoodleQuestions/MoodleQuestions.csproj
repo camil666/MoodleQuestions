@@ -161,7 +161,7 @@
     <Content Include="QuestionDetails.aspx">
       <BrowseToURL>~/QuestionDetails.aspx</BrowseToURL>
     </Content>
-    <Content Include="Raports.aspx" />
+    <Content Include="Reports.aspx" />
     <Content Include="Scripts\DatePickersScripts.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -565,12 +565,12 @@
     <Compile Include="QuestionDetails.aspx.designer.cs">
       <DependentUpon>QuestionDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Raports.aspx.cs">
-      <DependentUpon>Raports.aspx</DependentUpon>
+    <Compile Include="Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Raports.aspx.designer.cs">
-      <DependentUpon>Raports.aspx</DependentUpon>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

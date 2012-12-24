@@ -105,7 +105,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
             _generateXMLButton.Click += GenerateXMLButton_Click;
             _questionRepeater = new Repeater()
                 {
-                    ItemTemplate = new QuestionItemTemplate() { CheckboxText = HttpContext.GetGlobalResourceObject("Strings", "QuestionViewCheckboxText").ToString() }
+                    ItemTemplate = new QuestionItemTemplate() { CheckBoxText = HttpContext.GetGlobalResourceObject("Strings", "QuestionViewCheckboxText").ToString() }
                 };
         }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="<%$ Resources: Strings, RaportsPageTitle %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Raports.aspx.cs" Inherits="MoodleQuestions.Raports" Culture="auto" UICulture="auto" %>
+﻿<%@ Page Title="<%$ Resources: Strings, RaportsPageTitle %>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="MoodleQuestions.Reports" Culture="auto" UICulture="auto" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">

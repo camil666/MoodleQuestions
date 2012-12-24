@@ -16,7 +16,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
         /// <value>
         /// The checkbox text.
         /// </value>
-        public string CheckboxText { get; set; }
+        public string CheckBoxText { get; set; }
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
             mainPanel.DataBinding += MainPanel_DataBinding;
             container.Controls.Add(mainPanel);
 
-            var checkBox = new CheckBox() { Text = CheckboxText, TextAlign = TextAlign.Right };
+            var checkBox = new CheckBox() { Text = CheckBoxText, TextAlign = TextAlign.Right };
             checkBox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.Display, "inline-block");
             checkBox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.MarginLeft, "4px");
             mainPanel.Controls.Add(checkBox);

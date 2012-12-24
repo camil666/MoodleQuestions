@@ -112,6 +112,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
             : base(HtmlTextWriterTag.Div)
         {
             DetailsTable = new Table();
+            _ratingCell = new TableCell();
+            _nameCell = new TableCell();
+            _typeCell = new TableCell();
+            _creationDateCell = new TableCell();
+            _authorCell = new TableCell();
             SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString(), ValidationGroup = "Fractions" };
             CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
             QuestionEditorPlaceHolder = new PlaceHolder();
@@ -129,35 +134,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             base.OnInit(e);
 
-            var nameRow = new TableRow();
-            nameRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "NameLabelText").ToString() });
-            _nameCell = new TableCell();
-            nameRow.Cells.Add(_nameCell);
-            DetailsTable.Rows.Add(nameRow);
-
-            var authorRow = new TableRow();
-            authorRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "AuthorLabelText").ToString() });
-            _authorCell = new TableCell();
-            authorRow.Cells.Add(_authorCell);
-            DetailsTable.Rows.Add(authorRow);
-
-            var creationDateRow = new TableRow();
-            creationDateRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "CreationDateLabelText").ToString() });
-            _creationDateCell = new TableCell();
-            creationDateRow.Cells.Add(_creationDateCell);
-            DetailsTable.Rows.Add(creationDateRow);
-
-            var typeRow = new TableRow();
-            typeRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "TypeLabelText").ToString() });
-            _typeCell = new TableCell();
-            typeRow.Cells.Add(_typeCell);
-            DetailsTable.Rows.Add(typeRow);
-
-            var ratingRow = new TableRow();
-            ratingRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "RatingLabelText").ToString() });
-            _ratingCell = new TableCell();
-            ratingRow.Cells.Add(_ratingCell);
-            DetailsTable.Rows.Add(ratingRow);
+            AddRow(_nameCell, HttpContext.GetGlobalResourceObject("Strings", "NameLabelText").ToString());
+            AddRow(_authorCell, HttpContext.GetGlobalResourceObject("Strings", "AuthorLabelText").ToString());
+            AddRow(_creationDateCell, HttpContext.GetGlobalResourceObject("Strings", "CreationDateLabelText").ToString());
+            AddRow(_typeCell, HttpContext.GetGlobalResourceObject("Strings", "TypeLabelText").ToString());
+            AddRow(_ratingCell, HttpContext.GetGlobalResourceObject("Strings", "RatingLabelText").ToString());
 
             Controls.Add(DetailsTable);
             Controls.Add(QuestionEditorPlaceHolder);
@@ -196,6 +177,14 @@ namespace MoodleQuestions.Pages.QuestionDetails
             {
                 Page.Response.Redirect("~/");
             }
+        }
+
+        private void AddRow(TableCell cell, string labelText)
+        {
+            var row = new TableRow();
+            row.Cells.Add(new TableCell() { Text = labelText });
+            row.Cells.Add(cell);
+            DetailsTable.Rows.Add(row);
         }
 
         #endregion

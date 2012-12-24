@@ -8,6 +8,12 @@ namespace MoodleQuestions.Controls
 {
     public class DateFilter : WebControl
     {
+        #region Constants
+
+        private const string DateFormat = "dd.MM.yyyy";
+
+        #endregion
+
         #region Fields
 
         private TextBox _startDateTextBox;
@@ -28,7 +34,7 @@ namespace MoodleQuestions.Controls
             get
             {
                 DateTime date;
-                if (DateTime.TryParseExact(_endDateTextBox.Text, "dd.mm.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                if (DateTime.TryParseExact(_startDateTextBox.Text, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                 {
                     return date;
                 }
@@ -48,7 +54,7 @@ namespace MoodleQuestions.Controls
             get
             {
                 DateTime date;
-                if (DateTime.TryParseExact(_endDateTextBox.Text, "dd.mm.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                if (DateTime.TryParseExact(_endDateTextBox.Text, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                 {
                     return date;
                 }

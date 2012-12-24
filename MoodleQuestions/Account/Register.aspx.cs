@@ -40,7 +40,6 @@ namespace MoodleQuestions.Account
                 context.SaveChanges();
             }
 
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
             Response.Redirect("~/");
         }
     }

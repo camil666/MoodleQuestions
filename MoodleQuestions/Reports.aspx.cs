@@ -4,7 +4,7 @@ using MoodleQuestions.Pages.Reports;
 
 namespace MoodleQuestions
 {
-    public partial class Raports : Page
+    public partial class Reports : Page
     {
         #region Methods
 

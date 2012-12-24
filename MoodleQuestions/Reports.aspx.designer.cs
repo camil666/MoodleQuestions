@@ -10,7 +10,7 @@
 namespace MoodleQuestions {
     
     
-    public partial class Raports {
+    public partial class Reports {
         
         /// <summary>
         /// ViewPlaceHolder control.

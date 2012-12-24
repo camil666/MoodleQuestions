@@ -50,7 +50,7 @@
                             <li><a runat="server" href="~/CreateQuestion.aspx"><%= GetGlobalResourceObject("Strings","CreateQuestionsPageNavLink") %></a></li>
                             <li><a runat="server" href="~/ManageQuestions.aspx"><%= GetGlobalResourceObject("Strings","ManageQuestionsNavLink") %></a></li>
                             <li><a runat="server" href="~/ViewQuestions.aspx"><%= GetGlobalResourceObject("Strings","ViewQuestionsNavLink") %></a></li>
-                            <li><a runat="server" href="~/Raports.aspx"><%= GetGlobalResourceObject("Strings","RaportsNavLink") %></a></li>
+                            <li><a runat="server" href="~/Reports.aspx"><%= GetGlobalResourceObject("Strings","RaportsNavLink") %></a></li>
                             <li><a runat="server" href="~/Contact.aspx"><%= GetGlobalResourceObject("Strings","ContactNavLink") %></a></li>
                         </ul>
                     </nav>
