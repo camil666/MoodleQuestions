@@ -18,6 +18,8 @@ namespace MoodleQuestions
                 {
                     CategoryHelper.ConcatCategoryName(category);
                 }
+
+                category.Name = "/" + category.Name;
             }
         }
 

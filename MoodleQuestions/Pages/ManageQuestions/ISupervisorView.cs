@@ -15,6 +15,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         Guid SelectedStudentId { get; }
 
+        int SelectedCategoryId { get; }
+
+        string NewCategoryName { get; }
+
         #endregion
     }
 }

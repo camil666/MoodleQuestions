@@ -20,6 +20,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
                 selectedQuestion.Content = modifiedQuestion.Content;
                 selectedQuestion.ModificationDate = DateTime.Now;
+                selectedQuestion.IsVisible = modifiedQuestion.IsVisible;
                 for (int i = 0; i < selectedQuestion.QuestionAnswers.Count; ++i)
                 {
                     selectedQuestion.QuestionAnswers.ElementAt(i).Content = modifiedQuestion.QuestionAnswers.ElementAt(i).Content;

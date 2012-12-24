@@ -26,8 +26,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
             CategoryHelper.ConcatCategoryName(questionCategories);
 
-            questionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
-            View.QuestionCategoryDataSource = questionCategories;
+            var orderedQuestionCategories = questionCategories.OrderBy(item => item.Name).ToList();
+            orderedQuestionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
+            View.QuestionCategoryDataSource = orderedQuestionCategories;
         }
 
         public void SaveChanges()

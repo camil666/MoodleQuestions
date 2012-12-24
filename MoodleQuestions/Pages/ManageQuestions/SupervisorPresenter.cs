@@ -24,14 +24,31 @@ namespace MoodleQuestions.Pages.ManageQuestions
             View.UserDropDownDataSource = Model.GetUsers();
         }
 
+        public void DeleteCategory()
+        {
+            Model.DeleteCategory(View.SelectedCategoryId);
+        }
+
+        public void CreateCategory()
+        {
+            if (View.SelectedCategoryId != 0)
+            {
+                Model.CreateCategory(View.NewCategoryName, View.SelectedCategoryId);
+            }
+            else
+            {
+                Model.CreateCategory(View.NewCategoryName, null);
+            }
+        }
+
         public void SetupCategoryDropDown()
         {
-            var questionCategories = Model.GetQuestionCategories().ToList();
+            var questionCategories = Model.GetQuestionCategories();
 
             CategoryHelper.ConcatCategoryName(questionCategories);
-
-            questionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
-            View.CategoryDropDownDataSource = questionCategories;
+            var orderedQuestionCategories = questionCategories.OrderBy(item => item.Name).ToList();
+            orderedQuestionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "/" });
+            View.CategoryDropDownDataSource = orderedQuestionCategories;
         }
 
         public void SetupGrid()

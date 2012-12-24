@@ -10,3 +10,14 @@
         }
     });
 });
+
+function ConfirmCategoryDelete() {
+
+    var answer = confirm("Czy na pewno chcesz usunąć tą kategorię?\nWszystkie pytania należące do tej kategorii zostaną przeniesione do kategorii głównej.")
+    if (answer) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};

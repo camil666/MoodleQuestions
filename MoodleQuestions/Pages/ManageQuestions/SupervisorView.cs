@@ -19,12 +19,22 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Properties
 
+        public int SelectedCategoryId
+        {
+            get { return int.Parse(_categoryDropDown.SelectedValue); }
+        }
+
+        public string NewCategoryName
+        {
+            get { return _newCategoryTextBox.Text; }
+        }
+
         public object UserDropDownDataSource
         {
             get { return _userDropDown.DataSource; }
             set { _userDropDown.DataSource = value; }
         }
-        //TODO: dokonczyc zarzadzanie kategoriami
+
         public object CategoryDropDownDataSource
         {
             get { return _categoryDropDown.DataSource; }
@@ -60,7 +70,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
                 DataValueField = "Id"
             };
 
-            _newCategoryTextBox = new TextBox();
+            _newCategoryTextBox = new TextBox() { ID = "NewCategoryTextBox" };
         }
 
         #endregion
@@ -82,7 +92,9 @@ namespace MoodleQuestions.Pages.ManageQuestions
             Controls.Add(new LiteralControl("<br>"));
             var addCategoryButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "AddCategoryLabelText").ToString()
+                Text = HttpContext.GetGlobalResourceObject("Strings", "AddCategoryLabelText").ToString(),
+                ValidationGroup = "CategoryName",
+                ID = "DeleteCategoryButton"
             };
 
             addCategoryButton.Click += AddCategoryButton_Click;
@@ -90,11 +102,19 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var deleteCategoryButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "DeleteCategoryLabelText").ToString()
+                Text = HttpContext.GetGlobalResourceObject("Strings", "DeleteCategoryLabelText").ToString(),
+                OnClientClick = "if (!ConfirmCategoryDelete()) { return false; };"
             };
 
             Controls.Add(deleteCategoryButton);
             deleteCategoryButton.Click += DeleteCategoryButton_Click;
+
+            Controls.Add(new RequiredFieldValidator()
+            {
+                ValidationGroup = "CategoryName",
+                ControlToValidate = _newCategoryTextBox.ID,
+                ErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "NewCategoryValidationText").ToString()
+            });
         }
 
         protected override void OnLoad(EventArgs e)
@@ -102,8 +122,11 @@ namespace MoodleQuestions.Pages.ManageQuestions
             if (!Page.IsPostBack)
             {
                 Presenter.SetupUserDropDown();
+                Presenter.SetupCategoryDropDown();
                 _userDropDown.DataBind();
                 _userDropDown.SelectedIndex = 0;
+                _categoryDropDown.DataBind();
+                _categoryDropDown.SelectedIndex = 0;
                 Presenter.SetupGrid();
             }
 
@@ -112,12 +135,18 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         private void DeleteCategoryButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Presenter.DeleteCategory();
+            Presenter.SetupCategoryDropDown();
+            _categoryDropDown.DataBind();
+            _categoryDropDown.SelectedIndex = 0;
         }
 
         private void AddCategoryButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Presenter.CreateCategory();
+            Presenter.SetupCategoryDropDown();
+            _categoryDropDown.DataBind();
+            _categoryDropDown.SelectedIndex = 0;
         }
 
         #endregion

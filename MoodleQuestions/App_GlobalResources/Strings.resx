@@ -369,4 +369,7 @@
   <data name="NewCategoryLabelText" xml:space="preserve">
     <value>Nowa kategoria:</value>
   </data>
+  <data name="NewCategoryValidationText" xml:space="preserve">
+    <value>Wymagane jest podanie nazwy nowej kategorii</value>
+  </data>
 </root>

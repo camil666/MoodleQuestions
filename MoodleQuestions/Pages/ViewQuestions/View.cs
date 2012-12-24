@@ -18,15 +18,27 @@ namespace MoodleQuestions.Pages.ViewQuestions
         private Button _generateXMLButton;
         private DateFilter _dateFilter;
         private Panel _repeaterPanel;
+        private DropDownList _categoryDropDown;
 
         #endregion
 
         #region Properties
 
+        public object CategoryDataSource
+        {
+            get { return _categoryDropDown.DataSource; }
+            set { _categoryDropDown.DataSource = value; }
+        }
+
         public object QuestionRepeaterDataSource
         {
             get { return _questionRepeater.DataSource; }
             set { _questionRepeater.DataSource = value; }
+        }
+
+        public int SelectedCategoryId
+        {
+            get { return int.Parse(_categoryDropDown.SelectedValue); }
         }
 
         public DateTime? StartDate
@@ -47,6 +59,12 @@ namespace MoodleQuestions.Pages.ViewQuestions
             : base(HtmlTextWriterTag.Div)
         {
             _presenter = new Presenter(this);
+            _categoryDropDown = new DropDownList()
+            {
+                DataTextField = "Name",
+                DataValueField = "Id"
+            };
+
             _dateFilter = new DateFilter();
             _generateXMLButton = new Button()
             {
@@ -83,6 +101,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            var categoryLabel = new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "CategoryLabelText").ToString() };
+            categoryLabel.Style.Add(HtmlTextWriterStyle.MarginRight, "114px");
+            Controls.Add(categoryLabel);
+            Controls.Add(_categoryDropDown);
             Controls.Add(_dateFilter);
             var searchButton = new Button()
             {
@@ -102,6 +124,9 @@ namespace MoodleQuestions.Pages.ViewQuestions
             base.OnPreRender(e);
             if (!Page.IsPostBack)
             {
+                _presenter.SetupCategories();
+                _categoryDropDown.DataBind();
+                _categoryDropDown.SelectedIndex = 0;
                 _presenter.DisplayViewableQuestions();
                 _questionRepeater.DataBind();
             }

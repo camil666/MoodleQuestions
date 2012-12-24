@@ -12,6 +12,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         object QuestionRepeaterDataSource { get; set; }
 
+        object CategoryDataSource { get; set; }
+
+        int SelectedCategoryId { get; }
+
         DateTime? StartDate { get; }
 
         DateTime? EndDate { get; }

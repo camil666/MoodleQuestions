@@ -44,6 +44,52 @@ namespace MoodleQuestions.Pages.ManageQuestions
             }
         }
 
+        public void CreateCategory(string name, int? parentId)
+        {
+            using (var context = new Entities())
+            {
+                var category = new QuestionCategory()
+                {
+                    Name = name,
+                    ParentCategoryId = parentId
+                };
+
+                context.QuestionCategories.Add(category);
+                context.SaveChanges();
+            }
+        }
+
+        public void DeleteCategory(int id)
+        {
+            using (var context = new Entities())
+            {
+                var categoryToBeDeleted = (from item in context.QuestionCategories
+                                           where item.Id == id
+                                           select item).FirstOrDefault();
+
+                var questions = from item in context.Questions
+                                where item.CategoryId == id
+                                select item;
+
+                foreach (var question in questions)
+                {
+                    question.CategoryId = null;
+                }
+
+                var childCategories = from item in context.QuestionCategories
+                                      where item.ParentCategoryId == id
+                                      select item;
+
+                foreach (var category in childCategories)
+                {
+                    category.ParentCategoryId = categoryToBeDeleted.ParentCategoryId;
+                }
+
+                context.QuestionCategories.Remove(categoryToBeDeleted);
+                context.SaveChanges();
+            }
+        }
+
         #endregion
     }
 }

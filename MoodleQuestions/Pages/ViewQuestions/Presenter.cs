@@ -1,4 +1,6 @@
-﻿using System.Xml.Linq;
+﻿using System.Linq;
+using System.Xml.Linq;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.ViewQuestions
 {
@@ -23,9 +25,32 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Methods
 
+        public void SetupCategories()
+        {
+            var questionCategories = _model.GetQuestionCategories();
+
+            CategoryHelper.ConcatCategoryName(questionCategories);
+
+            var orderedQuestionCategories = questionCategories.OrderBy(item => item.Name).ToList();
+            orderedQuestionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "/" });
+            orderedQuestionCategories.Insert(0, new QuestionCategory() { Id = -1, Name = "-" });
+            _view.CategoryDataSource = orderedQuestionCategories;
+        }
+
         public void DisplayViewableQuestions()
         {
-            _view.QuestionRepeaterDataSource = _model.GetViewableQuestions(_view.StartDate, _view.EndDate);
+            if (_view.SelectedCategoryId == -1)
+            {
+                _view.QuestionRepeaterDataSource = _model.GetViewableQuestions(_view.StartDate, _view.EndDate);
+            }
+            else if (_view.SelectedCategoryId == 0)
+            {
+                _view.QuestionRepeaterDataSource = _model.GetViewableQuestions(_view.StartDate, _view.EndDate, null);
+            }
+            else
+            {
+                _view.QuestionRepeaterDataSource = _model.GetViewableQuestions(_view.StartDate, _view.EndDate, _view.SelectedCategoryId);
+            }
         }
 
         public XElement GenerateXML()

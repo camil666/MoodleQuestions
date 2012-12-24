@@ -556,6 +556,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wymagane jest podanie nazwy nowej kategorii.
+        /// </summary>
+        internal static string NewCategoryValidationText {
+            get {
+                return ResourceManager.GetString("NewCategoryValidationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nowe hasło.
         /// </summary>
         internal static string NewPasswordLabel {
