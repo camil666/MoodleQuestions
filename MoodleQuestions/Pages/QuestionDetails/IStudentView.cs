@@ -12,8 +12,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Properties
 
-        Question ChangedQuestion { get; }
-
         bool QuestionIsVisible { get; }
 
         #endregion

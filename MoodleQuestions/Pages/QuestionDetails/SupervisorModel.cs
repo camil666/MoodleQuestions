@@ -18,10 +18,17 @@ namespace MoodleQuestions.Pages.QuestionDetails
                                         where item.Id == modifiedQuestion.Id
                                         select item).FirstOrDefault();
 
+                selectedQuestion.Content = modifiedQuestion.Content;
                 selectedQuestion.CategoryId = modifiedQuestion.CategoryId;
                 selectedQuestion.Name = modifiedQuestion.Name;
                 selectedQuestion.Rating = modifiedQuestion.Rating;
                 selectedQuestion.ModificationDate = DateTime.Now;
+                selectedQuestion.IsVisible = modifiedQuestion.IsVisible;
+                for (int i = 0; i < selectedQuestion.QuestionAnswers.Count; ++i)
+                {
+                    selectedQuestion.QuestionAnswers.ElementAt(i).Content = modifiedQuestion.QuestionAnswers.ElementAt(i).Content;
+                    selectedQuestion.QuestionAnswers.ElementAt(i).Fraction = modifiedQuestion.QuestionAnswers.ElementAt(i).Fraction;
+                }
 
                 context.SaveChanges();
             }

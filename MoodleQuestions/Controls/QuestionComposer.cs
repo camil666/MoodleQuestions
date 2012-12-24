@@ -116,11 +116,6 @@ namespace MoodleQuestions.Controls
                 Display = ValidatorDisplay.Dynamic,
                 ClientValidationFunction = "Answers.ValidateSum"
             };
-
-            if (!string.IsNullOrEmpty(FractionsValidationGroup))
-            {
-                _validator.ValidationGroup = FractionsValidationGroup;
-            }
         }
 
         #endregion
@@ -130,6 +125,11 @@ namespace MoodleQuestions.Controls
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            if (!string.IsNullOrEmpty(FractionsValidationGroup))
+            {
+                _validator.ValidationGroup = FractionsValidationGroup;
+            }
+
             Controls.Add(new LiteralControl("<br>"));
             if (AnonymousMode == false)
             {

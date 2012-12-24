@@ -108,11 +108,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             base.OnLoad(e);
 
+            var isEditable = QuestionToDisplay.Rating != null;
+
             if (!Page.IsPostBack)
             {
                 _categoryDropDown.DataTextField = "Name";
                 _categoryDropDown.DataValueField = "Id";
-                (Presenter as SupervisorPresenter).SetupCategoryDropDown();
+                Presenter.SetupCategoryDropDown();
                 _categoryDropDown.DataBind();
                 _ratingDropDown.DataSource = new string[] { "-", "2", "3", "4", "5" };
                 _ratingDropDown.DataBind();
@@ -133,15 +135,33 @@ namespace MoodleQuestions.Pages.QuestionDetails
                 }
             }
 
-            QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
+            if (isEditable)
             {
-                Question = QuestionToDisplay
-            });
+                _questionComposer = new QuestionComposer()
+                {
+                    QuestionLabelText = HttpContext.GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
+                    AnswerLabelText = HttpContext.GetGlobalResourceObject("Strings", "AnswerLabelText").ToString(),
+                    FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
+                    ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString(),
+                    IsVisibleLabelText = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
+                    Question = QuestionToDisplay,
+                    FractionsValidationGroup = "Fractions"
+                };
+
+                QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
+            }
+            else
+            {
+                QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
+                {
+                    Question = QuestionToDisplay
+                });
+            }
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            (Presenter as SupervisorPresenter).SaveChanges();
+            Presenter.SaveChanges();
             Page.Response.Redirect("~/ManageQuestions.aspx");
         }
 

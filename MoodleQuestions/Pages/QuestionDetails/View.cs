@@ -17,6 +17,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected TableCell _ratingCell;
         protected TableCell _nameCell;
         protected TableCell _typeCell;
+        protected QuestionComposer _questionComposer;
         private TableCell _creationDateCell;
         private TableCell _authorCell;
 
@@ -27,6 +28,19 @@ namespace MoodleQuestions.Pages.QuestionDetails
         public int QuestionId
         {
             get { return int.Parse(Page.Request.QueryString[Constants.QuestionIdQueryString]); }
+        }
+
+        public Question ChangedQuestion
+        {
+            get
+            {
+                if (_questionComposer != null)
+                {
+                    return _questionComposer.Question;
+                }
+
+                return null;
+            }
         }
 
         public Question QuestionToDisplay { get; set; }
@@ -49,7 +63,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             : base(HtmlTextWriterTag.Div)
         {
             DetailsTable = new Table();
-            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString() };
+            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString(), ValidationGroup = "Fractions" };
             CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
             QuestionEditorPlaceHolder = new PlaceHolder();
         }
@@ -103,6 +117,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             try
             {
                 base.OnLoad(e);
+                Page.ClientScript.RegisterClientScriptInclude("QuestionDetailsScripts", ResolveClientUrl("~/Scripts/QuestionDetailsScripts.js"));
                 Presenter.SetQuestion();
 
                 _creationDateCell.Text = QuestionToDisplay.CreationDate.ToString();

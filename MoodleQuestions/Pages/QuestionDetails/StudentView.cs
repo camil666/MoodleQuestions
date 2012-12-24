@@ -14,25 +14,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
         #region Fields
 
         private Button _deleteButton;
-        private QuestionComposer _questionComposer;
         private CheckBox _isVisibleCheckbox;
 
         #endregion
 
         #region Properties
-
-        public Question ChangedQuestion
-        {
-            get
-            {
-                if (_questionComposer != null)
-                {
-                    return _questionComposer.Question;
-                }
-
-                return null;
-            }
-        }
 
         public bool QuestionIsVisible
         {
@@ -72,7 +58,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            Page.ClientScript.RegisterClientScriptInclude("QuestionDetailsScripts", ResolveClientUrl("~/Scripts/QuestionDetailsScripts.js"));
 
             var isEditable = QuestionToDisplay.Rating == null;
 
@@ -135,13 +120,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            (Presenter as StudentPresenter).SaveChanges();
+            Presenter.SaveChanges();
             Page.Response.Redirect("~/ManageQuestions.aspx");
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            (Presenter as StudentPresenter).DeleteQuestion(QuestionId);
+            Presenter.DeleteQuestion(QuestionId);
             Page.Response.Redirect("~/ManageQuestions.aspx");
         }
 

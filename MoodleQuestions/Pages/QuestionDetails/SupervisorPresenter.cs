@@ -33,13 +33,16 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         public void SaveChanges()
         {
-            var newQuestion = new Question()
+            var newQuestion = View.ChangedQuestion;
+            if (newQuestion == null)
             {
-                Id = View.QuestionId,
-                Name = View.QuestionName,
-                Rating = View.SelectedRating,
-                CategoryId = View.QuestionCategoryId
-            };
+                newQuestion = Model.GetQuestion(View.QuestionId);
+            }
+
+            newQuestion.Id = View.QuestionId;
+            newQuestion.Name = View.QuestionName;
+            newQuestion.Rating = View.SelectedRating;
+            newQuestion.CategoryId = View.QuestionCategoryId;
 
             Model.SaveChanges(newQuestion);
         }

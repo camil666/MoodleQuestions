@@ -14,6 +14,8 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         int QuestionId { get; }
 
+        Question ChangedQuestion { get; }
+
         Question QuestionToDisplay { get; set; }
 
         #endregion

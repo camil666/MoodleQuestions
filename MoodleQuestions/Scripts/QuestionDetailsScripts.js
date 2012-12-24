@@ -1,6 +1,6 @@
 ﻿function ConfirmDelete() {
 
-    var answer = confirm("Czy jesteś pewien, że chcesz usunąć to pytanie?")
+    var answer = confirm("Czy chcesz usunąć to pytanie?")
     if (answer) {
         return true;
     }
