@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -25,11 +23,23 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Properties
 
+        /// <summary>
+        /// Gets the question id.
+        /// </summary>
+        /// <value>
+        /// The question id.
+        /// </value>
         public int QuestionId
         {
             get { return int.Parse(Page.Request.QueryString[Constants.QuestionIdQueryString]); }
         }
 
+        /// <summary>
+        /// Gets the changed question.
+        /// </summary>
+        /// <value>
+        /// The changed question.
+        /// </value>
         public Question ChangedQuestion
         {
             get
@@ -43,23 +53,62 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
+        /// <summary>
+        /// Gets or sets the question to display.
+        /// </summary>
+        /// <value>
+        /// The question to display.
+        /// </value>
         public Question QuestionToDisplay { get; set; }
 
+        /// <summary>
+        /// Gets or sets the presenter.
+        /// </summary>
+        /// <value>
+        /// The presenter.
+        /// </value>
         protected TPresenter Presenter { get; set; }
 
+        /// <summary>
+        /// Gets the question editor place holder.
+        /// </summary>
+        /// <value>
+        /// The question editor place holder.
+        /// </value>
         protected PlaceHolder QuestionEditorPlaceHolder { get; private set; }
 
+        /// <summary>
+        /// Gets the details table.
+        /// </summary>
+        /// <value>
+        /// The details table.
+        /// </value>
         protected Table DetailsTable { get; private set; }
 
+        /// <summary>
+        /// Gets the cancel button.
+        /// </summary>
+        /// <value>
+        /// The cancel button.
+        /// </value>
         protected Button CancelButton { get; private set; }
 
+        /// <summary>
+        /// Gets the save button.
+        /// </summary>
+        /// <value>
+        /// The save button.
+        /// </value>
         protected Button SaveButton { get; private set; }
 
         #endregion
 
         #region Constructors
 
-        public View()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="View{TPresenter}" /> class.
+        /// </summary>
+        protected View()
             : base(HtmlTextWriterTag.Div)
         {
             DetailsTable = new Table();
@@ -72,6 +121,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -112,6 +165,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
             Controls.Add(CancelButton);
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             try

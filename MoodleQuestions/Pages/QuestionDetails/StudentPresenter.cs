@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using QuestionsDAL;
-
-namespace MoodleQuestions.Pages.QuestionDetails
+﻿namespace MoodleQuestions.Pages.QuestionDetails
 {
     public class StudentPresenter : Presenter<IStudentView, StudentModel>
     {
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentPresenter" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
         public StudentPresenter(IStudentView view)
             : base(view)
         {
@@ -22,6 +17,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        /// <summary>
+        /// Saves the changes.
+        /// </summary>
         public void SaveChanges()
         {
             var newQuestion = View.ChangedQuestion;
@@ -38,6 +36,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
             Model.SaveChanges(newQuestion);
         }
 
+        /// <summary>
+        /// Deletes the question.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void DeleteQuestion(int id)
         {
             Model.DeleteQuestion(id);

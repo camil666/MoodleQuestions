@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
@@ -10,6 +6,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Methods
 
+        /// <summary>
+        /// Generates the XML.
+        /// </summary>
+        /// <returns>Generated xml.</returns>
         XElement GenerateXml();
 
         #endregion

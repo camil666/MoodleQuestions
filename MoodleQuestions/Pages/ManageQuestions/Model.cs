@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Web;
+using MoodleQuestions.Repositories;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.ManageQuestions
@@ -11,54 +10,55 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Methods
 
+        /// <summary>
+        /// Gets the user questions.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <returns>User questions.</returns>
         public IEnumerable<Question> GetUserQuestions(Guid userId)
         {
-            using (var context = new Entities())
-            {
-                return (from question in context.Questions
-                        where question.AuthorId == userId && question.IsDeleted == false
-                        select question).ToList();
-            }
+            return QuestionRepository.Find(question => question.AuthorId == userId && question.IsDeleted == false);
         }
 
+        /// <summary>
+        /// Gets the questions.
+        /// </summary>
+        /// <param name="questionIds">The question ids.</param>
+        /// <returns>The questions.</returns>
         public IEnumerable<Question> GetQuestions(IEnumerable<int> questionIds)
         {
-            using (var context = new Entities())
-            {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where questionIds.Contains(item.Id) && item.IsDeleted == false
-                        select item).ToList();
-            }
+            return QuestionRepository.Find(question => questionIds.Contains(question.Id) && question.IsDeleted == false);
         }
 
-        public IEnumerable<Student> GetUsers()
+        /// <summary>
+        /// Gets the question categories.
+        /// </summary>
+        /// <returns>All the question categories.</returns>
+        public IEnumerable<QuestionCategory> GetQuestionCategories()
         {
-            return PermissionHelper.GetStudents();
+            return QuestionCategoryRepository.GetAll();
         }
 
-        public ICollection<QuestionCategory> GetQuestionCategories()
-        {
-            using (var context = new Entities())
-            {
-                return (from item in context.QuestionCategories select item).ToList();
-            }
-        }
-
+        /// <summary>
+        /// Creates the category.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="parentId">The parent id.</param>
         public void CreateCategory(string name, int? parentId)
         {
-            using (var context = new Entities())
+            var category = new QuestionCategory()
             {
-                var category = new QuestionCategory()
-                {
-                    Name = name,
-                    ParentCategoryId = parentId
-                };
+                Name = name,
+                ParentCategoryId = parentId
+            };
 
-                context.QuestionCategories.Add(category);
-                context.SaveChanges();
-            }
+            QuestionCategoryRepository.Add(category);
         }
 
+        /// <summary>
+        /// Deletes the category.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void DeleteCategory(int id)
         {
             using (var context = new Entities())

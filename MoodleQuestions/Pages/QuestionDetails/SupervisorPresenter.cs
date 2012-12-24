@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI.WebControls;
+﻿using System.Linq;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
@@ -11,6 +7,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SupervisorPresenter" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
         public SupervisorPresenter(ISupervisorView view)
             : base(view)
         {
@@ -20,17 +20,23 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        /// <summary>
+        /// Setups the category drop down.
+        /// </summary>
         public void SetupCategoryDropDown()
         {
             var questionCategories = Model.GetQuestionCategories().ToList();
 
-            CategoryHelper.ConcatCategoryName(questionCategories);
+            CategoryHelper.MakeFullCategoryNames(questionCategories);
 
             var orderedQuestionCategories = questionCategories.OrderBy(item => item.Name).ToList();
             orderedQuestionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "-" });
             View.QuestionCategoryDataSource = orderedQuestionCategories;
         }
 
+        /// <summary>
+        /// Saves the changes.
+        /// </summary>
         public void SaveChanges()
         {
             var newQuestion = View.ChangedQuestion;

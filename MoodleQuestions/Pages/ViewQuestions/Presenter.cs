@@ -15,6 +15,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Presenter" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
         public Presenter(IView view)
         {
             _view = view;
@@ -25,11 +29,14 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Sets up the categories.
+        /// </summary>
         public void SetupCategories()
         {
             var questionCategories = _model.GetQuestionCategories();
 
-            CategoryHelper.ConcatCategoryName(questionCategories);
+            CategoryHelper.MakeFullCategoryNames(questionCategories);
 
             var orderedQuestionCategories = questionCategories.OrderBy(item => item.Name).ToList();
             orderedQuestionCategories.Insert(0, new QuestionCategory() { Id = 0, Name = "/" });
@@ -53,6 +60,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
             }
         }
 
+        /// <summary>
+        /// Generates the XML.
+        /// </summary>
+        /// <returns>Generated xml.</returns>
         public XElement GenerateXML()
         {
             var questionIds = _view.GetQuestionIds();

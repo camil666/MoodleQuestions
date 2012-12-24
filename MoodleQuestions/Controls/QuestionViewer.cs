@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,6 +16,12 @@ namespace MoodleQuestions.Controls
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the question.
+        /// </summary>
+        /// <value>
+        /// The question.
+        /// </value>
         public Question Question
         {
             get { return _question; }
@@ -27,6 +32,9 @@ namespace MoodleQuestions.Controls
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestionViewer" /> class.
+        /// </summary>
         public QuestionViewer()
             : base(HtmlTextWriterTag.Div)
         {
@@ -36,6 +44,10 @@ namespace MoodleQuestions.Controls
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.PreRender" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnPreRender(EventArgs e)
         {
             base.OnPreRender(e);

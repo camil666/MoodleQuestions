@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
@@ -10,7 +8,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Methods
 
-        public override void SaveChanges(Question modifiedQuestion)
+        /// <summary>
+        /// Saves the changes.
+        /// </summary>
+        /// <param name="modifiedQuestion">The modified question.</param>
+        public void SaveChanges(Question modifiedQuestion)
         {
             using (var context = new Entities())
             {

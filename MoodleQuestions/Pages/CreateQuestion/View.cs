@@ -19,15 +19,30 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the presenter.
+        /// </summary>
+        /// <value>
+        /// The presenter.
+        /// </value>
         protected Presenter Presenter { get; set; }
 
+        /// <summary>
+        /// Gets or sets the question composer control.
+        /// </summary>
+        /// <value>
+        /// The question composer control.
+        /// </value>
         protected QuestionComposer QuestionComposerControl { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public View()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="View" /> class.
+        /// </summary>
+        protected View()
             : base(HtmlTextWriterTag.Div)
         {
             Presenter = new Presenter(this);
@@ -62,11 +77,21 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Methods
 
+        /// <summary>
+        /// Gets the question.
+        /// </summary>
+        /// <returns>
+        /// Created question.
+        /// </returns>
         public Question GetQuestion()
         {
             return QuestionComposerControl.Question;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -83,12 +108,21 @@ namespace MoodleQuestions.Pages.CreateQuestion
             }
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             QuestionComposerControl.AnswerCount = int.Parse(_answerCountDropDown.SelectedValue);
         }
 
+        /// <summary>
+        /// Handles the Click event of the GenerateXMLButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void GenerateXMLButton_Click(object sender, EventArgs e)
         {
             var xml = Presenter.GenerateXML();

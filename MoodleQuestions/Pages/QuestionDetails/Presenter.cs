@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
-using MoodleQuestions.Controls;
 using MoodleQuestions.Generics;
-using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -15,7 +10,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Constructors
 
-        public Presenter(TView view)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Presenter{TView,TModel}" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        protected Presenter(TView view)
             : base(view)
         {
         }
@@ -24,6 +23,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        /// <summary>
+        /// Sets the question.
+        /// </summary>
         public void SetQuestion()
         {
             var loggedUserId = (Guid)Membership.GetUser().ProviderUserKey;

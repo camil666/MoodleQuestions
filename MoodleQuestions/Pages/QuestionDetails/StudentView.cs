@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
-using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -20,6 +17,12 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Properties
 
+        /// <summary>
+        /// Gets a value indicating whether question is visible.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if question is visible; otherwise, <c>false</c>.
+        /// </value>
         public bool QuestionIsVisible
         {
             get
@@ -32,6 +35,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentView" /> class.
+        /// </summary>
         public StudentView()
         {
             Presenter = new StudentPresenter(this);
@@ -49,12 +55,20 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:Init" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
             Controls.Add(_deleteButton);
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -118,6 +132,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the SaveButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             Presenter.SaveChanges();

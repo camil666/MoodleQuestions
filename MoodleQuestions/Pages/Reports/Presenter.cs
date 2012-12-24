@@ -13,7 +13,11 @@ namespace MoodleQuestions.Pages.Reports
     {
         #region Constructors
 
-        public Presenter(TView view)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Presenter{TView,TModel}" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        protected Presenter(TView view)
             : base(view)
         {
         }
@@ -22,6 +26,9 @@ namespace MoodleQuestions.Pages.Reports
 
         #region Methods
 
+        /// <summary>
+        /// Displays the user report.
+        /// </summary>
         public void DisplayUserReport()
         {
             IEnumerable<Question> questions = null;

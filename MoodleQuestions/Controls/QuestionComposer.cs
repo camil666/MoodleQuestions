@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
@@ -25,35 +24,95 @@ namespace MoodleQuestions.Controls
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the fractions validation group.
+        /// </summary>
+        /// <value>
+        /// The fractions validation group.
+        /// </value>
         public string FractionsValidationGroup { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether control shall be rendered in anonymous mode.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if shall be rendered in anonymous mode; otherwise, <c>false</c>.
+        /// </value>
         public bool AnonymousMode { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether question is visible.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if question is visible; otherwise, <c>false</c>.
+        /// </value>
         public bool IsVisible
         {
             get { return _isVisibleCheckbox.Checked; }
         }
 
+        /// <summary>
+        /// Gets or sets the is visible label text.
+        /// </summary>
+        /// <value>
+        /// The is visible label text.
+        /// </value>
         public string IsVisibleLabelText { get; set; }
 
+        /// <summary>
+        /// Gets or sets the answer count.
+        /// </summary>
+        /// <value>
+        /// The answer count.
+        /// </value>
         public int AnswerCount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the question label text.
+        /// </summary>
+        /// <value>
+        /// The question label text.
+        /// </value>
         public string QuestionLabelText
         {
             get { return _questionLabel.Text; }
             set { _questionLabel.Text = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the answer label text.
+        /// </summary>
+        /// <value>
+        /// The answer label text.
+        /// </value>
         public string AnswerLabelText { get; set; }
 
+        /// <summary>
+        /// Gets or sets the fraction label text.
+        /// </summary>
+        /// <value>
+        /// The fraction label text.
+        /// </value>
         public string FractionLabelText { get; set; }
 
+        /// <summary>
+        /// Gets or sets the validator error message.
+        /// </summary>
+        /// <value>
+        /// The validator error message.
+        /// </value>
         public string ValidatorErrorMessage
         {
             get { return _validator.ErrorMessage; }
             set { _validator.ErrorMessage = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the question.
+        /// </summary>
+        /// <value>
+        /// The question.
+        /// </value>
         public Question Question
         {
             get
@@ -94,6 +153,9 @@ namespace MoodleQuestions.Controls
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestionComposer" /> class.
+        /// </summary>
         public QuestionComposer()
             : base(HtmlTextWriterTag.Div)
         {
@@ -122,6 +184,10 @@ namespace MoodleQuestions.Controls
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -142,6 +208,10 @@ namespace MoodleQuestions.Controls
             Controls.Add(new LiteralControl("<br>"));
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

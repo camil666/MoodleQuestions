@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
-using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.ViewQuestions
 {
@@ -24,28 +22,58 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the category data source.
+        /// </summary>
+        /// <value>
+        /// The category data source.
+        /// </value>
         public object CategoryDataSource
         {
             get { return _categoryDropDown.DataSource; }
             set { _categoryDropDown.DataSource = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the question repeater data source.
+        /// </summary>
+        /// <value>
+        /// The question repeater data source.
+        /// </value>
         public object QuestionRepeaterDataSource
         {
             get { return _questionRepeater.DataSource; }
             set { _questionRepeater.DataSource = value; }
         }
 
+        /// <summary>
+        /// Gets the selected category id.
+        /// </summary>
+        /// <value>
+        /// The selected category id.
+        /// </value>
         public int SelectedCategoryId
         {
             get { return int.Parse(_categoryDropDown.SelectedValue); }
         }
 
+        /// <summary>
+        /// Gets the start date.
+        /// </summary>
+        /// <value>
+        /// The start date.
+        /// </value>
         public DateTime? StartDate
         {
             get { return _dateFilter.StartDate; }
         }
 
+        /// <summary>
+        /// Gets the end date.
+        /// </summary>
+        /// <value>
+        /// The end date.
+        /// </value>
         public DateTime? EndDate
         {
             get { return _dateFilter.EndDate; }
@@ -55,6 +83,9 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="View" /> class.
+        /// </summary>
         public View()
             : base(HtmlTextWriterTag.Div)
         {
@@ -82,6 +113,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Gets the question ids.
+        /// </summary>
+        /// <returns>Ids of questions.</returns>
         public IEnumerable<int> GetQuestionIds()
         {
             var list = new List<int>();
@@ -98,6 +133,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
             return list;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -119,6 +158,10 @@ namespace MoodleQuestions.Pages.ViewQuestions
             Controls.Add(_generateXMLButton);
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.PreRender" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnPreRender(EventArgs e)
         {
             base.OnPreRender(e);

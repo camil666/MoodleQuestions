@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using MoodleQuestions.Repositories;
 using QuestionsDAL;
 
 namespace MoodleQuestions
@@ -10,43 +9,37 @@ namespace MoodleQuestions
     {
         #region Methods
 
-        public static void ConcatCategoryName(IEnumerable<QuestionCategory> categories)
+        /// <summary>
+        /// Makes the full category names.
+        /// </summary>
+        /// <param name="categories">The categories.</param>
+        public static void MakeFullCategoryNames(IEnumerable<QuestionCategory> categories)
         {
             foreach (var category in categories)
             {
                 if (category.ParentCategoryId != null)
                 {
-                    CategoryHelper.ConcatCategoryName(category);
+                    CategoryHelper.MakeFullCategoryName(category);
                 }
 
                 category.Name = "/" + category.Name;
             }
         }
 
-        public static void ConcatCategoryName(QuestionCategory rootCategory)
+        private static void MakeFullCategoryName(QuestionCategory rootCategory)
         {
-            ConcatCategoryName(rootCategory, rootCategory);
+            MakeFullCategoryName(rootCategory, rootCategory);
         }
 
-        private static void ConcatCategoryName(QuestionCategory rootCategory, QuestionCategory childCategory)
+        private static void MakeFullCategoryName(QuestionCategory rootCategory, QuestionCategory childCategory)
         {
-            var parentCategory = GetQuestionCategory(childCategory.ParentCategoryId.Value);
+            var parentCategory = QuestionCategoryRepository.GetById(childCategory.ParentCategoryId.Value);
 
             rootCategory.Name = parentCategory.Name + "/" + rootCategory.Name;
 
             if (parentCategory.ParentCategoryId != null)
             {
-                ConcatCategoryName(rootCategory, parentCategory);
-            }
-        }
-
-        private static QuestionCategory GetQuestionCategory(int id)
-        {
-            using (var context = new Entities())
-            {
-                return (from item in context.QuestionCategories
-                        where item.Id == id
-                        select item).FirstOrDefault();
+                MakeFullCategoryName(rootCategory, parentCategory);
             }
         }
 

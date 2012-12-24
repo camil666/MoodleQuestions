@@ -14,6 +14,9 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggedUserView" /> class.
+        /// </summary>
         public LoggedUserView()
         {
             _saveButton = new Button()
@@ -28,12 +31,21 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:Init" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
             Controls.Add(_saveButton);
         }
 
+        /// <summary>
+        /// Handles the Click event of the SaveButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             Presenter.SaveQuestion();

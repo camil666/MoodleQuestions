@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI.WebControls;
+using MoodleQuestions.Repositories;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.Reports
@@ -11,29 +9,27 @@ namespace MoodleQuestions.Pages.Reports
     {
         #region Methods
 
-        public IEnumerable<Student> GetStudents()
-        {
-            return PermissionHelper.GetStudents();
-        }
-
+        /// <summary>
+        /// Gets the student questions.
+        /// </summary>
+        /// <param name="studentId">The student id.</param>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns>Student questions.</returns>
         public IEnumerable<Question> GetStudentQuestions(Guid studentId, DateTime? startDate, DateTime? endDate)
         {
-            using (var context = new Entities())
-            {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where item.AuthorId == studentId && item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false
-                        select item).ToList();
-            }
+            return QuestionRepository.Find(item => item.AuthorId == studentId && item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false);
         }
 
+        /// <summary>
+        /// Gets all questions.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns>All the questions.</returns>
         public IEnumerable<Question> GetAllQuestions(DateTime? startDate, DateTime? endDate)
         {
-            using (var context = new Entities())
-            {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false
-                        select item).ToList();
-            }
+            return QuestionRepository.Find(item => item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false);
         }
 
         #endregion

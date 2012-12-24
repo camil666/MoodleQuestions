@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MoodleQuestions.Controls;
@@ -13,12 +10,23 @@ namespace MoodleQuestions.Pages.ViewQuestions
     {
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the checkbox text.
+        /// </summary>
+        /// <value>
+        /// The checkbox text.
+        /// </value>
         public string CheckboxText { get; set; }
 
         #endregion
 
         #region Methods
 
+        /// <summary>
+        /// When implemented by a class, defines the <see cref="T:System.Web.UI.Control" /> object that child controls and templates belong to.
+        /// These child controls are in turn defined within an inline template.
+        /// </summary>
+        /// <param name="container">The <see cref="T:System.Web.UI.Control" /> object to contain the instances of controls from the inline template.</param>
         public void InstantiateIn(Control container)
         {
             var mainPanel = new Panel();

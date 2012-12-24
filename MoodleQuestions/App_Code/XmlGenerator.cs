@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Xml;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
 using QuestionsDAL;
 
@@ -26,12 +21,15 @@ namespace MoodleQuestions
 
         #endregion
 
-        #region Properties
-
-        #endregion
-
         #region Methods
 
+        /// <summary>
+        /// Generates the XML from set of questions.
+        /// </summary>
+        /// <param name="questions">The questions.</param>
+        /// <param name="category">The category.</param>
+        /// <param name="numbering">The numbering.</param>
+        /// <returns>Generated xml.</returns>
         public XElement GenerateXml(IEnumerable<Question> questions, string category = null, AnswerNumbering numbering = AnswerNumbering.Numerical)
         {
             var quizRoot = new XElement(QuizTag);
@@ -54,6 +52,12 @@ namespace MoodleQuestions
             return quizRoot;
         }
 
+        /// <summary>
+        /// Generates the XML from singe question.
+        /// </summary>
+        /// <param name="question">The question.</param>
+        /// <param name="numbering">The numbering.</param>
+        /// <returns>Generated xml.</returns>
         public XElement GenerateXml(Question question, AnswerNumbering numbering = AnswerNumbering.Numerical)
         {
             var questionRoot = new XElement(QuestionTag);

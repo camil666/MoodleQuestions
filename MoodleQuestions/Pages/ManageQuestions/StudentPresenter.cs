@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
 
 namespace MoodleQuestions.Pages.ManageQuestions
@@ -10,6 +7,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentPresenter" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
         public StudentPresenter(IStudentView view)
             : base(view)
         {
@@ -19,6 +20,9 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Setups the grid.
+        /// </summary>
         public void SetupGrid()
         {
             var user = Membership.GetUser();

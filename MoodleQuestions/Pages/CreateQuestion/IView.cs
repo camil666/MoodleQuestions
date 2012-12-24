@@ -6,6 +6,10 @@ namespace MoodleQuestions.Pages.CreateQuestion
     {
         #region Properties
 
+        /// <summary>
+        /// Gets the question.
+        /// </summary>
+        /// <returns>Created question.</returns>
         Question GetQuestion();
 
         #endregion

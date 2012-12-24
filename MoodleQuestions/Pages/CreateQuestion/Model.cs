@@ -1,4 +1,5 @@
-﻿using QuestionsDAL;
+﻿using MoodleQuestions.Repositories;
+using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.CreateQuestion
 {
@@ -6,13 +7,13 @@ namespace MoodleQuestions.Pages.CreateQuestion
     {
         #region Methods
 
+        /// <summary>
+        /// Saves the question.
+        /// </summary>
+        /// <param name="question">The question.</param>
         public void SaveQuestion(Question question)
         {
-            using (var context = new Entities())
-            {
-                context.Questions.Add(question);
-                context.SaveChanges();
-            }
+            QuestionRepository.Add(question);
         }
 
         #endregion

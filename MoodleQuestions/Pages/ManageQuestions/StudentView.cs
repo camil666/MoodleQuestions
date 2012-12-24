@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MoodleQuestions.Pages.ManageQuestions
 {
@@ -12,6 +6,9 @@ namespace MoodleQuestions.Pages.ManageQuestions
     {
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentView" /> class.
+        /// </summary>
         public StudentView()
         {
             Presenter = new StudentPresenter(this);
@@ -21,6 +18,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             Presenter.SetupGrid();

@@ -23,48 +23,99 @@ namespace MoodleQuestions.Pages.Reports
 
         #region Properties
 
+        /// <summary>
+        /// Gets the selected student id.
+        /// </summary>
+        /// <value>
+        /// The selected student id.
+        /// </value>
         public virtual Guid SelectedStudentId
         {
             get { return Guid.Empty; }
         }
 
+        /// <summary>
+        /// Sets the question count.
+        /// </summary>
+        /// <value>
+        /// The question count.
+        /// </value>
         public string QuestionCount
         {
             set { _questionCountCell.Text = value; }
         }
 
+        /// <summary>
+        /// Sets the rated question count.
+        /// </summary>
+        /// <value>
+        /// The rated question count.
+        /// </value>
         public string RatedQuestionCount
         {
             set { _ratedQuestionCountCell.Text = value; }
         }
 
+        /// <summary>
+        /// Sets the unrated question count.
+        /// </summary>
+        /// <value>
+        /// The unrated question count.
+        /// </value>
         public string UnratedQuestionCount
         {
             set { _unratedQuestionCountCell.Text = value; }
         }
 
+        /// <summary>
+        /// Sets the average rating.
+        /// </summary>
+        /// <value>
+        /// The average rating.
+        /// </value>
         public string AverageRating
         {
             set { _ratingCell.Text = value; }
         }
 
+        /// <summary>
+        /// Gets the start date.
+        /// </summary>
+        /// <value>
+        /// The start date.
+        /// </value>
         public DateTime? StartDate
         {
             get { return _dateFilter.StartDate; }
         }
 
+        /// <summary>
+        /// Gets the end date.
+        /// </summary>
+        /// <value>
+        /// The end date.
+        /// </value>
         public DateTime? EndDate
         {
             get { return _dateFilter.EndDate; }
         }
 
+        /// <summary>
+        /// Gets or sets the presenter.
+        /// </summary>
+        /// <value>
+        /// The presenter.
+        /// </value>
         protected TPresenter Presenter { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public View()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="View{TPresenter}" /> class.
+        /// </summary>
+        protected View()
             : base(HtmlTextWriterTag.Div)
         {
             _dateFilter = new DateFilter();
@@ -74,6 +125,10 @@ namespace MoodleQuestions.Pages.Reports
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);

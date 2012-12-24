@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
 using QuestionsDAL;
 
 namespace MoodleQuestions
@@ -18,11 +15,23 @@ namespace MoodleQuestions
 
         #region Properties
 
+        /// <summary>
+        /// Gets a value indicating whether user is supervisor.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if user is supervisor; otherwise, <c>false</c>.
+        /// </value>
         public static bool UserIsSupervisor
         {
             get { return IsUserInRole(Supervisor); }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether user is student.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if user is student; otherwise, <c>false</c>.
+        /// </value>
         public static bool UserIsStudent
         {
             get { return IsUserInRole(Student); }
@@ -32,6 +41,10 @@ namespace MoodleQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Gets the students.
+        /// </summary>
+        /// <returns>List of students.</returns>
         public static IEnumerable<Student> GetStudents()
         {
             var students = new List<Student>();

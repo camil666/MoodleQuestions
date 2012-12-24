@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.UI.WebControls;
-using MoodleQuestions.Controls;
-using QuestionsDAL;
+﻿using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
@@ -12,10 +6,28 @@ namespace MoodleQuestions.Pages.QuestionDetails
     {
         #region Properties
 
+        /// <summary>
+        /// Gets the question id.
+        /// </summary>
+        /// <value>
+        /// The question id.
+        /// </value>
         int QuestionId { get; }
 
+        /// <summary>
+        /// Gets the changed question.
+        /// </summary>
+        /// <value>
+        /// The changed question.
+        /// </value>
         Question ChangedQuestion { get; }
 
+        /// <summary>
+        /// Gets or sets the question to display.
+        /// </summary>
+        /// <value>
+        /// The question to display.
+        /// </value>
         Question QuestionToDisplay { get; set; }
 
         #endregion

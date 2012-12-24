@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,6 +17,12 @@ namespace MoodleQuestions.Controls
 
         #region Properties
 
+        /// <summary>
+        /// Gets the start date.
+        /// </summary>
+        /// <value>
+        /// The start date.
+        /// </value>
         public DateTime? StartDate
         {
             get
@@ -33,6 +37,12 @@ namespace MoodleQuestions.Controls
             }
         }
 
+        /// <summary>
+        /// Gets the end date.
+        /// </summary>
+        /// <value>
+        /// The end date.
+        /// </value>
         public DateTime? EndDate
         {
             get
@@ -51,6 +61,9 @@ namespace MoodleQuestions.Controls
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DateFilter" /> class.
+        /// </summary>
         public DateFilter()
             : base(HtmlTextWriterTag.Div)
         {
@@ -62,6 +75,10 @@ namespace MoodleQuestions.Controls
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -73,6 +90,10 @@ namespace MoodleQuestions.Controls
             Controls.Add(new LiteralControl("<br>"));
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

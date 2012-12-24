@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MoodleQuestions.Pages.Reports
+﻿namespace MoodleQuestions.Pages.Reports
 {
     public class SupervisorPresenter : Presenter<ISupervisorView, Model>
     {
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SupervisorPresenter" /> class.
+        /// </summary>
+        /// <param name="view">The view.</param>
         public SupervisorPresenter(ISupervisorView view)
             : base(view)
         {
@@ -18,9 +17,12 @@ namespace MoodleQuestions.Pages.Reports
 
         #region Methods
 
+        /// <summary>
+        /// Sets up the drop down.
+        /// </summary>
         public void SetupDropDown()
         {
-            View.DropDownDataSource = Model.GetStudents();
+            View.DropDownDataSource = PermissionHelper.GetStudents();
         }
 
         #endregion

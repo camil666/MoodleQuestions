@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,11 +18,23 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Properties
 
+        /// <summary>
+        /// Gets the name of the question.
+        /// </summary>
+        /// <value>
+        /// The name of the question.
+        /// </value>
         public string QuestionName
         {
             get { return _nameTextBox.Text; }
         }
 
+        /// <summary>
+        /// Gets the question category id.
+        /// </summary>
+        /// <value>
+        /// The question category id.
+        /// </value>
         public int? QuestionCategoryId
         {
             get
@@ -46,12 +56,24 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
+        /// <summary>
+        /// Gets or sets the question category data source.
+        /// </summary>
+        /// <value>
+        /// The question category data source.
+        /// </value>
         public object QuestionCategoryDataSource
         {
             get { return _categoryDropDown.DataSource; }
             set { _categoryDropDown.DataSource = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the selected rating.
+        /// </summary>
+        /// <value>
+        /// The selected rating.
+        /// </value>
         public int? SelectedRating
         {
             get
@@ -77,6 +99,9 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SupervisorView" /> class.
+        /// </summary>
         public SupervisorView()
         {
             _categoryDropDown = new DropDownList();
@@ -90,6 +115,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:Init" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -104,6 +133,10 @@ namespace MoodleQuestions.Pages.QuestionDetails
             _nameCell.Controls.Add(_nameTextBox);
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -159,6 +192,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the SaveButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             Presenter.SaveChanges();

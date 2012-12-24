@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
 
 namespace MoodleQuestions.Pages.Reports
@@ -10,6 +7,9 @@ namespace MoodleQuestions.Pages.Reports
     {
         #region Construtors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentView" /> class.
+        /// </summary>
         public StudentView()
         {
             Presenter = new StudentPresenter(this);
@@ -19,6 +19,12 @@ namespace MoodleQuestions.Pages.Reports
 
         #region Properties
 
+        /// <summary>
+        /// Gets the selected student id.
+        /// </summary>
+        /// <value>
+        /// The selected student id.
+        /// </value>
         public override Guid SelectedStudentId
         {
             get

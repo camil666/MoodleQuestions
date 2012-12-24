@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,28 +17,58 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Properties
 
+        /// <summary>
+        /// Gets the selected category id.
+        /// </summary>
+        /// <value>
+        /// The selected category id.
+        /// </value>
         public int SelectedCategoryId
         {
             get { return int.Parse(_categoryDropDown.SelectedValue); }
         }
 
+        /// <summary>
+        /// Gets the name of the new category.
+        /// </summary>
+        /// <value>
+        /// The name of the new category.
+        /// </value>
         public string NewCategoryName
         {
             get { return _newCategoryTextBox.Text; }
         }
 
+        /// <summary>
+        /// Gets or sets the user drop down data source.
+        /// </summary>
+        /// <value>
+        /// The user drop down data source.
+        /// </value>
         public object UserDropDownDataSource
         {
             get { return _userDropDown.DataSource; }
             set { _userDropDown.DataSource = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the category drop down data source.
+        /// </summary>
+        /// <value>
+        /// The category drop down data source.
+        /// </value>
         public object CategoryDropDownDataSource
         {
             get { return _categoryDropDown.DataSource; }
             set { _categoryDropDown.DataSource = value; }
         }
 
+        /// <summary>
+        /// Gets the selected student id.
+        /// </summary>
+        /// <value>
+        /// The selected student id.
+        /// </value>
         public Guid SelectedStudentId
         {
             get
@@ -53,6 +81,9 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SupervisorView" /> class.
+        /// </summary>
         public SupervisorView()
         {
             Presenter = new SupervisorPresenter(this);
@@ -77,6 +108,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:Init" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "UserDropDownLabel").ToString() });
@@ -117,6 +152,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
             });
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             if (!Page.IsPostBack)

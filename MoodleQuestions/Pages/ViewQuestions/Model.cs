@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using MoodleQuestions.Repositories;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.ViewQuestions
@@ -10,60 +10,60 @@ namespace MoodleQuestions.Pages.ViewQuestions
     {
         #region Methods
 
+        /// <summary>
+        /// Gets the question categories.
+        /// </summary>
+        /// <returns>Questions categories.</returns>
         public IEnumerable<QuestionCategory> GetQuestionCategories()
         {
-            using (var context = new Entities())
-            {
-                return (from item in context.QuestionCategories select item).ToList();
-            }
+            return QuestionCategoryRepository.GetAll();
         }
 
+        /// <summary>
+        /// Gets the viewable questions.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns>Viewable questions.</returns>
         public IEnumerable<Question> GetViewableQuestions(DateTime? startDate, DateTime? endDate)
         {
-            using (var context = new Entities())
+            if (startDate == null || endDate == null)
             {
-                if (startDate == null || endDate == null)
-                {
-                    return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                            where item.IsVisible == true && item.IsDeleted == false
-                            select item).ToList();
-                }
-                else
-                {
-                    return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                            where item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false && item.IsVisible == true
-                            select item).ToList();
-                }
+                return QuestionRepository.Find(item => item.IsVisible == true && item.IsDeleted == false);
+            }
+            else
+            {
+                return QuestionRepository.Find(item => item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false && item.IsVisible == true);
             }
         }
 
+        /// <summary>
+        /// Gets the viewable questions.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <param name="categoryId">The category id.</param>
+        /// <returns>Viewable questions.</returns>
         public IEnumerable<Question> GetViewableQuestions(DateTime? startDate, DateTime? endDate, int? categoryId)
         {
-            using (var context = new Entities())
+            if (startDate == null || endDate == null)
             {
-                if (startDate == null || endDate == null)
-                {
-                    return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                            where item.IsVisible == true && item.IsDeleted == false && item.CategoryId == categoryId
-                            select item).ToList();
-                }
-                else
-                {
-                    return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                            where item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false && item.IsVisible == true && item.CategoryId == categoryId
-                            select item).ToList();
-                }
+                return QuestionRepository.Find(item => item.IsVisible == true && item.IsDeleted == false && item.CategoryId == categoryId);
+            }
+            else
+            {
+                return QuestionRepository.Find(item => item.CreationDate >= startDate && item.CreationDate <= endDate && item.IsDeleted == false && item.IsVisible == true && item.CategoryId == categoryId);
             }
         }
 
+        /// <summary>
+        /// Gets the questions.
+        /// </summary>
+        /// <param name="questionIds">The question ids.</param>
+        /// <returns>The questions.</returns>
         public IEnumerable<Question> GetQuestions(IEnumerable<int> questionIds)
         {
-            using (var context = new Entities())
-            {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where questionIds.Contains(item.Id) && item.IsDeleted == false
-                        select item).ToList();
-            }
+            return QuestionRepository.Find(item => questionIds.Contains(item.Id) && item.IsDeleted == false);
         }
 
         #endregion

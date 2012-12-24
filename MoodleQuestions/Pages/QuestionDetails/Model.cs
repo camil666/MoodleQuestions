@@ -1,41 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
+using MoodleQuestions.Repositories;
 using QuestionsDAL;
 
 namespace MoodleQuestions.Pages.QuestionDetails
 {
-    public class Model
+    public abstract class Model
     {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Model" /> class.
+        /// </summary>
+        protected Model()
+        {
+        }
+
+        #endregion
+
         #region Methods
 
+        /// <summary>
+        /// Gets the question.
+        /// </summary>
+        /// <param name="questionId">The question id.</param>
+        /// <returns>Found question.</returns>
         public Question GetQuestion(int questionId)
         {
-            using (var context = new Entities())
-            {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
-                        where item.Id == questionId && item.IsDeleted == false
-                        select item).FirstOrDefault();
-            }
+            return QuestionRepository.Find(question => question.Id == questionId && question.IsDeleted == false).SingleOrDefault();
         }
 
-        public virtual void SaveChanges(Question modifiedQuestion)
-        {
-        }
-
+        /// <summary>
+        /// Deletes the question.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void DeleteQuestion(int id)
         {
-            using (var context = new Entities())
-            {
-                var question = (from item in context.Questions
-                                where item.Id == id
-                                select item).FirstOrDefault();
-
-                question.IsDeleted = true;
-
-                context.SaveChanges();
-            }
+            QuestionRepository.MarkAsDeleted(id);
         }
 
         #endregion

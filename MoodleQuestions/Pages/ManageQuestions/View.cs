@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,6 +17,12 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Properties
 
+        /// <summary>
+        /// Gets the question ids.
+        /// </summary>
+        /// <value>
+        /// The question ids.
+        /// </value>
         public IEnumerable<int> QuestionIds
         {
             get
@@ -37,19 +42,34 @@ namespace MoodleQuestions.Pages.ManageQuestions
             }
         }
 
+        /// <summary>
+        /// Gets or sets the question grid data source.
+        /// </summary>
+        /// <value>
+        /// The question grid data source.
+        /// </value>
         public object QuestionGridDataSource
         {
             get { return _questionGridView.DataSource; }
             set { _questionGridView.DataSource = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the presenter.
+        /// </summary>
+        /// <value>
+        /// The presenter.
+        /// </value>
         protected TPresenter Presenter { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public View()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="View{TPresenter}" /> class.
+        /// </summary>
+        protected View()
             : base(HtmlTextWriterTag.Div)
         {
             _questionGridView = new GridView()
@@ -123,6 +143,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
         #region Methods
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -137,6 +161,10 @@ namespace MoodleQuestions.Pages.ManageQuestions
             Controls.Add(generateXmlButton);
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Web.UI.Control.Load" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
