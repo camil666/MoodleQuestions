@@ -21,7 +21,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
         {
             _saveButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString()
+                Text = ResourceHelper.GetString("SaveButtonText")
             };
 
             _saveButton.Click += SaveButton_Click;

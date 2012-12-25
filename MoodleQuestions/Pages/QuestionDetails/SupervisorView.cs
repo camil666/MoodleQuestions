@@ -104,8 +104,14 @@ namespace MoodleQuestions.Pages.QuestionDetails
         /// </summary>
         public SupervisorView()
         {
-            _categoryDropDown = new DropDownList();
             Presenter = new SupervisorPresenter(this);
+
+            _categoryDropDown = new DropDownList()
+            {
+                DataTextField = "Name",
+                DataValueField = "Id"
+            };
+
             _ratingDropDown = new DropDownList();
             _nameTextBox = new TextBox();
             SaveButton.Click += SaveButton_Click;
@@ -123,12 +129,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             base.OnInit(e);
 
-            var categoryRow = new TableRow();
-            categoryRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "CategoryLabelText").ToString() });
             var categoryCell = new TableCell();
-            categoryRow.Cells.Add(categoryCell);
             categoryCell.Controls.Add(_categoryDropDown);
-            DetailsTable.Rows.Add(categoryRow);
+
+            AddRow(categoryCell, ResourceHelper.GetString("CategoryLabelText"));
+
             _ratingCell.Controls.Add(_ratingDropDown);
             _nameCell.Controls.Add(_nameTextBox);
         }
@@ -145,8 +150,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
             if (!Page.IsPostBack)
             {
-                _categoryDropDown.DataTextField = "Name";
-                _categoryDropDown.DataValueField = "Id";
                 Presenter.SetupCategoryDropDown();
                 _categoryDropDown.DataBind();
                 _ratingDropDown.DataSource = new string[] { "-", "2", "3", "4", "5" };
@@ -170,25 +173,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
             if (isEditable)
             {
-                _questionComposer = new QuestionComposer()
-                {
-                    QuestionLabelText = HttpContext.GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
-                    AnswerLabelText = HttpContext.GetGlobalResourceObject("Strings", "AnswerLabelText").ToString(),
-                    FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
-                    ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString(),
-                    IsVisibleLabelText = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
-                    Question = QuestionToDisplay,
-                    FractionsValidationGroup = "Fractions"
-                };
-
-                QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
+                InitializeQuestionComposer();
             }
             else
             {
-                QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
-                {
-                    Question = QuestionToDisplay
-                });
+                InitializeQuestionViewer();
             }
         }
 

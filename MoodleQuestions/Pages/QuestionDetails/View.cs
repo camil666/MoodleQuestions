@@ -14,10 +14,11 @@ namespace MoodleQuestions.Pages.QuestionDetails
 
         protected TableCell _ratingCell;
         protected TableCell _nameCell;
-        protected TableCell _typeCell;
-        protected QuestionComposer _questionComposer;
+        private QuestionComposer _questionComposer;
         private TableCell _creationDateCell;
         private TableCell _authorCell;
+        private Table _detailsTable;
+        private Button _cancelButton;
 
         #endregion
 
@@ -78,22 +79,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected PlaceHolder QuestionEditorPlaceHolder { get; private set; }
 
         /// <summary>
-        /// Gets the details table.
-        /// </summary>
-        /// <value>
-        /// The details table.
-        /// </value>
-        protected Table DetailsTable { get; private set; }
-
-        /// <summary>
-        /// Gets the cancel button.
-        /// </summary>
-        /// <value>
-        /// The cancel button.
-        /// </value>
-        protected Button CancelButton { get; private set; }
-
-        /// <summary>
         /// Gets the save button.
         /// </summary>
         /// <value>
@@ -111,14 +96,13 @@ namespace MoodleQuestions.Pages.QuestionDetails
         protected View()
             : base(HtmlTextWriterTag.Div)
         {
-            DetailsTable = new Table();
+            _detailsTable = new Table();
             _ratingCell = new TableCell();
             _nameCell = new TableCell();
-            _typeCell = new TableCell();
             _creationDateCell = new TableCell();
             _authorCell = new TableCell();
-            SaveButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "SaveButtonText").ToString(), ValidationGroup = "Fractions" };
-            CancelButton = new Button() { Text = HttpContext.GetGlobalResourceObject("Strings", "CancelButtonText").ToString(), PostBackUrl = "~/ManageQuestions.aspx" };
+            SaveButton = new Button() { Text = ResourceHelper.GetString("SaveButtonText"), ValidationGroup = "Fractions" };
+            _cancelButton = new Button() { Text = ResourceHelper.GetString("CancelButtonText"), PostBackUrl = "~/ManageQuestions.aspx" };
             QuestionEditorPlaceHolder = new PlaceHolder();
         }
 
@@ -134,16 +118,15 @@ namespace MoodleQuestions.Pages.QuestionDetails
         {
             base.OnInit(e);
 
-            AddRow(_nameCell, HttpContext.GetGlobalResourceObject("Strings", "NameLabelText").ToString());
-            AddRow(_authorCell, HttpContext.GetGlobalResourceObject("Strings", "AuthorLabelText").ToString());
-            AddRow(_creationDateCell, HttpContext.GetGlobalResourceObject("Strings", "CreationDateLabelText").ToString());
-            AddRow(_typeCell, HttpContext.GetGlobalResourceObject("Strings", "TypeLabelText").ToString());
-            AddRow(_ratingCell, HttpContext.GetGlobalResourceObject("Strings", "RatingLabelText").ToString());
+            AddRow(_nameCell, ResourceHelper.GetString("NameLabelText"));
+            AddRow(_authorCell, ResourceHelper.GetString("AuthorLabelText"));
+            AddRow(_creationDateCell, ResourceHelper.GetString("CreationDateLabelText"));
+            AddRow(_ratingCell, ResourceHelper.GetString("RatingLabelText"));
 
-            Controls.Add(DetailsTable);
+            Controls.Add(_detailsTable);
             Controls.Add(QuestionEditorPlaceHolder);
             Controls.Add(SaveButton);
-            Controls.Add(CancelButton);
+            Controls.Add(_cancelButton);
         }
 
         /// <summary>
@@ -163,15 +146,6 @@ namespace MoodleQuestions.Pages.QuestionDetails
                 {
                     _authorCell.Text = QuestionToDisplay.Author.UserName;
                 }
-
-                if (QuestionToDisplay.QuestionType != null && !string.IsNullOrEmpty(QuestionToDisplay.QuestionType.Name))
-                {
-                    _typeCell.Text = QuestionToDisplay.QuestionType.Name;
-                }
-                else
-                {
-                    _typeCell.Text = string.Empty;
-                }
             }
             catch (Exception)
             {
@@ -179,12 +153,47 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
-        private void AddRow(TableCell cell, string labelText)
+        /// <summary>
+        /// Adds the row to the table.
+        /// </summary>
+        /// <param name="cell">The content cell.</param>
+        /// <param name="labelText">The label text.</param>
+        protected void AddRow(TableCell cell, string labelText)
         {
             var row = new TableRow();
             row.Cells.Add(new TableCell() { Text = labelText });
             row.Cells.Add(cell);
-            DetailsTable.Rows.Add(row);
+            _detailsTable.Rows.Add(row);
+        }
+
+        /// <summary>
+        /// Initializes the question viewer.
+        /// </summary>
+        protected void InitializeQuestionViewer()
+        {
+            QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
+            {
+                Question = QuestionToDisplay
+            });
+        }
+
+        /// <summary>
+        /// Initializes the question composer.
+        /// </summary>
+        protected void InitializeQuestionComposer()
+        {
+            _questionComposer = new QuestionComposer()
+            {
+                QuestionLabelText = ResourceHelper.GetString("QuestionLabelText"),
+                AnswerLabelText = ResourceHelper.GetString("AnswerLabelText"),
+                FractionLabelText = ResourceHelper.GetString("FractionLabelText"),
+                ValidatorErrorMessage = ResourceHelper.GetString("FractionValidatorErrorMessage"),
+                IsVisibleLabelText = ResourceHelper.GetString("IsVisibleLabelText"),
+                Question = QuestionToDisplay,
+                FractionsValidationGroup = "Fractions"
+            };
+
+            QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
         }
 
         #endregion

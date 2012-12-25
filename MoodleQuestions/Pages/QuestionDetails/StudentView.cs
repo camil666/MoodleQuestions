@@ -43,7 +43,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             Presenter = new StudentPresenter(this);
             _deleteButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "DeleteButtonText").ToString(),
+                Text = ResourceHelper.GetString("DeleteButtonText"),
                 OnClientClick = "if (!ConfirmDelete()) { return false; };"
             };
 
@@ -76,41 +76,28 @@ namespace MoodleQuestions.Pages.QuestionDetails
             var isEditable = QuestionToDisplay.Rating == null;
 
             _deleteButton.Visible = isEditable;
+
             if (isEditable)
             {
-                _questionComposer = new QuestionComposer()
-                    {
-                        QuestionLabelText = HttpContext.GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
-                        AnswerLabelText = HttpContext.GetGlobalResourceObject("Strings", "AnswerLabelText").ToString(),
-                        FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
-                        ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString(),
-                        IsVisibleLabelText = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
-                        Question = QuestionToDisplay,
-                        FractionsValidationGroup = "Fractions"
-                    };
-
-                QuestionEditorPlaceHolder.Controls.Add(_questionComposer);
+                InitializeQuestionComposer();
             }
             else
             {
                 _isVisibleCheckbox = new CheckBox()
                 {
-                    Text = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
-                    TextAlign = TextAlign.Left
+                    Text = ResourceHelper.GetString("IsVisibleLabelText"),
+                    TextAlign = TextAlign.Left,
+                    Checked = QuestionToDisplay.IsVisible
                 };
 
                 _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.Display, "inline");
                 _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.MarginRight, "5px");
                 _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.FontWeight, "normal");
                 _isVisibleCheckbox.LabelAttributes.CssStyle.Add(HtmlTextWriterStyle.FontSize, "1em");
-                _isVisibleCheckbox.Checked = QuestionToDisplay.IsVisible;
 
                 QuestionEditorPlaceHolder.Controls.Add(new LiteralControl("<br>"));
                 QuestionEditorPlaceHolder.Controls.Add(_isVisibleCheckbox);
-                QuestionEditorPlaceHolder.Controls.Add(new QuestionViewer()
-                    {
-                        Question = QuestionToDisplay
-                    });
+                InitializeQuestionViewer();
             }
 
             if (QuestionToDisplay.Rating != null)
@@ -132,12 +119,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
         }
 
-        /// <summary>
-        /// Handles the Click event of the SaveButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected void SaveButton_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
             Presenter.SaveChanges();
             Page.Response.Redirect("~/ManageQuestions.aspx");

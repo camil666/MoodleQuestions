@@ -97,7 +97,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var nameField = new BoundField()
             {
-                HeaderText = HttpContext.GetGlobalResourceObject("Strings", "NameHeaderText").ToString(),
+                HeaderText = ResourceHelper.GetString("NameHeaderText"),
                 DataField = "Name"
             };
 
@@ -105,7 +105,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var creationDateField = new BoundField()
             {
-                HeaderText = HttpContext.GetGlobalResourceObject("Strings", "CreationDateHeaderText").ToString(),
+                HeaderText = ResourceHelper.GetString("CreationDateHeaderText"),
                 DataField = "CreationDate"
             };
 
@@ -113,7 +113,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var modificationDateField = new BoundField()
             {
-                HeaderText = HttpContext.GetGlobalResourceObject("Strings", "ModificationDateHeaderText").ToString(),
+                HeaderText = ResourceHelper.GetString("ModificationDateHeaderText"),
                 DataField = "ModificationDate"
             };
 
@@ -121,7 +121,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var ratingField = new BoundField()
             {
-                HeaderText = HttpContext.GetGlobalResourceObject("Strings", "RatingHeaderText").ToString(),
+                HeaderText = ResourceHelper.GetString("RatingHeaderText"),
                 DataField = "Rating"
             };
 
@@ -129,8 +129,8 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var detailsField = new HyperLinkField()
             {
-                HeaderText = HttpContext.GetGlobalResourceObject("Strings", "DetailsLabelText").ToString(),
-                Text = HttpContext.GetGlobalResourceObject("Strings", "DetailsLabelText").ToString(),
+                HeaderText = ResourceHelper.GetString("DetailsLabelText"),
+                Text = ResourceHelper.GetString("DetailsLabelText"),
                 DataNavigateUrlFields = new string[] { "Id" },
                 DataNavigateUrlFormatString = "QuestionDetails.aspx?q={0}",
                 ShowHeader = false
@@ -154,7 +154,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var generateXmlButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "GenerateXMLButtonText").ToString(),
+                Text = ResourceHelper.GetString("GenerateXMLButtonText"),
             };
 
             generateXmlButton.Click += GenerateXmlButton_Click;

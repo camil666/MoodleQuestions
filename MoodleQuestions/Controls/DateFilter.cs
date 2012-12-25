@@ -88,10 +88,10 @@ namespace MoodleQuestions.Controls
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "StartDateLabelText").ToString(), Width = 180 });
+            Controls.Add(new Label() { Text = ResourceHelper.GetString("StartDateLabelText"), Width = 180 });
             Controls.Add(_startDateTextBox);
             Controls.Add(new LiteralControl("<br>"));
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "EndDateLabelText").ToString(), Width = 180 });
+            Controls.Add(new Label() { Text = ResourceHelper.GetString("EndDateLabelText"), Width = 180 });
             Controls.Add(_endDateTextBox);
             Controls.Add(new LiteralControl("<br>"));
         }

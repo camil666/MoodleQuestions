@@ -99,13 +99,13 @@ namespace MoodleQuestions.Pages.ViewQuestions
             _dateFilter = new DateFilter();
             _generateXMLButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "GenerateXMLButtonText").ToString()
+                Text = ResourceHelper.GetString("GenerateXMLButtonText")
             };
 
             _generateXMLButton.Click += GenerateXMLButton_Click;
             _questionRepeater = new Repeater()
                 {
-                    ItemTemplate = new QuestionItemTemplate() { CheckBoxText = HttpContext.GetGlobalResourceObject("Strings", "QuestionViewCheckboxText").ToString() }
+                    ItemTemplate = new QuestionItemTemplate() { CheckBoxText = ResourceHelper.GetString("QuestionViewCheckboxText") }
                 };
         }
 
@@ -140,14 +140,14 @@ namespace MoodleQuestions.Pages.ViewQuestions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            var categoryLabel = new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "CategoryLabelText").ToString() };
+            var categoryLabel = new Label() { Text = ResourceHelper.GetString("CategoryLabelText") };
             categoryLabel.Style.Add(HtmlTextWriterStyle.MarginRight, "114px");
             Controls.Add(categoryLabel);
             Controls.Add(_categoryDropDown);
             Controls.Add(_dateFilter);
             var searchButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "SearchButtonText").ToString()
+                Text = ResourceHelper.GetString("SearchButtonText")
             };
 
             searchButton.Click += SearchButton_Click;
@@ -176,7 +176,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
             if (_questionRepeater.Items.Count == 0)
             {
-                _repeaterPanel.Controls.Add(new LiteralControl(HttpContext.GetGlobalResourceObject("Strings", "QuestionsNotFound").ToString()));
+                _repeaterPanel.Controls.Add(new LiteralControl(ResourceHelper.GetString("QuestionsNotFound")));
             }
         }
 

@@ -48,7 +48,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
             Presenter = new Presenter(this);
             _answerCountLabel = new Label()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "AnswerCountDropDownLabel").ToString()
+                Text = ResourceHelper.GetString("AnswerCountDropDownLabel")
             };
 
             _answerCountDropDown = new DropDownList()
@@ -58,16 +58,16 @@ namespace MoodleQuestions.Pages.CreateQuestion
 
             QuestionComposerControl = new QuestionComposer()
             {
-                QuestionLabelText = HttpContext.GetGlobalResourceObject("Strings", "QuestionLabelText").ToString(),
-                AnswerLabelText = HttpContext.GetGlobalResourceObject("Strings", "AnswerLabelText").ToString(),
-                FractionLabelText = HttpContext.GetGlobalResourceObject("Strings", "FractionLabelText").ToString(),
-                ValidatorErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "FractionValidatorErrorMessage").ToString(),
-                IsVisibleLabelText = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString()
+                QuestionLabelText = ResourceHelper.GetString("QuestionLabelText"),
+                AnswerLabelText = ResourceHelper.GetString("AnswerLabelText"),
+                FractionLabelText = ResourceHelper.GetString("FractionLabelText"),
+                ValidatorErrorMessage = ResourceHelper.GetString("FractionValidatorErrorMessage"),
+                IsVisibleLabelText = ResourceHelper.GetString("IsVisibleLabelText")
             };
 
             _generateXmlButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "GenerateXMLButtonText").ToString()
+                Text = ResourceHelper.GetString("GenerateXMLButtonText")
             };
 
             _generateXmlButton.Click += GenerateXMLButton_Click;

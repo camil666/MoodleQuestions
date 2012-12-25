@@ -140,41 +140,17 @@ namespace MoodleQuestions.Pages.Reports
 
             var searchButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "SearchButtonText").ToString()
+                Text = ResourceHelper.GetString("SearchButtonText")
             };
 
             searchButton.Click += SearchButton_Click;
             Controls.Add(searchButton);
 
             var detailsTable = new Table();
-            AddRow(_questionCountCell, HttpContext.GetGlobalResourceObject("Strings", "QuestionCountLabelText").ToString(), detailsTable);
-            AddRow(_ratedQuestionCountCell, HttpContext.GetGlobalResourceObject("Strings", "RatedQuestionCountLabelText").ToString(), detailsTable);
-            AddRow(_unratedQuestionCountCell, HttpContext.GetGlobalResourceObject("Strings", "UnratedQuestionCountLabelText").ToString(), detailsTable);
-            AddRow(_ratingCell, HttpContext.GetGlobalResourceObject("Strings", "AverageRatingLabelText").ToString(), detailsTable);
-
-            //var questionCountRow = new TableRow();
-            //detailsTable.Rows.Add(questionCountRow);
-            //questionCountRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "QuestionCountLabelText").ToString() });
-            //_questionCountCell = new TableCell();
-            //questionCountRow.Cells.Add(_questionCountCell);
-
-            //var ratedQuestionCountRow = new TableRow();
-            //detailsTable.Rows.Add(ratedQuestionCountRow);
-            //ratedQuestionCountRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "RatedQuestionCountLabelText").ToString() });
-            //_ratedQuestionCountCell = new TableCell();
-            //ratedQuestionCountRow.Cells.Add(_ratedQuestionCountCell);
-
-            //var unratedQuestionCountRow = new TableRow();
-            //detailsTable.Rows.Add(unratedQuestionCountRow);
-            //unratedQuestionCountRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "UnratedQuestionCountLabelText").ToString() });
-            //_unratedQuestionCountCell = new TableCell();
-            //unratedQuestionCountRow.Cells.Add(_unratedQuestionCountCell);
-
-            //var ratingRow = new TableRow();
-            //detailsTable.Rows.Add(ratingRow);
-            //ratingRow.Cells.Add(new TableCell() { Text = HttpContext.GetGlobalResourceObject("Strings", "AverageRatingLabelText").ToString() });
-            //_ratingCell = new TableCell();
-            //ratingRow.Cells.Add(_ratingCell);
+            AddRow(_questionCountCell, ResourceHelper.GetString("QuestionCountLabelText"), detailsTable);
+            AddRow(_ratedQuestionCountCell, ResourceHelper.GetString("RatedQuestionCountLabelText"), detailsTable);
+            AddRow(_unratedQuestionCountCell, ResourceHelper.GetString("UnratedQuestionCountLabelText"), detailsTable);
+            AddRow(_ratingCell, ResourceHelper.GetString("AverageRatingLabelText"), detailsTable);
 
             Controls.Add(detailsTable);
         }

@@ -114,20 +114,20 @@ namespace MoodleQuestions.Pages.ManageQuestions
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnInit(EventArgs e)
         {
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "UserDropDownLabel").ToString() });
+            Controls.Add(new Label() { Text = ResourceHelper.GetString("UserDropDownLabel") });
             Controls.Add(_userDropDown);
             base.OnInit(e);
             Controls.Add(new LiteralControl("<br>"));
             Controls.Add(new LiteralControl("<br>"));
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "CategoryLabelText").ToString() });
+            Controls.Add(new Label() { Text = ResourceHelper.GetString("CategoryLabelText") });
             Controls.Add(_categoryDropDown);
             Controls.Add(new LiteralControl("<br>"));
-            Controls.Add(new Label() { Text = HttpContext.GetGlobalResourceObject("Strings", "NewCategoryLabelText").ToString() });
+            Controls.Add(new Label() { Text = ResourceHelper.GetString("NewCategoryLabelText") });
             Controls.Add(_newCategoryTextBox);
             Controls.Add(new LiteralControl("<br>"));
             var addCategoryButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "AddCategoryLabelText").ToString(),
+                Text = ResourceHelper.GetString("AddCategoryLabelText"),
                 ValidationGroup = "CategoryName",
                 ID = "DeleteCategoryButton"
             };
@@ -137,7 +137,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
 
             var deleteCategoryButton = new Button()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "DeleteCategoryLabelText").ToString(),
+                Text = ResourceHelper.GetString("DeleteCategoryLabelText"),
                 OnClientClick = "if (!ConfirmCategoryDelete()) { return false; };"
             };
 
@@ -148,7 +148,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
             {
                 ValidationGroup = "CategoryName",
                 ControlToValidate = _newCategoryTextBox.ID,
-                ErrorMessage = HttpContext.GetGlobalResourceObject("Strings", "NewCategoryValidationText").ToString()
+                ErrorMessage = ResourceHelper.GetString("NewCategoryValidationText")
             });
         }
 

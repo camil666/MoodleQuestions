@@ -468,6 +468,7 @@
     <Compile Include="App_Code\PermissionHelper.cs" />
     <Compile Include="App_Code\Repositories\QuestionCategoryRepository.cs" />
     <Compile Include="App_Code\Repositories\QuestionRepository.cs" />
+    <Compile Include="App_Code\ResourceHelper.cs" />
     <Compile Include="App_Code\Student.cs" />
     <Compile Include="App_Code\XmlGenerator.cs" />
     <Compile Include="App_GlobalResources\Strings.Designer.cs">

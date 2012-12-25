@@ -71,7 +71,7 @@ namespace MoodleQuestions.Pages.Reports
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected override void OnInit(EventArgs e)
         {
-            Controls.Add(new LiteralControl(HttpContext.GetGlobalResourceObject("Strings", "AuthorLabelText").ToString()));
+            Controls.Add(new LiteralControl(ResourceHelper.GetString("AuthorLabelText")));
             Controls.Add(_userDropDown);
             Controls.Add(new LiteralControl("<br>"));
 
@@ -81,7 +81,7 @@ namespace MoodleQuestions.Pages.Reports
             {
                 Presenter.SetupDropDown();
                 var students = (DropDownDataSource as IEnumerable<Student>).ToList();
-                students.Insert(0, new Student(HttpContext.GetGlobalResourceObject("Strings", "AllStudentsText").ToString(), Guid.Empty));
+                students.Insert(0, new Student(ResourceHelper.GetString("AllStudentsText"), Guid.Empty));
                 DropDownDataSource = students;
                 _userDropDown.DataBind();
             }

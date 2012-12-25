@@ -164,7 +164,7 @@ namespace MoodleQuestions.Controls
             _questionLabel = new Label();
             _isVisibleCheckbox = new CheckBox()
             {
-                Text = HttpContext.GetGlobalResourceObject("Strings", "IsVisibleLabelText").ToString(),
+                Text = ResourceHelper.GetString("IsVisibleLabelText"),
                 TextAlign = TextAlign.Left
             };
 
