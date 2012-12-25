@@ -37,14 +37,13 @@ namespace MoodleQuestions.Pages.CreateQuestion
         }
 
         /// <summary>
-        /// Generates the XML.
+        /// Generates the Xml.
         /// </summary>
-        /// <returns>Generated xml.</returns>
-        public XElement GenerateXML()
+        /// <returns>Generated Xml.</returns>
+        public XElement GenerateXml()
         {
             var question = _view.GetQuestion();
-            var xmlGenerator = new XmlGenerator();
-            return xmlGenerator.GenerateXml(question);
+            return XmlGenerator.GenerateXml(question);
         }
 
         #endregion

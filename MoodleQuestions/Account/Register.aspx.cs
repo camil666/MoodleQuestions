@@ -11,11 +11,23 @@ namespace MoodleQuestions.Account
 {
     public partial class Register : Page
     {
+        #region Methods
+
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
         }
 
+        /// <summary>
+        /// Handles the CreatedUser event of the RegisterUser control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, createPersistentCookie: false);
@@ -42,5 +54,7 @@ namespace MoodleQuestions.Account
 
             Response.Redirect("~/");
         }
+
+        #endregion
     }
 }

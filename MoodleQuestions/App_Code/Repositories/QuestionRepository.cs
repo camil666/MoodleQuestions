@@ -6,7 +6,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions.Repositories
 {
-    public class QuestionRepository
+    public static class QuestionRepository
     {
         #region Methods
 
@@ -32,7 +32,7 @@ namespace MoodleQuestions.Repositories
         {
             using (var context = new Entities())
             {
-                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
+                return (from item in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionAnswers")
                         where item.Id == id
                         select item).FirstOrDefault();
             }
@@ -47,7 +47,7 @@ namespace MoodleQuestions.Repositories
         {
             using (var context = new Entities())
             {
-                return (from question in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionType").Include("QuestionAnswers")
+                return (from question in context.Questions.Include("Author").Include("QuestionCategory").Include("QuestionAnswers")
                             .Where(query)
                         select question).ToList();
             }

@@ -61,15 +61,14 @@ namespace MoodleQuestions.Pages.ViewQuestions
         }
 
         /// <summary>
-        /// Generates the XML.
+        /// Generates the xml.
         /// </summary>
         /// <returns>Generated xml.</returns>
-        public XElement GenerateXML()
+        public XElement GenerateXml()
         {
             var questionIds = _view.GetQuestionIds();
             var questions = _model.GetQuestions(questionIds);
-            var xmlGenerator = new XmlGenerator();
-            return xmlGenerator.GenerateXml(questions);
+            return XmlGenerator.GenerateXml(questions);
         }
 
         #endregion

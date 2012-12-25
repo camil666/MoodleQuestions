@@ -12,7 +12,6 @@
           <EntitySet Name="QuestionAnswers" EntityType="Model.Store.QuestionAnswers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="QuestionCategories" EntityType="Model.Store.QuestionCategories" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Questions" EntityType="Model.Store.Questions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="QuestionTypes" EntityType="Model.Store.QuestionTypes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Roles" EntityType="Model.Store.Roles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsersInRoles" EntityType="Model.Store.UsersInRoles" store:Type="Tables" Schema="dbo" />
@@ -26,10 +25,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Questions_QuestionCategories" Association="Model.Store.FK_Questions_QuestionCategories">
             <End Role="QuestionCategories" EntitySet="QuestionCategories" />
-            <End Role="Questions" EntitySet="Questions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Questions_QuestionTypes" Association="Model.Store.FK_Questions_QuestionTypes">
-            <End Role="QuestionTypes" EntitySet="QuestionTypes" />
             <End Role="Questions" EntitySet="Questions" />
           </AssociationSet>
           <AssociationSet Name="FK_Questions_Users" Association="Model.Store.FK_Questions_Users">
@@ -130,7 +125,6 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CategoryId" Type="int" />
-          <Property Name="TypeId" Type="int" />
           <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Rating" Type="int" />
           <Property Name="Name" Type="nvarchar(max)" />
@@ -139,13 +133,6 @@
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="ModificationDate" Type="datetime" />
           <Property Name="IsVisible" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="QuestionTypes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="60" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -209,18 +196,6 @@
             </Principal>
             <Dependent Role="Questions">
               <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Questions_QuestionTypes">
-          <End Role="QuestionTypes" Type="Model.Store.QuestionTypes" Multiplicity="0..1" />
-          <End Role="Questions" Type="Model.Store.Questions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QuestionTypes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Questions">
-              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -331,7 +306,6 @@
           <EntitySet Name="QuestionAnswers" EntityType="Model.QuestionAnswer" />
           <EntitySet Name="QuestionCategories" EntityType="Model.QuestionCategory" />
           <EntitySet Name="Questions" EntityType="Model.Question" />
-          <EntitySet Name="QuestionTypes" EntityType="Model.QuestionType" />
           <EntitySet Name="Roles" EntityType="Model.Roles" />
           <EntitySet Name="Users" EntityType="Model.Users" />
           <AssociationSet Name="MembershipApplication" Association="Model.MembershipApplication">
@@ -360,10 +334,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Questions_QuestionCategories" Association="Model.FK_Questions_QuestionCategories">
             <End Role="QuestionCategories" EntitySet="QuestionCategories" />
-            <End Role="Questions" EntitySet="Questions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Questions_QuestionTypes" Association="Model.FK_Questions_QuestionTypes">
-            <End Role="QuestionTypes" EntitySet="QuestionTypes" />
             <End Role="Questions" EntitySet="Questions" />
           </AssociationSet>
           <AssociationSet Name="FK_Questions_Users" Association="Model.FK_Questions_Users">
@@ -452,7 +422,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" />
-          <Property Name="TypeId" Type="Int32" />
           <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Rating" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -461,18 +430,9 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="QuestionAnswers" Relationship="Model.FK_QuestionAnswers_Questions" FromRole="Questions" ToRole="QuestionAnswers" />
           <NavigationProperty Name="QuestionCategory" Relationship="Model.FK_Questions_QuestionCategories" FromRole="Questions" ToRole="QuestionCategories" />
-          <NavigationProperty Name="QuestionType" Relationship="Model.FK_Questions_QuestionTypes" FromRole="Questions" ToRole="QuestionTypes" />
           <NavigationProperty Name="Author" Relationship="Model.FK_Questions_Users" FromRole="Questions" ToRole="Users" />
           <Property Type="DateTime" Name="ModificationDate" Precision="3" />
           <Property Type="Boolean" Name="IsVisible" Nullable="false" />
-        </EntityType>
-        <EntityType Name="QuestionType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Questions" Relationship="Model.FK_Questions_QuestionTypes" FromRole="QuestionTypes" ToRole="Questions" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -586,18 +546,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Questions_QuestionTypes">
-          <End Role="QuestionTypes" Type="Model.QuestionType" Multiplicity="0..1" />
-          <End Role="Questions" Type="Model.Question" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QuestionTypes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Questions">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Questions_Users">
           <End Role="Users" Type="Model.Users" Multiplicity="1" />
           <End Role="Questions" Type="Model.Question" Multiplicity="*" />
@@ -703,21 +651,12 @@
                 <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QuestionTypes">
-            <EntityTypeMapping TypeName="Model.QuestionType">
-              <MappingFragment StoreEntitySet="QuestionTypes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

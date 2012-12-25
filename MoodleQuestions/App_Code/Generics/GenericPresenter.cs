@@ -29,7 +29,7 @@
         /// Initializes a new instance of the <see cref="GenericPresenter{TView,TModel}" /> class.
         /// </summary>
         /// <param name="view">The view.</param>
-        public GenericPresenter(TView view)
+        protected GenericPresenter(TView view)
         {
             View = view;
             Model = new TModel();

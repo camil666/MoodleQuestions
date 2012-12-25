@@ -182,7 +182,7 @@ namespace MoodleQuestions.Pages.ViewQuestions
 
         private void GenerateXMLButton_Click(object sender, EventArgs e)
         {
-            var xml = _presenter.GenerateXML();
+            var xml = _presenter.GenerateXml();
             Page.Response.ContentType = "text/xml";
             Page.Response.AppendHeader("content-disposition", "attachment;filename=Question.xml");
             xml.Save(Page.Response.OutputStream);

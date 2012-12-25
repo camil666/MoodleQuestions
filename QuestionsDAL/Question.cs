@@ -21,7 +21,6 @@ namespace QuestionsDAL
     
         public int Id { get; set; }
         public Nullable<int> CategoryId { get; set; }
-        public Nullable<int> TypeId { get; set; }
         public string Content { get; set; }
         public Nullable<int> Rating { get; set; }
         public string Name { get; set; }
@@ -33,7 +32,6 @@ namespace QuestionsDAL
     
         public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
         public virtual QuestionCategory QuestionCategory { get; set; }
-        public virtual QuestionType QuestionType { get; set; }
         public virtual Users Author { get; set; }
     }
 }

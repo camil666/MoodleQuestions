@@ -60,10 +60,10 @@ namespace MoodleQuestions.Pages.Reports
             }
             else
             {
-                View.QuestionCount = Constants.EmptyText;
-                View.RatedQuestionCount = Constants.EmptyText;
-                View.UnratedQuestionCount = Constants.EmptyText;
-                View.AverageRating = Constants.EmptyText;
+                View.QuestionCount = "-";
+                View.RatedQuestionCount = "-";
+                View.UnratedQuestionCount = "-";
+                View.AverageRating = "-";
             }
         }
 

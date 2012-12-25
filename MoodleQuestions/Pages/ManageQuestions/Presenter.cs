@@ -23,7 +23,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
         #region Methods
 
         /// <summary>
-        /// Generates the XML.
+        /// Generates the xml.
         /// </summary>
         /// <returns>
         /// Generated xml.
@@ -31,8 +31,7 @@ namespace MoodleQuestions.Pages.ManageQuestions
         public XElement GenerateXml()
         {
             var questions = Model.GetQuestions(View.QuestionIds);
-            var xmlGenerator = new XmlGenerator();
-            return xmlGenerator.GenerateXml(questions);
+            return XmlGenerator.GenerateXml(questions);
         }
 
         #endregion

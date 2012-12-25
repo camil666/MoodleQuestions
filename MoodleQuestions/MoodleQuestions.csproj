@@ -462,7 +462,6 @@
     </Compile>
     <Compile Include="App_Code\AnswerNumbering.cs" />
     <Compile Include="App_Code\CategoryHelper.cs" />
-    <Compile Include="App_Code\Constants.cs" />
     <Compile Include="App_Code\DoubleHelper.cs" />
     <Compile Include="App_Code\Generics\GenericPresenter.cs" />
     <Compile Include="App_Code\PermissionHelper.cs" />

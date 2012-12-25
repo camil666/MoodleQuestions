@@ -10,13 +10,13 @@ namespace MoodleQuestions.Account
     {
         #region Properties
 
+        /// <summary>
+        /// Gets the success message.
+        /// </summary>
+        /// <value>
+        /// The success message.
+        /// </value>
         protected string SuccessMessage
-        {
-            get;
-            private set;
-        }
-
-        protected bool CanRemoveExternalLogins
         {
             get;
             private set;
@@ -26,6 +26,11 @@ namespace MoodleQuestions.Account
 
         #region Methods
 
+        /// <summary>
+        /// Converts to display date time.
+        /// </summary>
+        /// <param name="utcDateTime">The UTC date time.</param>
+        /// <returns>Converted time.</returns>
         protected static string ConvertToDisplayDateTime(DateTime? utcDateTime)
         {
             // You can change this method to convert the UTC date time into the desired display
@@ -34,6 +39,9 @@ namespace MoodleQuestions.Account
             return utcDateTime.HasValue ? utcDateTime.Value.ToLocalTime().ToString("G") : "[never]";
         }
 
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
         protected void Page_Load()
         {
             if (!IsPostBack)

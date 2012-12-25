@@ -70,7 +70,7 @@ namespace MoodleQuestions.Pages.CreateQuestion
                 Text = ResourceHelper.GetString("GenerateXMLButtonText")
             };
 
-            _generateXmlButton.Click += GenerateXMLButton_Click;
+            _generateXmlButton.Click += GenerateXmlButton_Click;
         }
 
         #endregion
@@ -123,9 +123,9 @@ namespace MoodleQuestions.Pages.CreateQuestion
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected void GenerateXMLButton_Click(object sender, EventArgs e)
+        protected void GenerateXmlButton_Click(object sender, EventArgs e)
         {
-            var xml = Presenter.GenerateXML();
+            var xml = Presenter.GenerateXml();
             Page.Response.ContentType = "text/xml";
             Page.Response.AppendHeader("content-disposition", "attachment;filename=Question.xml");
             xml.Save(Page.Response.OutputStream);

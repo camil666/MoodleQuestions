@@ -4,7 +4,7 @@ using QuestionsDAL;
 
 namespace MoodleQuestions
 {
-    public class XmlGenerator
+    public static class XmlGenerator
     {
         #region Constants
 
@@ -30,7 +30,7 @@ namespace MoodleQuestions
         /// <param name="category">The category.</param>
         /// <param name="numbering">The numbering.</param>
         /// <returns>Generated xml.</returns>
-        public XElement GenerateXml(IEnumerable<Question> questions, string category = null, AnswerNumbering numbering = AnswerNumbering.Numerical)
+        public static XElement GenerateXml(IEnumerable<Question> questions, string category = null, AnswerNumbering numbering = AnswerNumbering.Numerical)
         {
             var quizRoot = new XElement(QuizTag);
 
@@ -58,7 +58,7 @@ namespace MoodleQuestions
         /// <param name="question">The question.</param>
         /// <param name="numbering">The numbering.</param>
         /// <returns>Generated xml.</returns>
-        public XElement GenerateXml(Question question, AnswerNumbering numbering = AnswerNumbering.Numerical)
+        public static XElement GenerateXml(Question question, AnswerNumbering numbering = AnswerNumbering.Numerical)
         {
             var questionRoot = new XElement(QuestionTag);
             questionRoot.SetAttributeValue(TypeAttribute, "multichoice");

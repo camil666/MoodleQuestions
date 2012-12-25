@@ -106,7 +106,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
             }
             else
             {
-                _ratingCell.Text = Constants.EmptyText;
+                _ratingCell.Text = string.Empty;
             }
 
             if (!string.IsNullOrEmpty(QuestionToDisplay.Name))

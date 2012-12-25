@@ -10,10 +10,26 @@ namespace MoodleQuestions
 {
     public partial class SiteMaster : MasterPage
     {
+        #region Constants
+
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
+
+        #endregion
+
+        #region Fields
+
         private string _antiXsrfTokenValue;
 
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Handles the Init event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void Page_Init(object sender, EventArgs e)
         {
             // The code below helps to protect against XSRF attacks
@@ -48,6 +64,12 @@ namespace MoodleQuestions
             Page.PreLoad += Master_Page_PreLoad;
         }
 
+        /// <summary>
+        /// Handles the PreLoad event of the Master_Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        /// <exception cref="System.InvalidOperationException"></exception>
         protected void Master_Page_PreLoad(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -67,8 +89,15 @@ namespace MoodleQuestions
             }
         }
 
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+
+        #endregion
     }
 }

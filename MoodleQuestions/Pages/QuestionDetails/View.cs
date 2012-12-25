@@ -32,7 +32,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
         /// </value>
         public int QuestionId
         {
-            get { return int.Parse(Page.Request.QueryString[Constants.QuestionIdQueryString]); }
+            get { return int.Parse(Page.Request.QueryString["q"]); }
         }
 
         /// <summary>
