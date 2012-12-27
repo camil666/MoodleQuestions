@@ -144,7 +144,7 @@ namespace MoodleQuestions.Pages.QuestionDetails
                 _creationDateCell.Text = QuestionToDisplay.CreationDate.ToString();
                 if (QuestionToDisplay.Author != null)
                 {
-                    _authorCell.Text = QuestionToDisplay.Author.UserName;
+                    _authorCell.Text = QuestionToDisplay.Author.FirstName + " " + QuestionToDisplay.Author.LastName;
                 }
             }
             catch (Exception)
